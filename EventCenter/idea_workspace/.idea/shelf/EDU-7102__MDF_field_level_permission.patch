@@ -1,0 +1,606 @@
+Index: ../code/trunk/V4/au-V4-service/src/main/java/com/successfactors/empfile/util/EmployeePositionHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../code/trunk/V4/au-V4-service/src/main/java/com/successfactors/empfile/util/EmployeePositionHelper.java	(revision 882928)
++++ ../code/trunk/V4/au-V4-service/src/main/java/com/successfactors/empfile/util/EmployeePositionHelper.java	(revision )
+@@ -1,30 +1,34 @@
+ package com.successfactors.empfile.util;
+ 
+-import java.util.ArrayList;
+-import java.util.Arrays;
+-import java.util.Collections;
+-import java.util.HashMap;
+-import java.util.HashSet;
+-import java.util.List;
+-import java.util.Map;
+-import java.util.Set;
+-
+-import com.successfactors.logging.api.Logger;
+-
+ import com.sf.sfv4.util.StringUtils;
+ import com.successfactors.dashboard.bean.PortletPropertyKeyEnum;
+ import com.successfactors.dashboard.bean.configurable.PortletConfigBean;
+ import com.successfactors.edu.peopleprofile.bean.config.ui.EmployeeProfileBlockContent;
+ import com.successfactors.edu.peopleprofile.bean.config.ui.EmployeeProfileFieldConfig;
++import com.successfactors.genericobject.app.exception.NoPermissionException;
++import com.successfactors.genericobject.app.facade.MDFFacade;
++import com.successfactors.genericobject.app.sql.MDFCriteria;
++import com.successfactors.genericobject.app.sql.MDFResultSet;
++import com.successfactors.genericobject.app.sql.builder.Order;
++import com.successfactors.genericobject.app.sql.criterion.Restrictions;
++import com.successfactors.genericobject.app.sql.projection.Projections;
++import com.successfactors.genericobject.bean.eo.GenericObject;
++import com.successfactors.genericobject.bean.model.FieldDefinition;
++import com.successfactors.genericobject.bean.model.MDFPermissionEnum;
+ import com.successfactors.genericobject.bean.model.ObjectDefinition;
+ import com.successfactors.genericobject.bean.model.impl.GOFieldDefinition;
+ import com.successfactors.genericobject.service.GetObjectDefinition;
++import com.successfactors.logging.api.LogManager;
++import com.successfactors.logging.api.Logger;
++import com.successfactors.platform.bean.ParamBean;
+ import com.successfactors.sca.ServiceApplicationException;
+ import com.successfactors.sca.service.ServiceCommandHandlerFactory;
+ import com.successfactors.sm.bean.PositionModelDataBean;
++import com.successfactors.sm.bean.position.eo.Position;
+ import com.successfactors.sm.service.position.GetPositionsByIncumbents;
+ import com.successfactors.sm.service.position.impl.PositionService;
+-import com.successfactors.logging.api.LogManager;
++import com.successfactors.xi.util.SeamEnvUtils;
++import java.util.*;
+ 
+ /**
+  * Helper class to provide interface for EC position
+@@ -37,7 +41,7 @@
+   private static final String POSITION_DISPLAY_FIELD_SEPERATOR = ";";
+ 
+   /**
+-   * Logger.
++   * Logger.t
+    */
+   private static final Logger log = LogManager.getLogger();
+ 
+@@ -75,6 +79,60 @@
+   }
+ 
+   /**
++   * Method to get PositionGO and FieldDef  inition of Position(field level RbpScured)
++   * @param selectedUserID userid
++   * @param params params
++   * @return a map with PositionGO and FieldDefinition
++   */
++  public Map<String,Object> getPositions(String selectedUserID, ParamBean params){
++    List<GOFieldDefinition> fieldDefinitions = new ArrayList();
++    List<GenericObject> securedGos = new ArrayList();
++    try {
++      MDFFacade mdfFacade=(MDFFacade)SeamEnvUtils.getInstance(MDFFacade.MDF_FACADE, true);
++      MDFCriteria context = mdfFacade.createCriteria(Position.class);
++      context.setIncludeInactive(false);
++      context.setIgnoreSecurity(false);
++      context.setEffectiveDate(new Date());
++      context.setProjection(Projections.all());
++      
++      context.add(Restrictions.in(Position.INCUMBENT_FIELD_NAME, selectedUserID));
++      FieldDefinition edFieldDef = getPositionObjectDefinition().getFieldByBackingEOsField(GenericObject.EFFECTIVE_STARTDATE_FIELD_ID);
++      if (edFieldDef != null) {
++        context.addOrder(Order.desc(edFieldDef.getName()));
++      }
++      MDFResultSet mdfResultSet = context.execute();
++      List<GenericObject> gos = mdfResultSet.getGenericObjects();     
++
++      boolean fieldDefGet = false;
++
++      if(gos!=null && gos.size()>0 ){
++        for(GenericObject go : gos){
++          GenericObject rbpSecuredObject = mdfFacade.getRBPSecuredObject(go.getObjectType(),
++              MDFPermissionEnum.VIEW ,go , true ,params.getUserId() , false ,false ,false);
++          if( !fieldDefGet ){
++            fieldDefinitions = (List<GOFieldDefinition>) rbpSecuredObject.getObjectDefinition().getActiveFields();
++            fieldDefGet = true;
++          }
++          securedGos.add(rbpSecuredObject);
++        }
++      }
++      Map<String,Object> map = new HashMap<String, Object>();
++      map.put("fieldDefinitions", fieldDefinitions);
++      map.put("gos", securedGos);
++      return map;
++      
++    } catch (ServiceApplicationException sae) {
++      log.error("Unable to get position go", sae);
++    } catch (NoPermissionException e) {
++      log.error("No permission to get positionGO", e);
++    }
++    Map<String,Object> map = new HashMap<String, Object>();
++    map.put("fieldDefinitions", Collections.EMPTY_LIST );
++    map.put("gos", Collections.EMPTY_LIST );
++    return map;
++  }
++
++  /**
+    * Method to get position GO definition
+    * @return GO definition
+    */
+@@ -132,10 +190,31 @@
+       return fieldNameDefinitionMap;
+     }
+     List<GOFieldDefinition> fieldDefinitions = (List<GOFieldDefinition>)positionObjectDefinition.getActiveFields();
++    if(null==fieldDefinitions||fieldDefinitions.isEmpty()){
++      return fieldNameDefinitionMap;
++    }
++    
++    for (GOFieldDefinition goFieldDefinition : fieldDefinitions) {
++      if(!goFieldDefinition.isVisible()){
++        continue;
++      }
++      fieldNameDefinitionMap.put(goFieldDefinition.getName(), goFieldDefinition);
++    }
++    return fieldNameDefinitionMap;
++  }
++
++  /**
++   * Method to get the map for fieldName and field Definition from goFieldDefinition(field level RbpScured)
++   * @param fieldDefinitions GOfieldDefinitions
++   * @return map of fieldName and field Definition
++   */
++  public Map<String, GOFieldDefinition> getFieldNameDefinitionMap(List<GOFieldDefinition> fieldDefinitions){
++    Map<String, GOFieldDefinition> fieldNameDefinitionMap=new HashMap<String, GOFieldDefinition>();
++
+     if(null==fieldDefinitions||fieldDefinitions.isEmpty()){
+       return fieldNameDefinitionMap;
+     }
+-    
++
+     for (GOFieldDefinition goFieldDefinition : fieldDefinitions) {
+       if(!goFieldDefinition.isVisible()){
+         continue;
+Index: ../code/trunk/V4/au-V4-ui/src/main/java/com/successfactors/edu/ui/controller/PositionPortletController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../code/trunk/V4/au-V4-ui/src/main/java/com/successfactors/edu/ui/controller/PositionPortletController.java	(revision 882928)
++++ ../code/trunk/V4/au-V4-ui/src/main/java/com/successfactors/edu/ui/controller/PositionPortletController.java	(revision )
+@@ -2,33 +2,14 @@
+ // ###Modified by SCAConverter on 2014-03-17 PST###
+ package com.successfactors.edu.ui.controller;
+ 
+-import java.util.ArrayList;
+-import java.util.Date;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-
+-import org.jboss.seam.ScopeType;
+-import org.jboss.seam.annotations.In;
+-import org.jboss.seam.annotations.Name;
+-import org.jboss.seam.annotations.Scope;
+-
+ import com.sf.sfv4.util.StringUtils;
+-import com.sf.sfv4.util.Tables;
+ import com.successfactors.ajaxservice.annotation.AjaxMethod;
+ import com.successfactors.ajaxservice.annotation.AjaxService;
+-import com.successfactors.competency.service.ejb.Competency;
+ import com.successfactors.dashboard.bean.configurable.DashboardBean;
+ import com.successfactors.dashboard.bean.configurable.PortletBean;
+ import com.successfactors.dashboard.bean.configurable.PortletConfigBean;
+ import com.successfactors.dashboard.service.dashport.GetDashboard;
+-import com.successfactors.dashboard.service.ejb.dashport.DashPort;
+-import com.successfactors.edu.bean.vo.FieldMetaVO;
+-import com.successfactors.edu.bean.vo.PositionFieldMetaVO;
+-import com.successfactors.edu.bean.vo.PositionPortletDataVO;
+-import com.successfactors.edu.bean.vo.PositionPortletMetaVO;
+-import com.successfactors.edu.bean.vo.PositionPortletVO;
+-import com.successfactors.edu.peopleprofile.app.admin.enums.PeopleProfileBlockEnum;
++import com.successfactors.edu.bean.vo.*;
+ import com.successfactors.edu.peopleprofile.app.data.GetBlockContentByBlockId;
+ import com.successfactors.edu.peopleprofile.bean.config.ui.EmployeeProfileBlockContent;
+ import com.successfactors.edu.service.UserHasNoPermissionException;
+@@ -37,17 +18,18 @@
+ import com.successfactors.edu.ui.controller.exception.ProfileAjaxException;
+ import com.successfactors.empfile.rules.SuccessionRulesEngine;
+ import com.successfactors.empfile.util.EmployeePositionHelper;
++import com.successfactors.genericobject.app.transformer.GenericObjectToBean;
++import com.successfactors.genericobject.bean.eo.GenericObject;
+ import com.successfactors.genericobject.bean.model.DataType;
+-import com.successfactors.genericobject.bean.model.FieldDefinition;
+-import com.successfactors.genericobject.bean.model.ObjectDefinition;
+ import com.successfactors.genericobject.bean.model.impl.GOFieldDefinition;
++import com.successfactors.genericobject.bean.model.impl.GOLocalizedData;
+ import com.successfactors.genericobject.bean.model.impl.PickListValue;
+ import com.successfactors.hris.api.util.HrisAPIUtils;
+-import com.successfactors.legacy.service.ejb.SysConfig;
+ import com.successfactors.legacy.util.exception.SuccessionRulesEngineException;
+ import com.successfactors.logging.api.LogManager;
+ import com.successfactors.logging.api.Logger;
+ import com.successfactors.platform.bean.ParamBean;
++import com.successfactors.platform.di.SFContextConstant;
+ import com.successfactors.platform.util.DateUtils;
+ import com.successfactors.sca.ServiceApplicationException;
+ import com.successfactors.sca.ServiceCommandHandler;
+@@ -55,15 +37,15 @@
+ import com.successfactors.sca.service.handler.ejb.LocalContextSCAHandler;
+ import com.successfactors.serialization.SerializationException;
+ import com.successfactors.serialization.json.JSONSerializationUtils;
+-import com.successfactors.sm.bean.PositionModelDataBean;
+-import com.successfactors.sm.bean.position.PositionFieldNames;
+-import com.successfactors.user.bean.UserBean;
+-import com.successfactors.user.bean.util.UserFormatUtils;
+-import com.successfactors.user.service.FindUserById;
+-import com.successfactors.user.service.ejb.User;
++import com.successfactors.workstructure.bean.core.model.FoundationObject;
+ import com.successfactors.xi.ui.messages.SFMessages;
+-import com.successfactors.platform.di.SFContextConstant;
++import org.jboss.seam.ScopeType;
++import org.jboss.seam.annotations.In;
++import org.jboss.seam.annotations.Name;
++import org.jboss.seam.annotations.Scope;
+ 
++import java.util.*;
++
+ @Name("positionPortletController")
+ @javax.inject.Named("positionPortletController")
+ @Scope(ScopeType.EVENT)
+@@ -96,13 +78,13 @@
+ 
+   /** logger */
+   private static Logger logger = LogManager.getLogger();
+-  
++
+   /** section layout **/
+   private static final int LAYOUTTYPE = 4;
+ 
+   /**
+    * get position information
+-   * 
++   *
+    * @param portletId
+    *          portlet instance id
+    * @param viewId
+@@ -135,7 +117,7 @@
+ 
+     PositionPortletVO vo = createPositionPortletVO(pcb);
+ 
+-    addPositionDataToVO(pcb, vo.getData().getFieldsData(), vo.getMeta().getFieldsMeta(), selectedUserId);
++    addPositionDataToVO(pcb, vo, selectedUserId);
+     try {
+       return JSONSerializationUtils.toJSON(vo);
+     } catch (SerializationException e) {
+@@ -143,12 +125,12 @@
+     }
+ 
+   }
+-  
++
+   /**
+    * Gets Position block data.
+    */
+   @AjaxMethod
+-  public String getDataForPP3(String blockId, String selectedUserId) 
++  public String getDataForPP3(String blockId, String selectedUserId)
+       throws ProfileAjaxException {
+     logger.info("Reading position block data...");
+     if (StringUtils.isBlank(selectedUserId) || StringUtils.isBlank(blockId)){
+@@ -185,12 +167,12 @@
+       logger.error("Error occurred while serializing Position block data for user " + selectedUserId);
+       throw new AjaxInternalServerError(e.getMessage());
+     }
+-   
++
+   }
+-  
++
+   /**
+    * get position information for print preview
+-   * 
++   *
+    * @param portletId
+    *          portlet instance id
+    * @param viewId
+@@ -217,7 +199,7 @@
+       }
+ 
+       vo = createPositionPortletVO(pcb);
+-      addPositionDataToVO(pcb, vo.getData().getFieldsData(), vo.getMeta().getFieldsMeta(), selectedUserId);
++      addPositionDataToVO(pcb, vo, selectedUserId);
+ 
+     } catch (AjaxNoPermissionException e) {
+       logger.info("error get Data For Print Preview",e);
+@@ -231,7 +213,7 @@
+   }
+ 
+   private PositionPortletVO createPositionPortletVO(PortletConfigBean pcb) {
+-    
++
+     PositionPortletVO vo = new PositionPortletVO();
+     List<Map<String, Object>> positionList = new ArrayList<Map<String, Object>>();
+     PositionPortletDataVO data = new PositionPortletDataVO(String.valueOf(pcb.getPortletInstanceId()), positionList);
+@@ -243,76 +225,91 @@
+     vo.setMeta(meta);
+     return vo;
+   }
+-  
++
+   private PositionPortletVO createPositionPortletVO(EmployeeProfileBlockContent blockConfig){
+     PositionPortletVO vo = new PositionPortletVO();
+-    
++
+     List<Map<String, Object>> positionList = new ArrayList<Map<String, Object>>();
+     PositionPortletDataVO data = new PositionPortletDataVO(blockConfig.getCode(), positionList);
+     vo.setData(data);
+-    
++
+     List<FieldMetaVO> positionMetaList = new ArrayList<FieldMetaVO>();
+     PositionPortletMetaVO meta = new PositionPortletMetaVO(blockConfig.getBlockType().toString(), "",
+         "EDUPOSITIONCOMPOSITVIEW", false, LAYOUTTYPE, false, positionMetaList);
+     vo.setMeta(meta);
+-    
++
+     return vo;
+   }
+ 
+-  private void addPositionDataToVO(PortletConfigBean pcb, List<Map<String, Object>> positionList,
+-      List<FieldMetaVO> positionMetaList, String selectedUserId) throws AjaxInternalServerError {
++  private void addPositionDataToVO(PortletConfigBean pcb, PositionPortletVO positionVO, String selectedUserId) throws AjaxInternalServerError {
++
++
+     EmployeePositionHelper helper = new EmployeePositionHelper();
+-    ObjectDefinition positionObjectDefinition = helper.getPositionObjectDefinition();
+-    List<PositionModelDataBean> positionBeans = helper.getPositionModelDataBeanList(positionObjectDefinition,
+-        selectedUserId);
+-    if (positionBeans == null || positionBeans.isEmpty()) {
++    List<String> displayFields = helper.getDisplayFields(pcb);
++    Map<String,Object> postionGOAndfieldDefinitions = helper.getPositions(selectedUserId,params);
++    if(postionGOAndfieldDefinitions ==null ){
+       return;
+     }
++    List<GenericObject> positions = (List<GenericObject>) postionGOAndfieldDefinitions.get("gos");
++    List<GOFieldDefinition> fieldDefinitions = (List<GOFieldDefinition>) postionGOAndfieldDefinitions.get("fieldDefinitions");
+ 
+-    List<String> displayFields = helper.getDisplayFields(pcb);
+-    Map<String, GOFieldDefinition> fieldNameDefinitionMap = helper.getFieldNameDefinitionMap(positionObjectDefinition);
++    if (positions == null || positions.isEmpty() || fieldDefinitions ==null || fieldDefinitions.isEmpty()) {
++      return;
++    }
+ 
+-    for (PositionModelDataBean positionModelDataBean : positionBeans) {
++
++    Map<String, GOFieldDefinition> fieldNameDefinitionMap = helper.getFieldNameDefinitionMap(fieldDefinitions);
++
++
++    for (GenericObject positionGO : positions) {
+       Map<String, Object> positionData = new HashMap<String, Object>();
+       List<Map<String, Object>> fieldDataList = new ArrayList<Map<String, Object>>();
+       positionData.put("fieldsData", fieldDataList);
+-      positionList.add(positionData);
++      positionVO.getData().getFieldsData().add(positionData);
+ 
+       List<FieldMetaVO> fieldMetaList = new ArrayList<FieldMetaVO>();
+       PositionPortletMetaVO positionMeta = new PositionPortletMetaVO("", "", "EDUPOSITIONCOMPOSITVIEW", false, 2,
+-          false, fieldMetaList);
++              false, fieldMetaList);
+-      positionMetaList.add(positionMeta);
+-      addDisplayFieldsToVO(displayFields, fieldNameDefinitionMap, positionModelDataBean, fieldDataList, fieldMetaList);
++      positionVO.getMeta().getFieldsMeta().add(positionMeta);
++
++      for (String positionFieldName : displayFields) {
++        GOFieldDefinition fieldDefination = fieldNameDefinitionMap.get(positionFieldName);
++        addPositionFieldData(fieldDefination, positionFieldName, positionGO, fieldDataList, fieldMetaList);
+-    }
+-  }
++      }
++    }
++  }
+-  
++
+   private void addPositionDataToVO(PositionPortletVO positionVO, EmployeeProfileBlockContent blockContent, String selectedUserId){
+     EmployeePositionHelper helper = new EmployeePositionHelper();
+-    ObjectDefinition positionObjectDefinition = helper.getPositionObjectDefinition();
++    List<String> displayFields = helper.getDisplayFields(blockContent);
+ 
+-    List<PositionModelDataBean> positionBeans = helper.getPositionModelDataBeanList(positionObjectDefinition,
+-        selectedUserId);
+-    if (positionBeans == null || positionBeans.isEmpty()) {
++    Map<String,Object> postionGOAndfieldDefinitions = helper.getPositions(selectedUserId,params);
++    if(postionGOAndfieldDefinitions ==null ){
+       return;
+     }
++    List<GenericObject> positions = (List<GenericObject>) postionGOAndfieldDefinitions.get("gos");
++    List<GOFieldDefinition> fieldDefinitions = (List<GOFieldDefinition>) postionGOAndfieldDefinitions.get("fieldDefinitions");
+-    
++
+-    List<String> displayFields = helper.getDisplayFields(blockContent);
+-    Map<String, GOFieldDefinition> fieldNameDefinitionMap = helper.getFieldNameDefinitionMap(positionObjectDefinition);
++    if (positions == null || positions.isEmpty() || fieldDefinitions ==null || fieldDefinitions.isEmpty()) {
++      return;
++    }
+ 
+-    for (PositionModelDataBean positionModelDataBean : positionBeans) {
++    Map<String, GOFieldDefinition> fieldNameDefinitionMap = helper.getFieldNameDefinitionMap(fieldDefinitions);
++
++    for (GenericObject positionGO : positions) {
+       Map<String, Object> positionData = new HashMap<String, Object>();
+       List<Map<String, Object>> fieldDataList = new ArrayList<Map<String, Object>>();
+       positionData.put("fieldsData", fieldDataList);
+       positionVO.getData().getFieldsData().add(positionData);
+-      
++
+       List<FieldMetaVO> fieldMetaList = new ArrayList<FieldMetaVO>();
+       PositionPortletMetaVO positionMeta = new PositionPortletMetaVO("", "", "EDUPOSITIONCOMPOSITVIEW", false, 2,
+           false, fieldMetaList);
+       positionVO.getMeta().getFieldsMeta().add(positionMeta);
+-      
++
+       for (String positionFieldName : displayFields) {
+         GOFieldDefinition fieldDefination = fieldNameDefinitionMap.get(positionFieldName);
+-        addPositionFieldData(fieldDefination, positionFieldName, positionModelDataBean, fieldDataList, fieldMetaList);
++        addPositionFieldData(fieldDefination, positionFieldName, positionGO, fieldDataList, fieldMetaList);
+       }
+     }
+   }
+@@ -331,119 +328,61 @@
+     }
+   }
+ 
+-  private void addDisplayFieldsToVO(List<String> displayFields, Map<String, GOFieldDefinition> fieldNameDefinitionMap,
+-      PositionModelDataBean positionModelDataBean, List<Map<String, Object>> fieldDataList,
+-      List<FieldMetaVO> fieldMetaList) {
+-    if (null == fieldNameDefinitionMap || fieldNameDefinitionMap.isEmpty()) {
+-      return;
+-    }
+-
+-    for (String positionFieldName : displayFields) {
+-      GOFieldDefinition fieldDefination = fieldNameDefinitionMap.get(positionFieldName);
+-      addPositionFieldData(fieldDefination, positionFieldName, positionModelDataBean, fieldDataList, fieldMetaList);
+-    }
+-  }
+-
+   private void addPositionFieldData(GOFieldDefinition fieldDefination, String fieldName,
+-      PositionModelDataBean positionBean, List<Map<String, Object>> fieldDataList, List<FieldMetaVO> fieldMetaList) {
++      GenericObject positionGO, List<Map<String, Object>> fieldDataList, List<FieldMetaVO> fieldMetaList) {
+     if (null == fieldDefination) {
+       return;
+     }
+     Map<String, Object> field = new HashMap<String, Object>();
+     // Set value
+-    String value = getValueFromPositionBean(positionBean, fieldDefination, fieldName);
++    String value = getValueFromPositionGO(positionGO, fieldDefination, fieldName);
+     field.put(fieldDefination.getId(), value);
+     fieldDataList.add(field);
+-    
++
+     PositionFieldMetaVO fieldMeta = new PositionFieldMetaVO(fieldDefination.getId(), fieldDefination.getLabel()
+         .getString(params), getTypeForMeta(fieldDefination), false);
+     fieldMetaList.add(fieldMeta);
+   }
+-  
++
+   private String getTypeForMeta(GOFieldDefinition fieldDefination){
+     return (fieldDefination.getDataType() == DataType.DATE) ? "DATE" : "String";
+   }
+ 
+-  private String getValueFromPositionBean(PositionModelDataBean positionBean, GOFieldDefinition fieldDefination,
++  private String getValueFromPositionGO(GenericObject positionBean, GOFieldDefinition fieldDefination,
+-      String fieldName) {
++                                        String fieldName) {
++    // we now use PostionGO instead of PositionModelDataBean so change the
++    // method from getValueFromPositionBean to getValueFromPositionGO
+     String valueStr = null;
+-    if (positionBean != null) {
+-      if (fieldName.equals(PositionFieldNames.POSITION_TITLE)||fieldName.equals(PositionFieldNames.EXTERNAL_NAME)) {
+-        valueStr = positionBean.getTitle();
+-      } else if (fieldName.equals(PositionFieldNames.CRITICALITY) || "positionCriticality".equals(fieldName)) {
+-        if (positionBean.getPositionCriticality() != null) {
+-          valueStr = positionBean.getPositionCriticality().getLabel().getString(params.getLocale());
+-        }
+-        /**
+-        valueStr = SuccessionHelper.getKeyPositionRatingLabel(params, competencyService, sysConfigService,
+-            positionBean.getCriticalPositionRating());
+-        if (valueStr == null) {
+-          valueStr = positionBean.getCriticalPositionRating() > 0 ? msgs.COMMON_Yes() : msgs.COMMON_No();
+-        }
+-        **/
+-      } else if (fieldName.equals(PositionFieldNames.POSITION_CODE)) {
+-        valueStr = positionBean.getPositionCode();
+-      } else if (fieldName.equals(PositionFieldNames.COMMENT)) {
+-        valueStr = positionBean.getComment();
+-      } else if (fieldName.equals(PositionFieldNames.CHANGE_REASON)) {
+-        if (positionBean.getChangeReason() != null) {
+-          valueStr = positionBean.getChangeReason().getLabel().getString(params.getLocale());
+-        }
+-      } else if (fieldDefination.getColumnName() != null
+-          && Tables.GENERIC_OBJECT_T.EFFECTIVE_STATUS.equals(fieldDefination.getColumnName().toUpperCase())) {
+-        valueStr = positionBean.isDeleted() ? msgs.EMPFILE_HRIS_FOUNDATION_STATUS_INACTIVE() : msgs
+-            .EMPFILE_HRIS_FOUNDATION_STATUS_ACTIVE();
+-      } else if (PositionFieldNames.INCUMBENT.equals(fieldName)) {
+-        String userId = positionBean.getIncumbent();
+-        try {
+-          UserBean user = legacyHandler.execute(params, new FindUserById(userId, false));
+-          valueStr = UserFormatUtils.formatFullName(params.getFullNameFormat(), user.getFullNameBean());
+-// catch (UserEJBException e) {
+-// logger.error(\"Error in getting user by Id\",e);
+-// }
+-// catch (RemoteException re) {
+-// logger.error(\"Unable to get user by Id.\",re);
+-// }
+-        } catch (ServiceApplicationException re) {
+-          logger.error("Unable to get user by Id.", re);
+-        }
+-      } else if (PositionFieldNames.POSITION_ID.equals(fieldName)) {
+-        valueStr = String.valueOf(positionBean.getPositionId());
+-      } else if ("jobCode".equals(fieldName)){
+-        if (StringUtils.isBlank(positionBean.getJobCode())) {
+-          valueStr = "";
+-        } else {
+-          valueStr = String.valueOf(positionBean.getJobCode());
+-        }
+-      }else {
+-
+-        // custom field
+-        Map<FieldDefinition, Object> customFields = positionBean.getCustomFields();
+-        Object valueObj = null;
+-        if (customFields != null) {
+-          valueObj = customFields.get(fieldDefination);
+-        }
+-        if (customFields != null && valueObj != null) {
+-          boolean isPickList = (fieldDefination.getDataType() == DataType.PICK_LIST);
+-          boolean isBoolean = (fieldDefination.getDataType() == DataType.BOOLEAN);
+-          if (isPickList) {
++    if(positionBean !=null &&fieldDefination!=null &&fieldName!=null){
++      Object valueObj = fieldDefination.getValue(positionBean);
++      if(valueObj !=null){
++        DataType dataType = fieldDefination.getDataType();
++        if(dataType == DataType.PICK_LIST){
+-            valueStr = ((PickListValue) valueObj).getLabel().getString(params.getLocale());
++          valueStr = ((PickListValue) valueObj).getLabel().getString(params.getLocale());
+-          } else if (isBoolean) {
++        }else if(dataType == DataType.BOOLEAN) {
+-            boolean boolValue = HrisAPIUtils.getBoolean(valueObj);
+-            valueStr = msgs.COMMON_SUCCESSION_NO();
+-            if (boolValue) {
+-              valueStr = msgs.COMMON_SUCCESSION_YES();
+-            }
++          boolean boolValue = HrisAPIUtils.getBoolean(valueObj);
++          valueStr = msgs.COMMON_SUCCESSION_NO();
++          if (boolValue) {
++            valueStr = msgs.COMMON_SUCCESSION_YES();
++          }
+-          } else if (fieldDefination.getDataType() == DataType.DATE) {
++        }else if(dataType == DataType.DATE){
+-            valueStr = DateUtils.formatISO8601Date((Date) valueObj);
++          valueStr = DateUtils.formatISO8601Date((Date) valueObj);
++        }else if(dataType == DataType.GO){
++          GenericObjectToBean<FoundationObject> trans = new GenericObjectToBean<FoundationObject>(((GenericObject)valueObj).getObjectDefinition());
++          FoundationObject fo = trans.transform((GenericObject)valueObj);
++          if(fo!=null){
++            valueStr = fo.getName().getString(params.getLocale()) + "(" + fo.getExternalCode() +")";
++          }
++        }else if( dataType ==DataType.LOCALIZED ){
++          valueStr = ((GOLocalizedData) valueObj).getString(params);
+-          } else {
++        }else{
+-            valueStr = String.valueOf(valueObj);
+-          }
+-        }
++          valueStr = String.valueOf(valueObj);
++        }
++      }
+-      }
+-    }
+ 
++    }
+     return (valueStr == null) ? "" : valueStr;
++
+   }
+ 
+   private PortletConfigBean getPortletConfigBean(String portletId, String viewId) {
+@@ -469,7 +408,7 @@
+ 
+   /**
+    * Find portlet in dashboard
+-   * 
++   *
+    * @param portletId
+    *          portlet id
+    * @param dashboard
