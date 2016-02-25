@@ -19,6 +19,6 @@ public class HandlerScheduler implements Scheduler {
 
     @Override
     public void post(Runnable runnable) {
-        mHandler.post(runnable);
+//        mHandler.post(runnable);
     }
 }

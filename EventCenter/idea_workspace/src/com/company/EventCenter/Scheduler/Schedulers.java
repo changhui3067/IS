@@ -10,9 +10,9 @@ public final class Schedulers {
         return new SenderScheduler(bus);
     }
 
-    public static Scheduler getMainThreadScheduler(final Bus bus){
-        return new HandlerScheduler(bus, new Handler(Looper.getMainLooper));
-    }
+    //   public static Scheduler getMainThreadScheduler(final Bus bus){
+//        return new HandlerScheduler(bus, new Handler(Looper.getMainLooper));
+//    }
 
     public static Scheduler thread(final Bus bus){
         return new ExecutorScheduler(bus);

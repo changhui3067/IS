@@ -10,9 +10,9 @@ import java.util.*;
  * Created by root on 2/17/16.
  */
 public class Bus {
-    public enum EventMode(
-            Sender, Main, Thread
-    )
+//    public enum EventMode(
+//            Sender, Main, Thread
+//    )
 
     private static class SingletonHolder{
         static final Bus INSTANCE = new Bus();

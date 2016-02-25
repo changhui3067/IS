@@ -3,8 +3,6 @@ package com.company.EventCenter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -67,43 +65,7 @@ final class Helper {
 
     public static void dumpMethod(final Method method){
         final StringBuilder builder = new StringBuilder();
-        builder.append("------------------------------\n");
-        builder.append("MethodName: ").append(method.getName()).append("\n");
-        builder.append("ParameterTypes:{");
-        for (Class<?> cls : method.getParameterTypes()) {
-            builder.append(cls.getName()).append(", ");
-        }
-        builder.append("}\n");
-        builder.append("GenericParameterTypes:{");
-        for (Type cls : method.getGenericParameterTypes()) {
-            builder.append(cls.getClass()).append(", ");
-        }
-        builder.append("}\n");
-        builder.append("TypeParameters:{");
-        for (TypeVariable<Method> cls : method.getTypeParameters()) {
-            builder.append(cls.getName()).append(", ");
-        }
-        builder.append("}\n");
-        builder.append("DeclaredAnnotations:{");
-        for (Annotation cls : method.getDeclaredAnnotations()) {
-            builder.append(cls).append(", ");
-        }
-        builder.append("}\n");
-        builder.append("Annotations:{");
-        for (Annotation cls : method.getAnnotations()) {
-            builder.append(cls).append(", ");
-        }
-        builder.append("}\n");
-        builder.append("ExceptionTypes:{");
-        for (Class<?> cls : method.getExceptionTypes()) {
-            builder.append(cls.getName()).append(", ");
-            ;
-        }
-        builder.append("}\n");
-        builder.append("ReturnType: ").append(method.getReturnType());
-        builder.append("\nGenericReturnType: ").append(method.getGenericReturnType());
-        builder.append("\nDeclaringClass: ").append(method.getDeclaringClass());
-        builder.append("\n");
+        builder.append("-------------------------------------\n");
 
         System.out.println(builder.toString());
     }

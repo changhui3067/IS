@@ -10,7 +10,7 @@ public class Subscriber {
     public final Object target;       // event target object
     public final Class<?> targetType; // target type
     public final Class<?> eventType;  // event type
-    public final Bus.EventMode mode;  // dispatch mode
+//    public final Bus.EventMode mode;  // dispatch mode
     public final String name;         // name
 
     public Subscriber(final MethodInfo method, final Object target){
@@ -18,7 +18,7 @@ public class Subscriber {
         this.target = target;
         this.targetType = method.targetType;
         this.eventType = method.eventType;
-        this.mode = method.mode;
+//        this.mode = method.mode;
         this.name = method.name;
     }
 
