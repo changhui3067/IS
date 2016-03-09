@@ -1,4 +1,4 @@
-package com.company.EventCenter;
+package com.company.EventCenter.Bus;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

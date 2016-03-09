@@ -1,8 +1,8 @@
 package com.company.Employee.DAO;
 
-import com.company.Employee.EmployeeEvent.AddEmpEvent;
-import com.company.EventCenter.Bus;
-import com.company.EventCenter.BusReceiver;
+import com.company.EventCenter.Events.AddEmpEvent;
+import com.company.EventCenter.Bus.Bus;
+import com.company.EventCenter.Bus.BusReceiver;
 
 /**
  * Created by root on 2/23/16.
@@ -18,8 +18,9 @@ public class Employee {
         this.empName    = name;
         this.managerId  = managerId;
         this.empSalary  = empSalary;
-        Bus.getDefault().register(this);
+        _registerBus();
         System.out.println("new emp: "+ getEmpInfo());
+        //_unregister();
     }
 
     public boolean hasPermission(){
@@ -37,5 +38,13 @@ public class Employee {
 
     public int getEmpId(){
         return empId;
+    }
+
+    private void _registerBus(){
+        Bus.getDefault().register(this);
+    }
+
+    private void _unregister(){
+        Bus.getDefault().unregister(this);
     }
 }

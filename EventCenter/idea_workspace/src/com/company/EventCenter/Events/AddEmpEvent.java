@@ -1,4 +1,4 @@
-package com.company.Employee.EmployeeEvent;
+package com.company.EventCenter.Events;
 
 import com.company.Employee.DAO.Employee;
 

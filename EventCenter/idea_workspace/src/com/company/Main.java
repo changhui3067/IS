@@ -1,10 +1,7 @@
 package com.company;
 
 import com.company.Employee.DAO.Employee;
-import com.company.Employee.EmployeeEvent.AddEmpEvent;
 import com.company.Employee.controller.EmployeeController;
-import com.company.EventCenter.Bus;
-import com.company.EventCenter.BusReceiver;
 
 public class Main {
 

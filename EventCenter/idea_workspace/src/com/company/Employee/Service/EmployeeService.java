@@ -1,8 +1,8 @@
 package com.company.Employee.Service;
 
 import com.company.Employee.DAO.Employee;
-import com.company.Employee.EmployeeEvent.AddEmpEvent;
-import com.company.EventCenter.Bus;
+import com.company.EventCenter.Events.AddEmpEvent;
+import com.company.EventCenter.Bus.Bus;
 
 /**
  * Created by root on 2/23/16.
