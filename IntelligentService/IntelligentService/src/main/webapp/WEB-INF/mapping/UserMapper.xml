@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dao.dao.UserMapper" >
+  <!--<resultMap id="BaseResultMap" type="Dao.model.User" >-->
+    <!--<id column="userId" property="userid" jdbcType="INTEGER" />-->
+    <!--<result column="userName" property="username" jdbcType="CHAR" />-->
+    <!--<result column="password" property="password" jdbcType="CHAR" />-->
+    <!--<result column="sex" property="sex" jdbcType="BIT" />-->
+    <!--<result column="headImage" property="headimage" jdbcType="CHAR" />-->
+    <!--<result column="emailAddress" property="emailaddress" jdbcType="CHAR" />-->
+    <!--<result column="score" property="score" jdbcType="REAL" />-->
+    <!--<result column="test_Type" property="testType" jdbcType="BIT" />-->
+    <!--<result column="GPA" property="gpa" jdbcType="REAL" />-->
+    <!--<result column="GREScore" property="grescore" jdbcType="REAL" />-->
+    <!--<result column="schoolId" property="schoolId" jdbcType="INTEGER" />-->
+    <!--<result column="gsub" property="gsub" jdbcType="CHAR" />-->
+  <!--</resultMap>-->
+  <!--<sql id="Base_Column_List" >-->
+    <!--userId, userName, password, sex, headImage, emailAddress, score, test_Type, GPA, -->
+    <!--GREScore,schoolId,gsub-->
+  <!--</sql>-->
+  <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from user-->
+    <!--where userId = #{userid,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <!--<select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >-->
+    <!--select-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from user-->
+    <!--where userName = #{username,jdbcType=CHAR}-->
+  <!--</select>-->
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >-->
+    <!--delete from user-->
+    <!--where userId = #{userid,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="Dao.model.User" >-->
+    <!--insert into user (userId, userName, password, -->
+      <!--sex, headImage, emailAddress, -->
+      <!--score, test_Type, GPA, GREScore,schoolId,gsub-->
+      <!--)-->
+    <!--values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=CHAR}, #{password,jdbcType=CHAR}, -->
+      <!--#{sex,jdbcType=BIT}, #{headimage,jdbcType=CHAR}, #{emailaddress,jdbcType=CHAR}, -->
+      <!--#{score,jdbcType=REAL}, #{testType,jdbcType=BIT}, #{gpa,jdbcType=REAL}, #{grescore,jdbcType=REAL},#{schoolId,jdbcType=INTEGER}-->
+      <!--,#{gsub,jdbcType=CHAR}-->
+      <!--)-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="Dao.model.User" >-->
+    <!--insert into user-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+      <!--<if test="userid != null" >-->
+        <!--userId,-->
+      <!--</if>-->
+      <!--<if test="username != null" >-->
+        <!--userName,-->
+      <!--</if>-->
+      <!--<if test="password != null" >-->
+        <!--password,-->
+      <!--</if>-->
+      <!--<if test="sex != null" >-->
+        <!--sex,-->
+      <!--</if>-->
+      <!--<if test="headimage != null" >-->
+        <!--headImage,-->
+      <!--</if>-->
+      <!--<if test="emailaddress != null" >-->
+        <!--emailAddress,-->
+      <!--</if>-->
+      <!--<if test="score != null" >-->
+        <!--score,-->
+      <!--</if>-->
+      <!--<if test="testType != null" >-->
+        <!--test_Type,-->
+      <!--</if>-->
+      <!--<if test="gpa != null" >-->
+        <!--GPA,-->
+      <!--</if>-->
+      <!--<if test="grescore != null" >-->
+        <!--GREScore,-->
+      <!--</if>-->
+      <!--<if test="schoolId != null" >-->
+        <!--schoolId,-->
+      <!--</if>-->
+      <!--<if test="gsub != null" >-->
+        <!--gsub,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
+      <!--<if test="userid != null" >-->
+        <!--#{userid,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="username != null" >-->
+        <!--#{username,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null" >-->
+        <!--#{password,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null" >-->
+        <!--#{sex,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="headimage != null" >-->
+        <!--#{headimage,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="emailaddress != null" >-->
+        <!--#{emailaddress,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="score != null" >-->
+        <!--#{score,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="testType != null" >-->
+        <!--#{testType,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="gpa != null" >-->
+        <!--#{gpa,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="grescore != null" >-->
+        <!--#{grescore,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="schoolId != null" >-->
+        <!--#{schoolId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="gsub != null" >-->
+        <!--#{gsub,jdbcType=CHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="Dao.model.User" >-->
+    <!--update user-->
+    <!--<set >-->
+      <!--<if test="username != null" >-->
+        <!--userName = #{username,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null" >-->
+        <!--password = #{password,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null" >-->
+        <!--sex = #{sex,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="headimage != null" >-->
+        <!--headImage = #{headimage,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="emailaddress != null" >-->
+        <!--emailAddress = #{emailaddress,jdbcType=CHAR},-->
+      <!--</if>-->
+      <!--<if test="score != null" >-->
+        <!--score = #{score,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="testType != null" >-->
+        <!--test_Type = #{testType,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="gpa != null" >-->
+        <!--GPA = #{gpa,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="grescore != null" >-->
+        <!--GREScore = #{grescore,jdbcType=REAL},-->
+      <!--</if>-->
+      <!--<if test="schoolId != null" >-->
+        <!--schoolId = #{schoolId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="gsub != null" >-->
+        <!--gsub = #{gsub,jdbcType=CHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where userId = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="Dao.model.User" >-->
+    <!--update user-->
+    <!--set userName = #{username,jdbcType=CHAR},-->
+      <!--password = #{password,jdbcType=CHAR},-->
+      <!--sex = #{sex,jdbcType=BIT},-->
+      <!--headImage = #{headimage,jdbcType=CHAR},-->
+      <!--emailAddress = #{emailaddress,jdbcType=CHAR},-->
+      <!--score = #{score,jdbcType=REAL},-->
+      <!--test_Type = #{testType,jdbcType=BIT},-->
+      <!--GPA = #{gpa,jdbcType=REAL},-->
+      <!--GREScore = #{grescore,jdbcType=REAL},-->
+      <!--schoolId = #{schoolId,jdbcType=INTEGER},-->
+      <!--gsub = #{gsub,jdbcType=CHAR}-->
+    <!--where userId = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+</mapper>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL" uuid="e0de3bbb-e88a-40d4-be9e-9dccc2b54567">
+    <database-info product="MySQL" version="5.0.19-nt" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="triple_t"/>
+    <table name="comment" schema="" catalog="triple_t" type="TABLE">
+      <column name="commentId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="commentDate" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="noteId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="commentContent" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="commentId"/>
+      <foreign-key name="FK_Comment_0" columns="userId" ref-table="user" ref-schema="" ref-catalog="triple_t" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_Comment_1" columns="noteId" ref-table="note" ref-schema="" ref-catalog="triple_t" ref-columns="noteId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_Comment_0" unique="false" columns="userId"/>
+      <index name="FK_Comment_1" unique="false" columns="noteId"/>
+    </table>
+    <table name="dataset" schema="" catalog="triple_t" type="TABLE">
+      <column name="dataId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Student" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="school" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Major" sqlType="CHAR" precision="100" scale="0" nullable="true" jdbcType="1"/>
+      <column name="undergraduate" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1"/>
+      <column name="GPA" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="TOFEL" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="GRE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="paper" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="promotion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="country" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="dataId"/>
+    </table>
+    <table name="favourites" schema="" catalog="triple_t" type="TABLE">
+      <column name="collectId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="collectType" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="schoolOrNoteId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="collectId"/>
+      <foreign-key name="FK_Favourites_1" columns="userId" ref-table="user" ref-schema="" ref-catalog="triple_t" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_Favourites_0" unique="false" columns="schoolOrNoteId"/>
+      <index name="FK_Favourites_1" unique="false" columns="userId"/>
+    </table>
+    <table name="note" schema="" catalog="triple_t" type="TABLE">
+      <column name="noteId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="pushDate" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="collectedTimes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pushContent" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="CHAR" precision="100" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="noteId"/>
+      <foreign-key name="FK_Note_0" columns="userId" ref-table="user" ref-schema="" ref-catalog="triple_t" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_Comment_1" table="comment" schema="" catalog="triple_t" columns="noteId"/>
+      <index name="FK_Note_0" unique="false" columns="userId"/>
+    </table>
+    <table name="schoolinformation" schema="" catalog="triple_t" type="TABLE">
+      <column name="schoolId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ranking" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="schoolLogo" sqlType="CHAR" precision="50" scale="0" nullable="true" jdbcType="1"/>
+      <column name="schoolName" sqlType="CHAR" precision="50" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="continent" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="offerCondition" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hotClass" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="setTime" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="website" sqlType="CHAR" precision="100" scale="0" nullable="true" jdbcType="1"/>
+      <column name="classSet" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tuition" sqlType="CHAR" precision="200" scale="0" nullable="true" jdbcType="1"/>
+      <column name="score" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="phoneNumber" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1"/>
+      <column name="emailAddress" sqlType="CHAR" precision="40" scale="0" nullable="true" jdbcType="1"/>
+      <column name="description" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="schoolId"/>
+      <exported-key name="FK_SchoolNews_0" table="schoolnews" schema="" catalog="triple_t" columns="schoolId"/>
+    </table>
+    <table name="schoolnews" schema="" catalog="triple_t" type="TABLE">
+      <column name="schoolNewsId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="newsDate" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1"/>
+      <column name="newsContent" sqlType="CHAR" precision="200" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="url" sqlType="CHAR" precision="200" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="schoolId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="schoolNewsId"/>
+      <foreign-key name="FK_SchoolNews_0" columns="schoolId" ref-table="schoolinformation" ref-schema="" ref-catalog="triple_t" ref-columns="schoolId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_SchoolNews_0" unique="false" columns="schoolId"/>
+    </table>
+    <table name="user" schema="" catalog="triple_t" type="TABLE">
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userName" sqlType="CHAR" precision="50" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="password" sqlType="CHAR" precision="50" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="sex" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="headImage" sqlType="CHAR" precision="100" scale="0" nullable="true" jdbcType="1"/>
+      <column name="emailAddress" sqlType="CHAR" precision="40" scale="0" nullable="true" jdbcType="1"/>
+      <column name="score" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="test_Type" sqlType="BIT" precision="10" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="GPA" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="GREScore" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <exported-key name="FK_Comment_0" table="comment" schema="" catalog="triple_t" columns="userId"/>
+      <exported-key name="FK_Favourites_1" table="favourites" schema="" catalog="triple_t" columns="userId"/>
+      <exported-key name="FK_Note_0" table="note" schema="" catalog="triple_t" columns="userId"/>
+      <index name="email_unique" unique="true" columns="emailAddress"/>
+      <index name="userName_unique" unique="true" columns="userName"/>
+    </table>
+  </data-source>
+</component>

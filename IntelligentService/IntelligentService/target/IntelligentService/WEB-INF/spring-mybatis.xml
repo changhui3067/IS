@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- MyBatis Configuration-->
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+              <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+              <property name="url" value="jdbc:mysql://localhost:3306/IntelligentService?useUnicode=true&amp;characterEncoding=UTF-8&amp;"/>
+              <property name="username" value="root"/>
+
+              <!-- Connection Pooling DBCP -->
+              <property name="password" value="root"/>
+
+              <property name="initialSize" value="5" />
+              <property name="maxActive" value="100" />
+              <property name="maxIdle" value="30" />
+              <property name="maxWait" value="1000" />
+              <property name="poolPreparedStatements" value="true" />
+              <property name="defaultAutoCommit" value="false" />
+       </bean>
+
+       <!-- MyBatis Sqlsession Factory -->
+       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="mapperLocations" value="/WEB-INF/mapping/**"/>
+              <!--maybe wrong-->
+       </bean>
+
+       <!-- MyBatis Mapper Scanner Configuration -->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <property name="basePackage" value="Dao.dao"/>
+       </bean>
+
+       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+
+</beans>
