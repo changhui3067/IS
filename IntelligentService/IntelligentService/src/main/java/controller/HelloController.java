@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class HelloController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome() {
-		ArrayList<String> arr = new ArrayList<>();
 		return "hello";
 
 
