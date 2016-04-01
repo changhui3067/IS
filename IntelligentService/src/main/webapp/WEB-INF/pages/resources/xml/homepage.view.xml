@@ -1,0 +1,51 @@
+<mvc:View
+        controllerName="sap.ui.si.js.home.homepage"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        height="100%">
+    <Page
+        title="Home"
+        class="sapUiContentPadding"
+        showNavButton="false">
+        <headerContent>
+            <Button icon="sap-icon://share" tooltip="share" />
+        </headerContent>
+    </Page>
+
+    <!--<TileContainer-->
+        <!--id="container"-->
+        <!--tiles="{/TileCollection}">-->
+        <!--<StandardTile-->
+            <!--icon="sap-icon://{icon}"-->
+            <!--type="{type}"-->
+            <!--number="{number}"-->
+            <!--title="{title}"-->
+            <!--info="{info}"/>-->
+    <!--</TileContainer>-->
+
+    <GenericTile header="Employee" size="S" frameType="OneByOne"
+                 press="press">
+        <tileContent>
+            <TileContent unit="EUR" size="S">
+                <content>
+                    <NumericContent size="S" scale="B" value="3528"
+                                    valueColor="Good" indicator="Up" />
+                </content>
+            </TileContent>
+        </tileContent>
+    </GenericTile>
+
+    <GenericTile header="Guy Incognito mentioned you in Sales Pitch March:"
+                 frameType="TwoByOne" press="press"
+                 headerImage="test-resources/sap/m/demokit/GenericTile2x1SingleCont/images/headerImg2.jpg">
+        <tileContent>
+            <TileContent footer="New Notifications">
+                <content>
+                    <FeedContent contentText="@@notify Great outcome of the Presentation today. The new functionality and the new design was well received."
+                                 subheader="about 1 minute ago in Computer Market" value="132">
+                    </FeedContent>
+                </content>
+            </TileContent>
+        </tileContent>
+    </GenericTile>
+</mvc:View>

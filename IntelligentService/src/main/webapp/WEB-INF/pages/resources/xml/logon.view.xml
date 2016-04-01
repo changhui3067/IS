@@ -1,0 +1,34 @@
+<mvc:View
+        controllerName="sap.ui.si.js.logon.logon"
+        xmlns="sap.m"
+        xmlns:core="sap.m.core"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        height="100%">
+
+        <Page class="sapUiFioriObjectPage" showHeader="false" style="width:100%; height:1000px">
+            <content>
+                <f:SimpleForm id="FieldGroupView" minWidth="1024"
+                      maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+                      title="Log On" labelSpanL="4" labelSpanM="4"
+                      emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2"
+                      validateFieldGroup="onValidateFieldGroup">
+                    <f:content>
+                        <!--<core:Title text="Log on" />-->
+                        <Label text="Company" />
+                        <Input fieldGroupIds="Company Id" placeholder="Company Id" id="CompanyId" />
+
+                        <Label text="Username" />
+                        <Input fieldGroupIds="User Name" placeholder="User Name" id="UserName" />
+
+                        <Label text="Password" />
+                        <Input fieldGroupIds="Password" placeholder="Password" id="Password" type="Password"/>
+
+                        <Button id="submit" text="Sumbit" press="onLogin" type="Login" width="33%" />
+                    </f:content>
+                </f:SimpleForm>
+            </content>
+        </Page>
+
+</mvc:View>
