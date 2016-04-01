@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dao.dao.model.xml.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="Dao.model.Employee" >
+    <id column="SYS_EMP_ID" property="sysEmpId" jdbcType="INTEGER" />
+    <result column="EMP_NAME" property="empName" jdbcType="VARCHAR" />
+    <result column="EMP_PWD" property="empPwd" jdbcType="VARCHAR" />
+    <result column="EMP_POSITION" property="empPosition" jdbcType="VARCHAR" />
+    <result column="EMP_LEVEL" property="empLevel" jdbcType="INTEGER" />
+    <result column="EMP_MANAGER_ID" property="empManagerId" jdbcType="INTEGER" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="PAYMENT" property="payment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SYS_EMP_ID, EMP_NAME, EMP_PWD, EMP_POSITION, EMP_LEVEL, EMP_MANAGER_ID, PHOTO, PAYMENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee
+    where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.Employee" >
+    insert into employee (SYS_EMP_ID, EMP_NAME, EMP_PWD, 
+      EMP_POSITION, EMP_LEVEL, EMP_MANAGER_ID, 
+      PHOTO, PAYMENT)
+    values (#{sysEmpId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{empPwd,jdbcType=VARCHAR}, 
+      #{empPosition,jdbcType=VARCHAR}, #{empLevel,jdbcType=INTEGER}, #{empManagerId,jdbcType=INTEGER}, 
+      #{photo,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysEmpId != null" >
+        SYS_EMP_ID,
+      </if>
+      <if test="empName != null" >
+        EMP_NAME,
+      </if>
+      <if test="empPwd != null" >
+        EMP_PWD,
+      </if>
+      <if test="empPosition != null" >
+        EMP_POSITION,
+      </if>
+      <if test="empLevel != null" >
+        EMP_LEVEL,
+      </if>
+      <if test="empManagerId != null" >
+        EMP_MANAGER_ID,
+      </if>
+      <if test="photo != null" >
+        PHOTO,
+      </if>
+      <if test="payment != null" >
+        PAYMENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysEmpId != null" >
+        #{sysEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="empName != null" >
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empPwd != null" >
+        #{empPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empPosition != null" >
+        #{empPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="empLevel != null" >
+        #{empLevel,jdbcType=INTEGER},
+      </if>
+      <if test="empManagerId != null" >
+        #{empManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Employee" >
+    update employee
+    <set >
+      <if test="empName != null" >
+        EMP_NAME = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empPwd != null" >
+        EMP_PWD = #{empPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empPosition != null" >
+        EMP_POSITION = #{empPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="empLevel != null" >
+        EMP_LEVEL = #{empLevel,jdbcType=INTEGER},
+      </if>
+      <if test="empManagerId != null" >
+        EMP_MANAGER_ID = #{empManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null" >
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        PAYMENT = #{payment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.Employee" >
+    update employee
+    set EMP_NAME = #{empName,jdbcType=VARCHAR},
+      EMP_PWD = #{empPwd,jdbcType=VARCHAR},
+      EMP_POSITION = #{empPosition,jdbcType=VARCHAR},
+      EMP_LEVEL = #{empLevel,jdbcType=INTEGER},
+      EMP_MANAGER_ID = #{empManagerId,jdbcType=INTEGER},
+      PHOTO = #{photo,jdbcType=VARCHAR},
+      PAYMENT = #{payment,jdbcType=VARCHAR}
+    where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
+  </update>
+</mapper>
