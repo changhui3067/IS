@@ -3,10 +3,17 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Employee</title>
-    <script type="text/javascript" src="/resources/js/employee.js"></script>
-    <script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/resources/lib/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/resources/lib/react.js"></script>
+    <script type="text/javascript" src="/resources/lib/react-dom.js"></script>
+    <script type="text/javascript" src="/resources/lib/browser.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="/resources/lib/normalize.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/lib/bootstrap.min.css"/>
 
     <link type="text/css" rel="stylesheet" href="/resources/css/employee.css"/>
+    <script type="text/babel" src="/resources/js/employee.js"></script>
+
     <script>
 
     </script>
@@ -17,7 +24,7 @@
     <div id="header_content" class="content">
         <div id="navigator">
             <ul>
-                <li class="selected" onclick="javascript:mycourse()"><a href="javascript:void(0);">My Courses</a></li>
+                <li id="mycourse" class="selected"><a href="javascript:void(0);">My Courses</a></li>
                 <li><a>Open Positions</a></li>
                 <li><a>Org Chart</a></li>
             </ul>
