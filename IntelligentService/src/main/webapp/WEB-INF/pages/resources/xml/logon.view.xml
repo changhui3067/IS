@@ -1,13 +1,11 @@
 <mvc:View
         controllerName="sap.ui.si.js.logon.logon"
         xmlns="sap.m"
-        xmlns:core="sap.m.core"
         xmlns:mvc="sap.ui.core.mvc"
-        xmlns:l="sap.ui.layout"
         xmlns:f="sap.ui.layout.form"
         height="100%">
 
-        <Page class="sapUiFioriObjectPage" showHeader="false" style="width:100%; height:1000px">
+        <Page class="sapUiFioriObjectPage" showHeader="false">
             <content>
                 <f:SimpleForm id="FieldGroupView" minWidth="1024"
                       maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"

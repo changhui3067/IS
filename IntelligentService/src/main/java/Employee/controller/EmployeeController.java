@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class EmployeeController {
     @RequestMapping( method = RequestMethod.GET)
     public String getEmployeePage(){
-        return "employee";
+        return "/WEB-INF/pages/resources/employee.html";
     }
 }

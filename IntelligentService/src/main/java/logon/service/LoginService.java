@@ -14,6 +14,7 @@ public class LoginService {
     //private EmployeeMapper userMapper;
     @Autowired(required =  false)
     Employee employee;
+
     @Autowired(required = false)
     public int getLoginInfo(String company, String userName,String password){
         // Md5PasswordEncoder md5 = new Md5PasswordEncoder();
