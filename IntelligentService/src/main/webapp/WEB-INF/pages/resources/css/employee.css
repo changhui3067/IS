@@ -7,7 +7,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 60px 0 0;
     font-family: "Microsoft YaHei UI", sans-serif;
 }
 
@@ -18,14 +18,17 @@ ul {
 }
 
 #header {
+    z-index: 10;
     width: 100%;
     height: 48px;
-    color:white;
+    color: white;
     line-height: 48px;
     background: lightgrey;
+    position: fixed;
+    top: 0;
 }
 
-#header li{
+#header li {
     height: 48px;
 }
 
@@ -49,12 +52,9 @@ ul {
     margin: 0;
 }
 
-
 #navigator {
     display: inline-block;
 }
-
-
 
 .user_icon {
     position: relative;
@@ -65,6 +65,9 @@ ul {
 #user_info {
     float: right;
     overflow: hidden;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
 }
 
 #user_info .opinion {
@@ -77,15 +80,16 @@ ul {
 }
 
 /*hover*/
-#user_info:hover{
+#user_info:hover {
     border-radius: 0 0 5px 5px;
 }
+
 #user_info:hover .opinion {
     display: block;
 }
 
 #user_info:hover .opinion li {
-    border-top:solid 1px lightgrey;
+    border-top: solid 1px lightgrey;
 }
 
 #user_info:hover li {
@@ -98,7 +102,7 @@ ul {
     margin: 10px;
 }
 
-.courseItem img{
+.courseItem img {
     width: 180px;
     height: 240px;
     overflow: hidden;
@@ -106,7 +110,7 @@ ul {
     border: 2px lightgrey solid;
 }
 
-.course_description{
+.course_description {
     height: 150px;
 }
 
@@ -117,4 +121,135 @@ ul {
 
 img {
     max-width: 100%;
+}
+
+.emp_card {
+    width: 90px;
+    height: 120px;
+    overflow: hidden;
+    border: 2px grey solid;
+    border-radius: 5px;
+}
+.emp_card img{
+    max-width: 90px;
+    max-height: 120px;
+}
+.emp_card h5{
+    position: relative;
+    bottom: 28px;
+    background: grey;
+}
+
+
+/*--------------------------------------- */
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child {
+    padding-top: 0;
+}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after {
+    border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+.tree li a {
+    margin: 20px 10px 0;
+
+    text-decoration: none;
+    color: white;
+    font-size: 11px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover + ul li a {
+    background: #c8e4f8;
+    color: #000;
+}
+
+/*Connector styles on hover*/
+.tree li a:hover + ul li::after,
+.tree li a:hover + ul li::before,
+.tree li a:hover + ul::before,
+.tree li a:hover + ul ul::before {
+    border-color: #94a0b4;
 }

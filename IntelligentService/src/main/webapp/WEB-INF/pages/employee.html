@@ -13,6 +13,7 @@
 
     <link type="text/css" rel="stylesheet" href="/resources/css/employee.css"/>
     <script type="text/babel" src="/resources/js/employee.js"></script>
+    <script type="text/babel" src="/resources/js/notification.js"></script>
 
     <script>
 
@@ -26,7 +27,7 @@
             <ul>
                 <li id="mycourse" class="selected"><a href="javascript:void(0);">My Courses</a></li>
                 <li><a>Open Positions</a></li>
-                <li><a>Org Chart</a></li>
+                <li id="orgchart"><a>Org Chart</a></li>
             </ul>
         </div>
         <ul id="user_info">
@@ -41,16 +42,52 @@
         </ul>
     </div>
 </div>
-<div id="main_content" class="content">
+<div class="content container">
+    <div id="main_content" class="col-md-8">
 
-    <div id="main_panel">
-        <div>
-
-        </div>
-        <div id="course_list">
-
+        <div id="main_panel">
+            <div class="tree">
+                <ul>
+                    <li>
+                        <a href="#">Parent</a>
+                        <ul>
+                            <li>
+                                <a href="#">Child</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Grand Child</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Child</a>
+                                <ul>
+                                    <li><a href="#">Grand Child</a></li>
+                                    <li>
+                                        <a href="#">Grand Child</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Great Grand Child</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Great Grand Child</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Great Grand Child</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Grand Child</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    <div id="notification" class="col-md-4"></div>
+</div>
 </div>
 </body>
 </html>
