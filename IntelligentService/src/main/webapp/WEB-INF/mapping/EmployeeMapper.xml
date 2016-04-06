@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="Dao.dao.model.xml.EmployeeMapper" >
+<mapper namespace="Dao.dao.EmployeeMapper" >
   <resultMap id="BaseResultMap" type="Dao.model.Employee" >
     <id column="SYS_EMP_ID" property="sysEmpId" jdbcType="INTEGER" />
     <result column="EMP_NAME" property="empName" jdbcType="VARCHAR" />
@@ -17,15 +17,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from employee
+    from EMPLOYEE
     where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from employee
+    delete from EMPLOYEE
     where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.Employee" >
-    insert into employee (SYS_EMP_ID, EMP_NAME, EMP_PWD, 
+    insert into EMPLOYEE (SYS_EMP_ID, EMP_NAME, EMP_PWD, 
       EMP_POSITION, EMP_LEVEL, EMP_MANAGER_ID, 
       PHOTO, PAYMENT)
     values (#{sysEmpId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{empPwd,jdbcType=VARCHAR}, 
@@ -33,7 +33,7 @@
       #{photo,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="Dao.model.Employee" >
-    insert into employee
+    insert into EMPLOYEE
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sysEmpId != null" >
         SYS_EMP_ID,
@@ -88,7 +88,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Employee" >
-    update employee
+    update EMPLOYEE
     <set >
       <if test="empName != null" >
         EMP_NAME = #{empName,jdbcType=VARCHAR},
@@ -115,7 +115,7 @@
     where SYS_EMP_ID = #{sysEmpId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="Dao.model.Employee" >
-    update employee
+    update EMPLOYEE
     set EMP_NAME = #{empName,jdbcType=VARCHAR},
       EMP_PWD = #{empPwd,jdbcType=VARCHAR},
       EMP_POSITION = #{empPosition,jdbcType=VARCHAR},

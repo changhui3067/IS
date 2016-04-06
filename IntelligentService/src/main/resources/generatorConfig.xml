@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\xc\.m2\repository\mysql\mysql-connector-java\5.1.28\mysql-connector-java-5.1.28.jar"/>
+            location="/Users/freyjachang/Documents/mavenrepo/mysql-connector-java-5.1.28.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -13,23 +13,31 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/IS" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/IntelligentService" userId="root"
                         password="root"/>
 
-        <!-- Target SpringBean Class -->
-        <javaModelGenerator targetPackage="Dao.dao.model"
-                            targetProject="C:\gitFloder\IS\IntelligentService\src\main\java">
+        <!-- model class position-->
+        <javaModelGenerator targetPackage="Dao.model"
+                            targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="Dao.dao.model.xml"
-                         targetProject="C:\gitFloder\IS\IntelligentService\src\main\java">
+        <!-- mapper xml file position-->
+        <sqlMapGenerator targetPackage="WEB-INF/mapping"
+                         targetProject="src/main/webapp">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
+        <!--dao class position-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="Dao.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
 
 
+        <!-- table-->
         <table tableName="course" domainObjectName="Course"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"

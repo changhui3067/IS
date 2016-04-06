@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="Dao.dao.model.xml.CourseRecordMapper" >
+<mapper namespace="Dao.dao.CourseRecordMapper" >
   <resultMap id="BaseResultMap" type="Dao.model.CourseRecord" >
     <id column="RESORD_ID" property="resordId" jdbcType="INTEGER" />
     <result column="COURSE_ID" property="courseId" jdbcType="INTEGER" />
@@ -21,21 +21,21 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from courserecord
+    from COURSERECORD
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from courserecord
+    delete from COURSERECORD
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.CourseRecord" >
-    insert into courserecord (RESORD_ID, COURSE_ID, EMP_ID, 
+    insert into COURSERECORD (RESORD_ID, COURSE_ID, EMP_ID, 
       EXPIRE_TIME, IS_FINISHED)
     values (#{resordId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
       #{expireTime,jdbcType=TIMESTAMP}, #{isFinished,jdbcType=BINARY})
   </insert>
   <insert id="insertSelective" parameterType="Dao.model.CourseRecord" >
-    insert into courserecord
+    insert into COURSERECORD
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="resordId != null" >
         RESORD_ID,
@@ -72,7 +72,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.CourseRecord" >
-    update courserecord
+    update COURSERECORD
     <set >
       <if test="courseId != null" >
         COURSE_ID = #{courseId,jdbcType=INTEGER},
@@ -90,7 +90,7 @@
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.model.CourseRecord" >
-    update courserecord
+    update COURSERECORD
     set COURSE_ID = #{courseId,jdbcType=INTEGER},
       EMP_ID = #{empId,jdbcType=INTEGER},
       EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
@@ -98,7 +98,7 @@
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="Dao.model.CourseRecord" >
-    update courserecord
+    update COURSERECORD
     set COURSE_ID = #{courseId,jdbcType=INTEGER},
       EMP_ID = #{empId,jdbcType=INTEGER},
       EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP}

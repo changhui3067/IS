@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="Dao.dao.model.xml.NotificationMapper" >
+<mapper namespace="Dao.dao.NotificationMapper" >
   <resultMap id="BaseResultMap" type="Dao.model.Notification" >
     <id column="NOTI_ID" property="notiId" jdbcType="INTEGER" />
     <result column="NOTI_SUB" property="notiSub" jdbcType="VARCHAR" />
@@ -14,21 +14,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from notification
+    from NOTIFICATION
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from notification
+    delete from NOTIFICATION
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.Notification" >
-    insert into notification (NOTI_ID, NOTI_SUB, NOTI_DESC, 
+    insert into NOTIFICATION (NOTI_ID, NOTI_SUB, NOTI_DESC, 
       NOTI_TYPE, NOTY_EXPIRE_TIME)
     values (#{notiId,jdbcType=INTEGER}, #{notiSub,jdbcType=VARCHAR}, #{notiDesc,jdbcType=VARCHAR}, 
       #{notiType,jdbcType=VARCHAR}, #{notyExpireTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="Dao.model.Notification" >
-    insert into notification
+    insert into NOTIFICATION
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="notiId != null" >
         NOTI_ID,
@@ -65,7 +65,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Notification" >
-    update notification
+    update NOTIFICATION
     <set >
       <if test="notiSub != null" >
         NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
@@ -83,7 +83,7 @@
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="Dao.model.Notification" >
-    update notification
+    update NOTIFICATION
     set NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
       NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
       NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
