@@ -1,7 +1,8 @@
 package logon.service;
 
-import Employee.DAO.EmployeeMapper;
-import Employee.DAO.Employee;
+import Dao.dao.EmployeeMapper;
+import Dao.model.Employee;
+import Dao.model.EmployeeKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class LoginService {
-    //@Autowired(required = false)
-    //private EmployeeMapper userMapper;
+    @Autowired(required = false)
+    private EmployeeKey employeeKey;
+    @Autowired(required = false)
+    private EmployeeMapper employeeMapper;
     @Autowired(required =  false)
     Employee employee;
 
@@ -19,11 +22,15 @@ public class LoginService {
     public int getLoginInfo(String company, String userName,String password){
         // Md5PasswordEncoder md5 = new Md5PasswordEncoder();
         try {
-            //employee = userMapper.selectByEmployeeName(company, userName);
-            employee = new Employee();//just a test, will use mapper to get the real data
-            if(employee.getPassword().equals(password)){
+            employeeKey = new EmployeeKey();
+            employeeKey.setCompanyname(company);
+            employeeKey.setEmpName(userName);
+
+            employee = employeeMapper.selectByPrimaryKey(employeeKey);
+            //employee = new Employee();//just a test, will use mapper to get the real data
+            if(employee.getEmpPwd().equals(password)){
                 System.out.println("LoginService.getLoginInfo equal");
-                return employee.getUserId();
+                return employee.getSysEmpId();
             }
             else {
                 System.out.println("LoginService.getLoginInfo not equal");
