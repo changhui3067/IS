@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dao.dao.CourseRecordMapper" >
+  <resultMap id="BaseResultMap" type="Dao.model.CourseRecord" >
+    <id column="RESORD_ID" property="resordId" jdbcType="INTEGER" />
+    <result column="COURSE_ID" property="courseId" jdbcType="INTEGER" />
+    <result column="EMP_ID" property="empId" jdbcType="INTEGER" />
+    <result column="EXPIRE_TIME" property="expireTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="Dao.model.CourseRecord" extends="BaseResultMap" >
+    <result column="IS_FINISHED" property="isFinished" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RESORD_ID, COURSE_ID, EMP_ID, EXPIRE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    IS_FINISHED
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from COURSERECORD
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from COURSERECORD
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.CourseRecord" >
+    insert into COURSERECORD (RESORD_ID, COURSE_ID, EMP_ID, 
+      EXPIRE_TIME, IS_FINISHED)
+    values (#{resordId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{isFinished,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.CourseRecord" >
+    insert into COURSERECORD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resordId != null" >
+        RESORD_ID,
+      </if>
+      <if test="courseId != null" >
+        COURSE_ID,
+      </if>
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="expireTime != null" >
+        EXPIRE_TIME,
+      </if>
+      <if test="isFinished != null" >
+        IS_FINISHED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resordId != null" >
+        #{resordId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null" >
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null" >
+        #{isFinished,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.CourseRecord" >
+    update COURSERECORD
+    <set >
+      <if test="courseId != null" >
+        COURSE_ID = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        EMP_ID = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null" >
+        EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null" >
+        IS_FINISHED = #{isFinished,jdbcType=BINARY},
+      </if>
+    </set>
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.model.CourseRecord" >
+    update COURSERECORD
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      IS_FINISHED = #{isFinished,jdbcType=BINARY}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.CourseRecord" >
+    update COURSERECORD
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dao.dao.PositionMapper" >
+  <resultMap id="BaseResultMap" type="Dao.model.Position" >
+    <id column="POSITION_ID" property="positionId" jdbcType="INTEGER" />
+    <result column="POSITION_TITLE" property="positionTitle" jdbcType="VARCHAR" />
+    <result column="POSITION_DESC" property="positionDesc" jdbcType="VARCHAR" />
+    <result column="POSITION_BENEFIT" property="positionBenefit" jdbcType="VARCHAR" />
+    <result column="POSITION_REQUIRE" property="positionRequire" jdbcType="VARCHAR" />
+    <result column="POSITION_HEADCOUNT" property="positionHeadcount" jdbcType="INTEGER" />
+    <result column="POSITION_CONTACT" property="positionContact" jdbcType="INTEGER" />
+    <result column="POSITION_EXPIRE_TIME" property="positionExpireTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="Dao.model.Position" extends="BaseResultMap" >
+    <result column="POSITION_ISOPEN" property="positionIsopen" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    POSITION_ID, POSITION_TITLE, POSITION_DESC, POSITION_BENEFIT, POSITION_REQUIRE, POSITION_HEADCOUNT, 
+    POSITION_CONTACT, POSITION_EXPIRE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    POSITION_ISOPEN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from POSITION
+    where POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from POSITION
+    where POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.Position" >
+    insert into POSITION (POSITION_ID, POSITION_TITLE, POSITION_DESC, 
+      POSITION_BENEFIT, POSITION_REQUIRE, POSITION_HEADCOUNT, 
+      POSITION_CONTACT, POSITION_EXPIRE_TIME, 
+      POSITION_ISOPEN)
+    values (#{positionId,jdbcType=INTEGER}, #{positionTitle,jdbcType=VARCHAR}, #{positionDesc,jdbcType=VARCHAR}, 
+      #{positionBenefit,jdbcType=VARCHAR}, #{positionRequire,jdbcType=VARCHAR}, #{positionHeadcount,jdbcType=INTEGER}, 
+      #{positionContact,jdbcType=INTEGER}, #{positionExpireTime,jdbcType=TIMESTAMP}, 
+      #{positionIsopen,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.Position" >
+    insert into POSITION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        POSITION_ID,
+      </if>
+      <if test="positionTitle != null" >
+        POSITION_TITLE,
+      </if>
+      <if test="positionDesc != null" >
+        POSITION_DESC,
+      </if>
+      <if test="positionBenefit != null" >
+        POSITION_BENEFIT,
+      </if>
+      <if test="positionRequire != null" >
+        POSITION_REQUIRE,
+      </if>
+      <if test="positionHeadcount != null" >
+        POSITION_HEADCOUNT,
+      </if>
+      <if test="positionContact != null" >
+        POSITION_CONTACT,
+      </if>
+      <if test="positionExpireTime != null" >
+        POSITION_EXPIRE_TIME,
+      </if>
+      <if test="positionIsopen != null" >
+        POSITION_ISOPEN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionTitle != null" >
+        #{positionTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="positionDesc != null" >
+        #{positionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="positionBenefit != null" >
+        #{positionBenefit,jdbcType=VARCHAR},
+      </if>
+      <if test="positionRequire != null" >
+        #{positionRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="positionHeadcount != null" >
+        #{positionHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="positionContact != null" >
+        #{positionContact,jdbcType=INTEGER},
+      </if>
+      <if test="positionExpireTime != null" >
+        #{positionExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionIsopen != null" >
+        #{positionIsopen,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Position" >
+    update POSITION
+    <set >
+      <if test="positionTitle != null" >
+        POSITION_TITLE = #{positionTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="positionDesc != null" >
+        POSITION_DESC = #{positionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="positionBenefit != null" >
+        POSITION_BENEFIT = #{positionBenefit,jdbcType=VARCHAR},
+      </if>
+      <if test="positionRequire != null" >
+        POSITION_REQUIRE = #{positionRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="positionHeadcount != null" >
+        POSITION_HEADCOUNT = #{positionHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="positionContact != null" >
+        POSITION_CONTACT = #{positionContact,jdbcType=INTEGER},
+      </if>
+      <if test="positionExpireTime != null" >
+        POSITION_EXPIRE_TIME = #{positionExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionIsopen != null" >
+        POSITION_ISOPEN = #{positionIsopen,jdbcType=BINARY},
+      </if>
+    </set>
+    where POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.model.Position" >
+    update POSITION
+    set POSITION_TITLE = #{positionTitle,jdbcType=VARCHAR},
+      POSITION_DESC = #{positionDesc,jdbcType=VARCHAR},
+      POSITION_BENEFIT = #{positionBenefit,jdbcType=VARCHAR},
+      POSITION_REQUIRE = #{positionRequire,jdbcType=VARCHAR},
+      POSITION_HEADCOUNT = #{positionHeadcount,jdbcType=INTEGER},
+      POSITION_CONTACT = #{positionContact,jdbcType=INTEGER},
+      POSITION_EXPIRE_TIME = #{positionExpireTime,jdbcType=TIMESTAMP},
+      POSITION_ISOPEN = #{positionIsopen,jdbcType=BINARY}
+    where POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.Position" >
+    update POSITION
+    set POSITION_TITLE = #{positionTitle,jdbcType=VARCHAR},
+      POSITION_DESC = #{positionDesc,jdbcType=VARCHAR},
+      POSITION_BENEFIT = #{positionBenefit,jdbcType=VARCHAR},
+      POSITION_REQUIRE = #{positionRequire,jdbcType=VARCHAR},
+      POSITION_HEADCOUNT = #{positionHeadcount,jdbcType=INTEGER},
+      POSITION_CONTACT = #{positionContact,jdbcType=INTEGER},
+      POSITION_EXPIRE_TIME = #{positionExpireTime,jdbcType=TIMESTAMP}
+    where POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dao.dao.CourseMapper" >
+  <resultMap id="BaseResultMap" type="Dao.model.Course" >
+    <id column="COURSE_ID" property="courseId" jdbcType="INTEGER" />
+    <result column="COURSE_NAME" property="courseName" jdbcType="VARCHAR" />
+    <result column="COURSE_CONTENT" property="courseContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    COURSE_ID, COURSE_NAME, COURSE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from COURSE
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.Course" >
+    insert into COURSE (COURSE_ID, COURSE_NAME, COURSE_CONTENT
+      )
+    values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.Course" >
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        COURSE_ID,
+      </if>
+      <if test="courseName != null" >
+        COURSE_NAME,
+      </if>
+      <if test="courseContent != null" >
+        COURSE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null" >
+        #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Course" >
+    update COURSE
+    <set >
+      <if test="courseName != null" >
+        COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null" >
+        COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.Course" >
+    update COURSE
+    set COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR}
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+</mapper>
