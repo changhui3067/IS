@@ -14,3 +14,5 @@ IntelligentService.iml
 
 # PowerPoint temporary
 ~$*.ppt*
+
+IntelligentService/src/main/webapp/WEB-INF/node_modules/*

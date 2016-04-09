@@ -20,12 +20,12 @@ public class LogonController {
     @Autowired
     LoginService loginService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "logon")
-    public String getLogonPage() {
-        return "logon";
-    }
+//    @RequestMapping(method = RequestMethod.GET, value = "logon")
+//    public String getLogonPage() {
+//        return "logon";
+//    }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/api/login")
     @ResponseBody
     public String login(
             @RequestBody Map<String, String> request,

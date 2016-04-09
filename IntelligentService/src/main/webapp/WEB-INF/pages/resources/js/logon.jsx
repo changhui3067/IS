@@ -1,3 +1,8 @@
+import React from "react";
+import "./../css/logon.scss";
+import ReactDOM from "react-dom";
+import $ from "jquery";
+
 var LoginForm = React.createClass({
     getInitialState: function(){
         return { companyId: '',
@@ -35,13 +40,14 @@ var LoginForm = React.createClass({
         }
 
         $.ajax({
-            url: "/login",
+            url: "/api/login",
             type: "POST",
             //dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(logonData),
             success: function(data){
-                console.log(data);
+                console.log("logon: "+data);
+                window.location.href = "homepage";
             }.bind(this),
             error: function(xhr, status, err){
                 console.log(status, err.toString());
@@ -50,10 +56,12 @@ var LoginForm = React.createClass({
     },
 
     render: function () {
+        let logoImage = new Image();
+        logoImage.src = require("./../img/SF_LoginLogo.png");
         return (
             <div className="logonform">
                 <div>
-                    <img src="/resources/img/SF_LoginLogo.png" className="companyLogo"></img>
+                    <img src={logoImage.src} className="companyLogo"></img>
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="bottomborder"><input

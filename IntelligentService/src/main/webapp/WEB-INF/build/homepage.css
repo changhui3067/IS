@@ -1,0 +1,26 @@
+
+＃content {
+    width: 100%;
+    height: 100%;
+    background-color: -moz-linear-gradient(top, #ccc, #000);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+＃content .tileBlock {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px 5px 0;
+}
+
+＃content .tileBlock .tileTitle {
+    width: 100%;
+}
+
+＃content .tileBlock .tileTitle .title{
+    padding: 10px;
+    width: cal(100% - 40px);
+}
