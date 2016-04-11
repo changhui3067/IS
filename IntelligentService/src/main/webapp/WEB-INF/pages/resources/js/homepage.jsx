@@ -6,45 +6,23 @@ import React from "react";
 import "./../css/homepage.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import Header from "./header.jsx";
+import Footer from "./footer.jsx";
+import Tile from "./tile.jsx";
 
-var Tile = React.createClass({
-    getInitialState: function(){
-        return { unreadCount: 5,
-            title: 'Meet your team',
-            background: '#fff',
-            icon: '',
-            size: 1,
-            name: 'Freyja',
-            type: ''
-        };
-    },
-
-    handleTileClick: function(e){
-        //this.setState({companyId: e.target.value});
-        console.log("tile click: ", e);
-    },
-
-
-    render: function () {
+var Homepage = React.createClass({
+    render: function(){
         return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                        <h3>{this.state.title}</h3>
-                    </div>
-                    <div className="unreadCount">
-                        {this.state.unreadCount}
-                    </div>
-                </div>
-                <div className="helloMsg">
-                    <p>hello, {this.state.name}</p>
-                </div>
+            <div id="HomepageContent">
+                <Header />
+                <Tile />
+                <Footer />
             </div>
         );
     }
 });
 
 ReactDOM.render(
-    <Tile/>,
-    document.getElementById("content")
+    <Homepage />,
+    document.getElementById("homepage")
 );

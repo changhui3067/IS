@@ -12,9 +12,12 @@ class Header extends React.Component {
         super(props);
     }
     render(){
+        let logoImage = new Image();
+        logoImage.src = require("./../img/logo_color.gif");
+
         return (
             <div class="headerContent">
-                <div class="headerLogo"></div>
+                <div class="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
                 <div class="menu"></div>
                 <div class="useinfo"></div>
             </div>
