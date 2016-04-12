@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Dao.dao.CourseRecordMapper" >
@@ -6,17 +7,27 @@
     <result column="COURSE_ID" property="courseId" jdbcType="INTEGER" />
     <result column="EMP_ID" property="empId" jdbcType="INTEGER" />
     <result column="EXPIRE_TIME" property="expireTime" jdbcType="TIMESTAMP" />
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.dao.CourseRecordMapper">
+  <resultMap id="BaseResultMap" type="Dao.dao.model.CourseRecord">
+    <id column="RESORD_ID" jdbcType="INTEGER" property="resordId" />
+    <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="EMP_ID" jdbcType="INTEGER" property="empId" />
+    <result column="EXPIRE_TIME" jdbcType="TIMESTAMP" property="expireTime" />
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="Dao.model.CourseRecord" extends="BaseResultMap" >
-    <result column="IS_FINISHED" property="isFinished" jdbcType="BINARY" />
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Dao.dao.model.CourseRecord">
+    <result column="IS_FINISHED" jdbcType="BINARY" property="isFinished" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     RESORD_ID, COURSE_ID, EMP_ID, EXPIRE_TIME
   </sql>
-  <sql id="Blob_Column_List" >
+  <sql id="Blob_Column_List">
     IS_FINISHED
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -24,81 +35,320 @@
     from COURSERECORD
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </select>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from COURSERECORD
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.CourseRecord" >
     insert into COURSERECORD (RESORD_ID, COURSE_ID, EMP_ID, 
+=======
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from courserecord
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.dao.model.CourseRecord">
+    insert into courserecord (RESORD_ID, COURSE_ID, EMP_ID, 
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
       EXPIRE_TIME, IS_FINISHED)
     values (#{resordId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
       #{expireTime,jdbcType=TIMESTAMP}, #{isFinished,jdbcType=BINARY})
   </insert>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
   <insert id="insertSelective" parameterType="Dao.model.CourseRecord" >
     insert into COURSERECORD
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="resordId != null" >
+=======
+  <insert id="insertSelective" parameterType="Dao.dao.model.CourseRecord">
+    insert into courserecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
         RESORD_ID,
       </if>
-      <if test="courseId != null" >
+      <if test="courseId != null">
         COURSE_ID,
       </if>
-      <if test="empId != null" >
+      <if test="empId != null">
         EMP_ID,
       </if>
-      <if test="expireTime != null" >
+      <if test="expireTime != null">
         EXPIRE_TIME,
       </if>
-      <if test="isFinished != null" >
+      <if test="isFinished != null">
         IS_FINISHED,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="resordId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
         #{resordId,jdbcType=INTEGER},
       </if>
-      <if test="courseId != null" >
+      <if test="courseId != null">
         #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="empId != null" >
+      <if test="empId != null">
         #{empId,jdbcType=INTEGER},
       </if>
-      <if test="expireTime != null" >
+      <if test="expireTime != null">
         #{expireTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isFinished != null" >
+      <if test="isFinished != null">
         #{isFinished,jdbcType=BINARY},
       </if>
     </trim>
   </insert>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.CourseRecord" >
     update COURSERECORD
     <set >
       <if test="courseId != null" >
+=======
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+    <set>
+      <if test="courseId != null">
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
         COURSE_ID = #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="empId != null" >
+      <if test="empId != null">
         EMP_ID = #{empId,jdbcType=INTEGER},
       </if>
-      <if test="expireTime != null" >
+      <if test="expireTime != null">
         EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isFinished != null" >
+      <if test="isFinished != null">
         IS_FINISHED = #{isFinished,jdbcType=BINARY},
       </if>
     </set>
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </update>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.model.CourseRecord" >
     update COURSERECORD
+=======
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
     set COURSE_ID = #{courseId,jdbcType=INTEGER},
       EMP_ID = #{empId,jdbcType=INTEGER},
       EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
       IS_FINISHED = #{isFinished,jdbcType=BINARY}
     where RESORD_ID = #{resordId,jdbcType=INTEGER}
   </update>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseRecordMapper.xml
   <update id="updateByPrimaryKey" parameterType="Dao.model.CourseRecord" >
     update COURSERECORD
+=======
+  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="Dao.dao.model.CourseRecord">
+    <id column="RESORD_ID" jdbcType="INTEGER" property="resordId" />
+    <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="EMP_ID" jdbcType="INTEGER" property="empId" />
+    <result column="EXPIRE_TIME" jdbcType="TIMESTAMP" property="expireTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Dao.dao.model.CourseRecord">
+    <result column="IS_FINISHED" jdbcType="BINARY" property="isFinished" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RESORD_ID, COURSE_ID, EMP_ID, EXPIRE_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    IS_FINISHED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from courserecord
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from courserecord
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.dao.model.CourseRecord">
+    insert into courserecord (RESORD_ID, COURSE_ID, EMP_ID, 
+      EXPIRE_TIME, IS_FINISHED)
+    values (#{resordId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{isFinished,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.dao.model.CourseRecord">
+    insert into courserecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
+        RESORD_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="empId != null">
+        EMP_ID,
+      </if>
+      <if test="expireTime != null">
+        EXPIRE_TIME,
+      </if>
+      <if test="isFinished != null">
+        IS_FINISHED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
+        #{resordId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null">
+        #{isFinished,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+    <set>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        EMP_ID = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null">
+        IS_FINISHED = #{isFinished,jdbcType=BINARY},
+      </if>
+    </set>
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      IS_FINISHED = #{isFinished,jdbcType=BINARY}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.CourseRecord">
+    update courserecord
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="Dao.model.CourseRecord">
+    <id column="RESORD_ID" jdbcType="INTEGER" property="resordId" />
+    <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="EMP_ID" jdbcType="INTEGER" property="empId" />
+    <result column="EXPIRE_TIME" jdbcType="TIMESTAMP" property="expireTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Dao.model.CourseRecord">
+    <result column="IS_FINISHED" jdbcType="BINARY" property="isFinished" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RESORD_ID, COURSE_ID, EMP_ID, EXPIRE_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    IS_FINISHED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from courserecord
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from courserecord
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.CourseRecord">
+    insert into courserecord (RESORD_ID, COURSE_ID, EMP_ID, 
+      EXPIRE_TIME, IS_FINISHED)
+    values (#{resordId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{isFinished,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.CourseRecord">
+    insert into courserecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
+        RESORD_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="empId != null">
+        EMP_ID,
+      </if>
+      <if test="expireTime != null">
+        EXPIRE_TIME,
+      </if>
+      <if test="isFinished != null">
+        IS_FINISHED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resordId != null">
+        #{resordId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null">
+        #{isFinished,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.CourseRecord">
+    update courserecord
+    <set>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        EMP_ID = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFinished != null">
+        IS_FINISHED = #{isFinished,jdbcType=BINARY},
+      </if>
+    </set>
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Dao.model.CourseRecord">
+    update courserecord
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      EMP_ID = #{empId,jdbcType=INTEGER},
+      EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP},
+      IS_FINISHED = #{isFinished,jdbcType=BINARY}
+    where RESORD_ID = #{resordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.CourseRecord">
+    update courserecord
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseRecordMapper.xml
     set COURSE_ID = #{courseId,jdbcType=INTEGER},
       EMP_ID = #{empId,jdbcType=INTEGER},
       EXPIRE_TIME = #{expireTime,jdbcType=TIMESTAMP}

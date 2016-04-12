@@ -3,47 +3,47 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Employee</title>
-    <script type="text/javascript" src="/resources/lib/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/resources/lib/react.js"></script>
-    <script type="text/javascript" src="/resources/lib/react-dom.js"></script>
-    <script type="text/javascript" src="/resources/lib/browser.min.js"></script>
-
     <link type="text/css" rel="stylesheet" href="/resources/lib/normalize.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/lib/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/bootstrap/css/bootstrap-theme.min.css"/>
+
+    <script type="text/javascript" src="/resources/lib/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="/resources/react/react.js"></script>
+    <script type="text/javascript" src="/resources/react/react-dom.js"></script>
+    <script type="text/javascript" src="/resources/react/browser.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="/resources/css/employee.css"/>
     <script type="text/babel" src="/resources/js/employee.js"></script>
     <script type="text/babel" src="/resources/js/notification.js"></script>
 
-    <script>
-
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-<div id="header">
-    <div id="header_content" class="content">
-        <div id="navigator">
-            <ul>
-                <li id="mycourse" class="selected"><a href="javascript:void(0);">My Courses</a></li>
-                <li><a>Open Positions</a></li>
-                <li id="orgchart"><a>Org Chart</a></li>
-            </ul>
-        </div>
-        <ul id="user_info">
-            <li>
-                <img class="user_icon" src="/resources/img/test.png">
-                <span>Alex San</span>
+<div class="header">
+    <div id="header_content" class="content container clearfix">
+        <ul class="header-nav">
+            <li class="header-nav-item" id="mycourse"><a class="header-nav-link" href="javascript:void(0);">My
+                Courses</a></li>
+            <li class="header-nav-item"><a class="header-nav-link">Open Positions</a></li>
+            <li class="header-nav-item" id="orgchart"><a class="header-nav-link">Org Chart</a></li>
+        </ul>
+        <ul class="header-nav user-nav" style="float:right">
+            <li class="header-nav-item dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    <img class="user_icon" src="/resources/img/test.png">
+                    <span>Alex San</span>
+                </a>
+                <ul class="dropdown-menu nav-dropdown-menu">
+                    <li><span>Options</span></li>
+                    <li><span>Logout</span></li>
+                </ul>
             </li>
-            <div class="opinion">
-                <li><span>Options</span></li>
-                <li><span>Logout</span></li>
-            </div>
         </ul>
     </div>
 </div>
 <div class="content container">
-    <div id="main_content" class="col-md-8">
+    <div id="main_content">
 
         <div id="main_panel">
             <div class="tree">
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    <div id="notification" class="col-md-4"></div>
+
 </div>
 </div>
 </body>

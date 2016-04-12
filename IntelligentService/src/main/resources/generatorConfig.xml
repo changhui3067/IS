@@ -29,10 +29,16 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
+<<<<<<< Updated upstream
         <!--dao class position-->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="Dao.dao"
                              targetProject="src/main/java">
+=======
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="Dao.dao"
+                             targetProject="src\main\java">
+>>>>>>> Stashed changes
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

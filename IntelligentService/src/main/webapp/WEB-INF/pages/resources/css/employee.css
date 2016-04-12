@@ -17,43 +17,26 @@ ul {
     padding: 0;
 }
 
-#header {
+.header {
     z-index: 10;
     width: 100%;
     height: 48px;
-    color: white;
+    /*color: white;*/
     line-height: 48px;
-    background: lightgrey;
+    background: rgb(245,245,245);
+    border-bottom: 1px solid #e5e5e5;
     position: fixed;
     top: 0;
 }
-
-#header li {
-    height: 48px;
-}
-
-#header a {
-    padding: 0 10px;
+.header-nav-link{
+    display: block;
+    padding: 0 8px;
+    color: #333;
     text-decoration: none;
-    color: white;
 }
 
-#navigator li {
-    text-align: center;
-    font-size: 1.2em;
-    display: inline-block;
-}
-
-#navigator li.selected {
-    background: grey;
-}
-
-#navigator ul {
-    margin: 0;
-}
-
-#navigator {
-    display: inline-block;
+.header-nav-item{
+    float: left;
 }
 
 .user_icon {
@@ -62,39 +45,15 @@ ul {
     width: 34px;
 }
 
-#user_info {
+.user-nav {
     float: right;
-    overflow: hidden;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
 }
 
-#user_info .opinion {
-    display: none;
-}
-
-#user_info li {
+.nav-dropdown-menu{
+    line-height: 30px;
     text-align: center;
-    padding: 0 10px;
-}
+    min-width: 115px;
 
-/*hover*/
-#user_info:hover {
-    border-radius: 0 0 5px 5px;
-}
-
-#user_info:hover .opinion {
-    display: block;
-}
-
-#user_info:hover .opinion li {
-    border-top: solid 1px lightgrey;
-}
-
-#user_info:hover li {
-    background: #b6b6b6;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
 
 .courseItem {

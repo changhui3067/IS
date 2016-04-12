@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseMapper.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Dao.dao.CourseMapper" >
@@ -5,65 +6,236 @@
     <id column="COURSE_ID" property="courseId" jdbcType="INTEGER" />
     <result column="COURSE_NAME" property="courseName" jdbcType="VARCHAR" />
     <result column="COURSE_CONTENT" property="courseContent" jdbcType="VARCHAR" />
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="Dao.dao.model.Course">
+    <id column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="COURSE_NAME" jdbcType="VARCHAR" property="courseName" />
+    <result column="COURSE_CONTENT" jdbcType="VARCHAR" property="courseContent" />
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseMapper.xml
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     COURSE_ID, COURSE_NAME, COURSE_CONTENT
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from COURSE
     where COURSE_ID = #{courseId,jdbcType=INTEGER}
   </select>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseMapper.xml
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from COURSE
     where COURSE_ID = #{courseId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.Course" >
     insert into COURSE (COURSE_ID, COURSE_NAME, COURSE_CONTENT
+=======
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.dao.model.Course">
+    insert into course (COURSE_ID, COURSE_NAME, COURSE_CONTENT
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseMapper.xml
       )
     values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseContent,jdbcType=VARCHAR}
       )
   </insert>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseMapper.xml
   <insert id="insertSelective" parameterType="Dao.model.Course" >
     insert into COURSE
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseId != null" >
+=======
+  <insert id="insertSelective" parameterType="Dao.dao.model.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseMapper.xml
         COURSE_ID,
       </if>
-      <if test="courseName != null" >
+      <if test="courseName != null">
         COURSE_NAME,
       </if>
-      <if test="courseContent != null" >
+      <if test="courseContent != null">
         COURSE_CONTENT,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="courseId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
         #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="courseName != null" >
+      <if test="courseName != null">
         #{courseName,jdbcType=VARCHAR},
       </if>
-      <if test="courseContent != null" >
+      <if test="courseContent != null">
         #{courseContent,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseMapper.xml
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Course" >
     update COURSE
     <set >
       <if test="courseName != null" >
+=======
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.Course">
+    update course
+    <set>
+      <if test="courseName != null">
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseMapper.xml
         COURSE_NAME = #{courseName,jdbcType=VARCHAR},
       </if>
-      <if test="courseContent != null" >
+      <if test="courseContent != null">
         COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR},
       </if>
     </set>
     where COURSE_ID = #{courseId,jdbcType=INTEGER}
   </update>
+<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/CourseMapper.xml
   <update id="updateByPrimaryKey" parameterType="Dao.model.Course" >
     update COURSE
+=======
+  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.Course">
+    update course
+    set COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR}
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="Dao.dao.model.Course">
+    <id column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="COURSE_NAME" jdbcType="VARCHAR" property="courseName" />
+    <result column="COURSE_CONTENT" jdbcType="VARCHAR" property="courseContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COURSE_ID, COURSE_NAME, COURSE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.dao.model.Course">
+    insert into course (COURSE_ID, COURSE_NAME, COURSE_CONTENT
+      )
+    values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.dao.model.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="courseName != null">
+        COURSE_NAME,
+      </if>
+      <if test="courseContent != null">
+        COURSE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null">
+        #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.Course">
+    update course
+    <set>
+      <if test="courseName != null">
+        COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null">
+        COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.Course">
+    update course
+    set COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR}
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="Dao.model.Course">
+    <id column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="COURSE_NAME" jdbcType="VARCHAR" property="courseName" />
+    <result column="COURSE_CONTENT" jdbcType="VARCHAR" property="courseContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COURSE_ID, COURSE_NAME, COURSE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Dao.model.Course">
+    insert into course (COURSE_ID, COURSE_NAME, COURSE_CONTENT
+      )
+    values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="Dao.model.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="courseName != null">
+        COURSE_NAME,
+      </if>
+      <if test="courseContent != null">
+        COURSE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null">
+        #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Course">
+    update course
+    <set>
+      <if test="courseName != null">
+        COURSE_NAME = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null">
+        COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COURSE_ID = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Dao.model.Course">
+    update course
+>>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/CourseMapper.xml
     set COURSE_NAME = #{courseName,jdbcType=VARCHAR},
       COURSE_CONTENT = #{courseContent,jdbcType=VARCHAR}
     where COURSE_ID = #{courseId,jdbcType=INTEGER}

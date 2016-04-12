@@ -6,32 +6,23 @@ var notificationData = function (content) {
     return {
         "content": content
     }
-}
+};
 
-
-var Notification = React.createClass({
-    render: function () {
-        return (
-            <div>{this.props.content}</div>
-        );
-    }
-});
 
 
 var NotificationPanel = React.createClass({
-
     render: function () {
+        var wrapper = this.props.elementWrapper;
         var notifications = this.props.notifcations.map(
             function (notification) {
                 return (
-                    <tr><td><Notification {...notification}/></td></tr>
+                    React.createElement(wrapper, null  ,notification.content)
+                    //<Notification {...notification} elementWrapper={this.props.elementWrapper}/>
                 );
             }
         );
         return (
-            <table className="table">
-                {notifications}
-            </table>
+            React.createElement(this.props.panelWrapper,{...this.props},notifications)
         );
     }
 });
@@ -50,6 +41,6 @@ notificationList.push(new notificationData("This is a notification"));
 notificationList.push(new notificationData("This is a notification"));
 
 ReactDOM.render(
-    <NotificationPanel notifcations={notificationList}/>,
+    <NotificationPanel panelWrapper="ul" elementWrapper="li" className="dropdown-menu" notifcations={notificationList}/>,
     document.getElementById("notification")
 );
