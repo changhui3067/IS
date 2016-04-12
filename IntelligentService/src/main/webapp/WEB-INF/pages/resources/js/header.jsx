@@ -3,23 +3,40 @@
  */
 
 import React from "react";
-import "./../css/homepage.scss";
+import "./../css/header.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
 class Header extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            menuList: props.menuList,
+            currId: props.currId,
+            username: props.username
+        };
     }
+
     render(){
         let logoImage = new Image();
         logoImage.src = require("./../img/logo_color.gif");
 
         return (
-            <div class="headerContent">
-                <div class="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
-                <div class="menu"></div>
-                <div class="useinfo"></div>
+            <div className="headerContent">
+                <div className="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
+                <div className="menu">
+                    <select className="menuList">
+                        {this.state.menuList.forEach((item) => {
+                            return (<option value="{item}">{item}</option>);
+                        })}
+                    </select>
+                </div>
+                <div className="userinfo">
+                    <select className="menuList">
+                        <option value="{this.state.username}">{this.state.username}</option>
+                        <option value="Logout">Logout</option>
+                    </select>
+                </div>
             </div>
         );
 
@@ -35,7 +52,7 @@ Header.propTypes = {
 
 //component default property
 Header.defaultProps = {
-    menuList: ["homepage", "courses", "admin"],
+    menuList: ["Homepage", "Courses", "Positions","Admin"],
     currId: 0,
     username: "freyja"
 }

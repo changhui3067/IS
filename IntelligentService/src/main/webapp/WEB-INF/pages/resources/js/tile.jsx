@@ -17,7 +17,7 @@ class Tile extends React.Component{
             size: props.size,
             name: props.name,
             type: props.type
-        }
+        };
     }
 
     handleTileClick(e){

@@ -1,0 +1,50 @@
+.headerContent {
+    height: 53px;
+    background-image: url("../img/landing_header_bg.png");
+    background-repeat: x;
+    background-position: 0 0;
+
+    .headerLogo {
+        float: left;
+    }
+
+    .menuList {
+        height: 38px;
+        position: relative;
+        top: 8px;
+        background-color: transparent;
+        border: 0px;
+        cursor: pointer;
+        padding: 0px 16px 0px 10px;
+        font-size: 14px;
+        line-height: 36px;
+        vertical-align: middle;
+
+        option {
+            height: 35px;
+            background-color: #FFF;
+        }
+
+        option:hover {
+            background-color: #E5F2F9；
+        }
+    }
+
+    .menu {
+        float: left;
+
+        .menuList {
+            left: 0px;
+            margin-left: 6px;
+        }
+    }
+
+    .userinfo {
+        float: right;
+
+        .menuList {
+            right: 20px;
+        }
+        
+    }
+}

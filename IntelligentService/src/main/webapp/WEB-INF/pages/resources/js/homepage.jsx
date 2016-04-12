@@ -15,7 +15,11 @@ var Homepage = React.createClass({
         return (
             <div id="HomepageContent">
                 <Header />
-                <Tile />
+                <div className="tileContainer">
+                    <div className="Employee">
+                    </div>
+                    <Tile />
+                </div>
                 <Footer />
             </div>
         );

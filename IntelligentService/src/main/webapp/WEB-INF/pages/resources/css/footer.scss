@@ -1,0 +1,18 @@
+
+.footerContent {
+    display : block;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ddd;
+
+    .copyright {
+        margin: 0 15px;
+        padding: 0 0 40px 0;
+        background-position: 100% 100%;
+        position: relative;
+        overflow: hidden;
+        color: #000;
+        background-image: url('../img/sf_logo_new_white.png');
+        background-repeat: no-repeat;
+    }
+}
