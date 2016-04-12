@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/NotificationMapper.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Dao.dao.NotificationMapper" >
@@ -8,300 +7,83 @@
     <result column="NOTI_DESC" property="notiDesc" jdbcType="VARCHAR" />
     <result column="NOTI_TYPE" property="notiType" jdbcType="VARCHAR" />
     <result column="NOTY_EXPIRE_TIME" property="notyExpireTime" jdbcType="TIMESTAMP" />
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Dao.dao.NotificationMapper">
-  <resultMap id="BaseResultMap" type="Dao.dao.model.Notification">
-    <id column="NOTI_ID" jdbcType="INTEGER" property="notiId" />
-    <result column="NOTI_SUB" jdbcType="VARCHAR" property="notiSub" />
-    <result column="NOTI_DESC" jdbcType="VARCHAR" property="notiDesc" />
-    <result column="NOTI_TYPE" jdbcType="VARCHAR" property="notiType" />
-    <result column="NOTY_EXPIRE_TIME" jdbcType="TIMESTAMP" property="notyExpireTime" />
->>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/NotificationMapper.xml
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     NOTI_ID, NOTI_SUB, NOTI_DESC, NOTI_TYPE, NOTY_EXPIRE_TIME
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
     <include refid="Base_Column_List" />
     from NOTIFICATION
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </select>
-<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/NotificationMapper.xml
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from NOTIFICATION
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="Dao.model.Notification" >
-    insert into NOTIFICATION (NOTI_ID, NOTI_SUB, NOTI_DESC, 
-=======
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from notification
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Dao.dao.model.Notification">
-    insert into notification (NOTI_ID, NOTI_SUB, NOTI_DESC, 
->>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/NotificationMapper.xml
+    insert into NOTIFICATION (NOTI_ID, NOTI_SUB, NOTI_DESC,
       NOTI_TYPE, NOTY_EXPIRE_TIME)
-    values (#{notiId,jdbcType=INTEGER}, #{notiSub,jdbcType=VARCHAR}, #{notiDesc,jdbcType=VARCHAR}, 
+    values (#{notiId,jdbcType=INTEGER}, #{notiSub,jdbcType=VARCHAR}, #{notiDesc,jdbcType=VARCHAR},
       #{notiType,jdbcType=VARCHAR}, #{notyExpireTime,jdbcType=TIMESTAMP})
   </insert>
-<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/NotificationMapper.xml
   <insert id="insertSelective" parameterType="Dao.model.Notification" >
     insert into NOTIFICATION
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="notiId != null" >
-=======
-  <insert id="insertSelective" parameterType="Dao.dao.model.Notification">
-    insert into notification
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
->>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/NotificationMapper.xml
         NOTI_ID,
       </if>
-      <if test="notiSub != null">
+      <if test="notiSub != null" >
         NOTI_SUB,
       </if>
-      <if test="notiDesc != null">
+      <if test="notiDesc != null" >
         NOTI_DESC,
       </if>
-      <if test="notiType != null">
+      <if test="notiType != null" >
         NOTI_TYPE,
       </if>
-      <if test="notyExpireTime != null">
+      <if test="notyExpireTime != null" >
         NOTY_EXPIRE_TIME,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="notiId != null" >
         #{notiId,jdbcType=INTEGER},
       </if>
-      <if test="notiSub != null">
+      <if test="notiSub != null" >
         #{notiSub,jdbcType=VARCHAR},
       </if>
-      <if test="notiDesc != null">
+      <if test="notiDesc != null" >
         #{notiDesc,jdbcType=VARCHAR},
       </if>
-      <if test="notiType != null">
+      <if test="notiType != null" >
         #{notiType,jdbcType=VARCHAR},
       </if>
-      <if test="notyExpireTime != null">
+      <if test="notyExpireTime != null" >
         #{notyExpireTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/NotificationMapper.xml
   <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Notification" >
     update NOTIFICATION
     <set >
       <if test="notiSub != null" >
-=======
-  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.Notification">
-    update notification
-    <set>
-      <if test="notiSub != null">
->>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/NotificationMapper.xml
         NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
       </if>
-      <if test="notiDesc != null">
+      <if test="notiDesc != null" >
         NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
       </if>
-      <if test="notiType != null">
+      <if test="notiType != null" >
         NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
       </if>
-      <if test="notyExpireTime != null">
+      <if test="notyExpireTime != null" >
         NOTY_EXPIRE_TIME = #{notyExpireTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where NOTI_ID = #{notiId,jdbcType=INTEGER}
   </update>
-<<<<<<< Updated upstream:IntelligentService/src/main/webapp/WEB-INF/mapping/NotificationMapper.xml
   <update id="updateByPrimaryKey" parameterType="Dao.model.Notification" >
     update NOTIFICATION
-=======
-  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.Notification">
-    update notification
-    set NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
-      NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
-      NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
-      NOTY_EXPIRE_TIME = #{notyExpireTime,jdbcType=TIMESTAMP}
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="Dao.dao.model.Notification">
-    <id column="NOTI_ID" jdbcType="INTEGER" property="notiId" />
-    <result column="NOTI_SUB" jdbcType="VARCHAR" property="notiSub" />
-    <result column="NOTI_DESC" jdbcType="VARCHAR" property="notiDesc" />
-    <result column="NOTI_TYPE" jdbcType="VARCHAR" property="notiType" />
-    <result column="NOTY_EXPIRE_TIME" jdbcType="TIMESTAMP" property="notyExpireTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    NOTI_ID, NOTI_SUB, NOTI_DESC, NOTI_TYPE, NOTY_EXPIRE_TIME
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from notification
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from notification
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Dao.dao.model.Notification">
-    insert into notification (NOTI_ID, NOTI_SUB, NOTI_DESC, 
-      NOTI_TYPE, NOTY_EXPIRE_TIME)
-    values (#{notiId,jdbcType=INTEGER}, #{notiSub,jdbcType=VARCHAR}, #{notiDesc,jdbcType=VARCHAR}, 
-      #{notiType,jdbcType=VARCHAR}, #{notyExpireTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="Dao.dao.model.Notification">
-    insert into notification
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
-        NOTI_ID,
-      </if>
-      <if test="notiSub != null">
-        NOTI_SUB,
-      </if>
-      <if test="notiDesc != null">
-        NOTI_DESC,
-      </if>
-      <if test="notiType != null">
-        NOTI_TYPE,
-      </if>
-      <if test="notyExpireTime != null">
-        NOTY_EXPIRE_TIME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
-        #{notiId,jdbcType=INTEGER},
-      </if>
-      <if test="notiSub != null">
-        #{notiSub,jdbcType=VARCHAR},
-      </if>
-      <if test="notiDesc != null">
-        #{notiDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="notiType != null">
-        #{notiType,jdbcType=VARCHAR},
-      </if>
-      <if test="notyExpireTime != null">
-        #{notyExpireTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Dao.dao.model.Notification">
-    update notification
-    <set>
-      <if test="notiSub != null">
-        NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
-      </if>
-      <if test="notiDesc != null">
-        NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="notiType != null">
-        NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
-      </if>
-      <if test="notyExpireTime != null">
-        NOTY_EXPIRE_TIME = #{notyExpireTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Dao.dao.model.Notification">
-    update notification
-    set NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
-      NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
-      NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
-      NOTY_EXPIRE_TIME = #{notyExpireTime,jdbcType=TIMESTAMP}
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="Dao.model.Notification">
-    <id column="NOTI_ID" jdbcType="INTEGER" property="notiId" />
-    <result column="NOTI_SUB" jdbcType="VARCHAR" property="notiSub" />
-    <result column="NOTI_DESC" jdbcType="VARCHAR" property="notiDesc" />
-    <result column="NOTI_TYPE" jdbcType="VARCHAR" property="notiType" />
-    <result column="NOTY_EXPIRE_TIME" jdbcType="TIMESTAMP" property="notyExpireTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    NOTI_ID, NOTI_SUB, NOTI_DESC, NOTI_TYPE, NOTY_EXPIRE_TIME
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from notification
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from notification
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Dao.model.Notification">
-    insert into notification (NOTI_ID, NOTI_SUB, NOTI_DESC, 
-      NOTI_TYPE, NOTY_EXPIRE_TIME)
-    values (#{notiId,jdbcType=INTEGER}, #{notiSub,jdbcType=VARCHAR}, #{notiDesc,jdbcType=VARCHAR}, 
-      #{notiType,jdbcType=VARCHAR}, #{notyExpireTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="Dao.model.Notification">
-    insert into notification
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
-        NOTI_ID,
-      </if>
-      <if test="notiSub != null">
-        NOTI_SUB,
-      </if>
-      <if test="notiDesc != null">
-        NOTI_DESC,
-      </if>
-      <if test="notiType != null">
-        NOTI_TYPE,
-      </if>
-      <if test="notyExpireTime != null">
-        NOTY_EXPIRE_TIME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="notiId != null">
-        #{notiId,jdbcType=INTEGER},
-      </if>
-      <if test="notiSub != null">
-        #{notiSub,jdbcType=VARCHAR},
-      </if>
-      <if test="notiDesc != null">
-        #{notiDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="notiType != null">
-        #{notiType,jdbcType=VARCHAR},
-      </if>
-      <if test="notyExpireTime != null">
-        #{notyExpireTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Dao.model.Notification">
-    update notification
-    <set>
-      <if test="notiSub != null">
-        NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
-      </if>
-      <if test="notiDesc != null">
-        NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="notiType != null">
-        NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
-      </if>
-      <if test="notyExpireTime != null">
-        NOTY_EXPIRE_TIME = #{notyExpireTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where NOTI_ID = #{notiId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Dao.model.Notification">
-    update notification
->>>>>>> Stashed changes:IntelligentService/src/main/java/Dao/dao/model/xml/NotificationMapper.xml
     set NOTI_SUB = #{notiSub,jdbcType=VARCHAR},
       NOTI_DESC = #{notiDesc,jdbcType=VARCHAR},
       NOTI_TYPE = #{notiType,jdbcType=VARCHAR},
