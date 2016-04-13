@@ -26,7 +26,7 @@ class Header extends React.Component {
                 <div className="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
                 <div className="menu">
                     <select className="menuList">
-                        {this.state.menuList.forEach((item) => {
+                        {this.state.menuList.map((item) => {
                             return (<option value="{item}">{item}</option>);
                         })}
                     </select>

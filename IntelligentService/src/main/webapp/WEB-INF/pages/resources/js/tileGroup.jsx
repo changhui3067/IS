@@ -5,30 +5,43 @@ import React from "react";
 import "./../css/tileGroup.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import Tile from "./Tile.jsx";
 
 class TileGroup extends React.Component{
 
+    constructor(props) {
+        super(props);
+        this.props = {
+            title: props.title,
+            tileList: props.tileList
+        }
+    }
+
+    render() {
+        return (
+            <div className="tileGroupContent">
+                <div className="tileGroupTitle">
+                    <h1>{this.props.title}</h1>
+                </div>
+                <div className="tileGroupList">
+                    {this.props.tileList.map((tile) => {
+                        return (<Tile title={tile.title} type={tile.type} icon={tile.icon} url={tile.url} />);
+                    })}
+                </div>
+            </div>
+        );
+    }
 
 }
 
 TileGroup.propTypes = {
-    unreadCount: React.PropTypes.number,
     title: React.PropTypes.string,
-    background: React.PropTypes.string,
-    icon: React.PropTypes.string,
-    size: React.PropTypes.number,
-    name: React.PropTypes.string,
-    type: React.PropTypes.string,
+    tileList: React.PropTypes.array
 }
 
 TileGroup.defaultProps = {
-    unreadCount: 5,
-    title: 'Meet your team',
-    background: '#fff',
-    icon: '',
-    size: 1,
-    name: 'Freyja',
-    type: ''
+    title: 'Employee',
+    tileList: []
 }
 
 export default TileGroup;
