@@ -8,62 +8,13 @@ html, body{
 #homepage {
     width: 100%;
     height: 100%;
-//    background-color: -moz-linear-gradient(top, #ccc, #000);
-//    background-color: -webkit-linear-gradient(top, #ccc, #000);
-    background: linear-gradient(#ccc, #3890D2);
+    background: linear-gradient(#3AAFB6, #1D5784);
 }
 
-#content {
-
-
-    .tileBlock {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        background-color: #fff;
-        float: left;
-        cursor: pointer;
-        border-radius: 15px;
-        margin: 0 5px 5px 0;
-
-        .tileTitle {
-            width: 100%;
-
-            .title {
-                padding-left: 10px;
-                width: calc(100% - 40px);
-                float: left;
-            }
-
-            .unreadCount {
-                float: left;
-                width: 20px;
-                height: 20px;
-                background-color: red;
-                color: white;
-                border-radius: 15px;
-                font-size: 20px;
-                padding: 5px 0 5px 10px;
-            }
-        }
-
-        .helloMsg {
-            position: absolute;
-            bottom: 0;
-            padding-left: 10px;
-            background: rgba( 0, 0, 0, .4);
-            width: calc(100% - 10px);
-            border-radius: 0 0 15px 15px;
-
-            p {
-                font-size: 16px;
-                color: #FFF;
-              margin: 5px;
-            }
-        }
-    }
-
-    .tileBlock:hover {
-        border: 1px solid #FFF;
+#HomepageContent {
+    .tileContainer {
+        width: 90%;
+        margin: auto;
+        display: relative;
     }
 }

@@ -9,6 +9,7 @@ var config = {
       // Add each page's entry here
       homepage: './pages/resources/js/homepage', //the mapping jsx file
       logon: './pages/resources/js/logon'
+
     },
     output: {
       path: path.join(__dirname, '..', '/WEB-INF/build'),

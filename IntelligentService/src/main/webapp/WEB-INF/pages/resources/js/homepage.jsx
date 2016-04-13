@@ -6,45 +6,96 @@ import React from "react";
 import "./../css/homepage.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import Header from "./header.jsx";
+import Footer from "./footer.jsx";
+import TileGroup from "./tileGroup.jsx";
 
-var Tile = React.createClass({
-    getInitialState: function(){
-        return { unreadCount: 5,
-            title: 'Meet your team',
-            background: '#fff',
-            icon: '',
-            size: 1,
-            name: 'Freyja',
-            type: ''
-        };
-    },
+class Homepage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.props = {
+            tileGroups : props.tileGroups
+        }
+    }
 
-    handleTileClick: function(e){
-        //this.setState({companyId: e.target.value});
-        console.log("tile click: ", e);
-    },
-
-
-    render: function () {
+    render() {
         return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                        <h3>{this.state.title}</h3>
-                    </div>
-                    <div className="unreadCount">
-                        {this.state.unreadCount}
-                    </div>
+            <div id="HomepageContent">
+                <Header />
+
+                <div className="tileContainer">
+                    {this.props.tileGroups.map((tileGroup) => {
+                        return (
+                            <div className="tileGroup">
+                                <TileGroup title={tileGroup.title} tileList={tileGroup.tileList}/>
+                            </div>
+                        );
+                    })}
                 </div>
-                <div className="helloMsg">
-                    <p>hello, {this.state.name}</p>
-                </div>
+
+                <Footer />
             </div>
         );
     }
-});
+}
+
+Homepage.propType = {
+    tileGroups: React.PropTypes.array
+}
+
+Homepage.defaultProps = {
+    tileGroups: [
+        {
+            title: "Employee",
+            tileList: [{
+                title: "Hello",
+                type: "0",
+                icon: "",
+                url: ""
+            },{
+                title: "Finish your profile",
+                type: "1",
+                icon: "",
+                url:""
+            },{
+                title: "Your courses",
+                type: "1",
+                icon: "",
+                url: ""
+            }]
+        },
+        {
+            title: "Hot Jobs",
+            tileList: [{
+                title: "Hot Jobs",
+                type: "2",
+                icon: "",
+                url: ""
+            }]
+        },
+        {
+            title: "Admin Center",
+            tileList: [{
+                title: "Employee config",
+                type: "1",
+                icon: "",
+                url: ""
+            },{
+                title: "Position config",
+                type: "1",
+                icon: "",
+                url: ""
+            },{
+                title: "Courses config",
+                type: "1",
+                icon: "",
+                url: ""
+            }]
+        }
+    ]
+}
 
 ReactDOM.render(
-    <Tile/>,
-    document.getElementById("content")
+    <Homepage />,
+    document.getElementById("homepage")
 );
