@@ -23,74 +23,51 @@ class Tile extends React.Component{
         console.log("tile click: ", e);
     }
 
+    //employee info tile
     _renderType0(){
         return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                        <h3>{this.props.title}</h3>
-                    </div>
-                    <div className="unreadCount">
-                        {this.props.unreadCount}
-                    </div>
+            <div className="tileBlock smallsize" onPress={this.handleTileClick}>
+                <div className="tileContent">
+                    <div className="tileTitle title"><h3>{this.props.title}</h3></div>
+                    <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="helloMsg">
-                    <p>hello, Freyja</p>
-                </div>
+                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
         );
     }
 
+    //common tile
     _renderType1(){
         return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                        <h3>{this.props.title}</h3>
-                    </div>
-                    <div className="unreadCount">
-                        {this.props.unreadCount}
-                    </div>
+            <div className="tileBlock smallsize" onPress={this.handleTileClick}>
+                <div className="tileContent">
+                    <div className="tileTitle title"><h3>{this.props.title}</h3></div>
+                    <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="helloMsg">
-                    <p>hello, Freyja</p>
-                </div>
+                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
         );
     }
 
+    //size two tile
     _renderType2(){
         return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                    </div>
-                    <div className="unreadCount">
-                        {this.props.unreadCount}
-                    </div>
+            <div className="tileBlock bigsize" onPress={this.handleTileClick}>
+                <div className="tileContent">
+                    <div className="tileTitle title"><h3>{this.props.title}</h3></div>
+                    <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="helloMsg">
-                    <p>hello, Freyja</p>
-                </div>
+                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
         );
     }
     render() {
-        return (
-            <div className="tileBlock" onPress={this.handleTileClick}>
-                <div className="tileTitle">
-                    <div className="title">
-                        <h3>{this.props.title}</h3>
-                    </div>
-                    <div className="unreadCount">
-                        {this.props.unreadCount}
-                    </div>
-                </div>
-                <div className="helloMsg">
-                    <p>hello, Freyja</p>
-                </div>
-            </div>
-        );
+        switch ( this.props.type){
+        case '0': return (this._renderType0());
+        case '1': return (this._renderType1());
+        case '2': return (this._renderType2());
+        default: return (this._renderType1());
+        }
     }
 
 
@@ -102,7 +79,7 @@ Tile.propTypes = {
     background: React.PropTypes.string,
     icon: React.PropTypes.string,
     size: React.PropTypes.number,
-    type: React.PropTypes.string,
+    type: React.PropTypes.string
 }
 
 Tile.defaultProps = {

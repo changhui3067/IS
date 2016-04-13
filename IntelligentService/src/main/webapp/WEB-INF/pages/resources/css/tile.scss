@@ -1,48 +1,48 @@
 .tileBlock {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        background-color: #fff;
-        float: left;
-        cursor: pointer;
-        border-radius: 15px;
-        margin: 0 10px 10px 0;
+    position: relative;
+    box-sizing: border-box;
+    background-color: #fff;
+    float: left;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
 
-        .tileTitle {
-            width: 100%;
-
-            .title {
-                padding-left: 10px;
-                width: calc(100% - 40px);
-                float: left;
-            }
-
-            .unreadCount {
-                float: left;
-                width: 20px;
-                height: 20px;
-                background-color: red;
-                color: white;
-                border-radius: 15px;
-                font-size: 20px;
-                padding: 5px 0 5px 10px;
-            }
+    .tileContent {
+      .tileTitle {
+        width: 100%;
+        padding-left: 10px;
+        h3 {
+          font-size: 16px;
         }
+      }
 
-        .helloMsg {
-            position: absolute;
-            bottom: 0;
-            padding-left: 10px;
-            background: rgba( 0, 0, 0, .4);
-            width: calc(100% - 10px);
-            border-radius: 0 0 15px 15px;
+      .helloMsg {
+        position: absolute;
+        bottom: 0;
+        padding-left: 10px;
+        background: rgba( 0, 0, 0, .4);
+        width: calc(100% - 10px);
+        border-radius: 0 0 10px 10px;
 
-            p {
-                font-size: 16px;
-                color: #FFF;
-              margin: 5px;
-            }
+        p {
+          font-size: 16px;
+          color: #FFF;
+          margin: 5px;
         }
+      }
+    }
+
+
+  .unreadCount {
+      float: left;
+      width: 16px;
+      height: 16px;
+      background-color: red;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      padding: 5px 0 5px 10px;
+  }
 }
 
 .tileBlock:hover {
@@ -54,3 +54,14 @@
     width: 90%;
     text-align: center;
 }
+
+.smallsize{
+  width: 180px;
+  height: 180px;
+}
+
+.bigsize{
+    width: 380px;
+    height: 180px;
+}
+
