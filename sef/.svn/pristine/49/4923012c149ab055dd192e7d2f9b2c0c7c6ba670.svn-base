@@ -1,0 +1,22 @@
+<activity-feature-map>
+	<module>
+		<activity id="com.successfactors.sef.service.GetEventMetaData">
+			<feature id="*" />
+		</activity>
+		<activity id="com.successfactors.sef.service.GetSubscriberConfigurationData">
+			<feature id="*" />
+		</activity>
+		<activity id="com.successfactors.sef.service.SetSubscriberConfigurationData">
+			<feature id="*" />
+		</activity>
+		<activity id="com.successfactors.sef.service.GetEntityEventsMap">
+			<feature id="*" />
+		</activity>
+		<activity id="com.successfactors.sef.service.SetEntityEventsMap">
+			<feature id="*" />
+		</activity>
+		<activity id="com.successfactors.sef.service.SetPreFeatureForIntelligentService">
+			<feature id="*" />
+		</activity>
+	</module>
+</activity-feature-map>

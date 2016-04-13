@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="default" name="au-sef-service">
+
+  <available file="../../dev-foundation/build-system" property="build.system.path" type="dir" value="../../dev-foundation/build-system"/>
+  <property name="build.system.path" value="../../build-system"/>
+  <property location="${build.system.path}" name="build.system.dir"/>
+  <import file="${build.system.dir}/module.xml" optional="false"/>
+
+</project>

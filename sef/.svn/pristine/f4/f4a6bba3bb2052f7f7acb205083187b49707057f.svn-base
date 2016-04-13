@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<application
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.zeroturnaround.com"
+xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+
+<classpath fallback="default">
+<dir name="@compiled_classes@">
+   <include name="@include_pattern@"/> 
+   <exclude name="@exclude_pattern_1@"/> 
+   <exclude name="@exclude_pattern_2@"/> 
+   <exclude name="@exclude_pattern_3@"/> 
+ </dir>
+<dir name="@resources@"/>
+</classpath>
+<!--
+<jar name="@jboss.server.config@deploy/sfv4.ear/lib/@artifact.module.name@.jar">
+    <include name="com/successfactors/**/*.class" />
+</jar>
+<web>
+</web>
+-->
+
+</application>
+

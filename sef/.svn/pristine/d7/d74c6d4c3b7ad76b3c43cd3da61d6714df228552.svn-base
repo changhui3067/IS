@@ -1,0 +1,30 @@
+<activity-permission-map>
+	<module>
+		<activity-group id="SmartEventFramework">
+			<activity id="com.successfactors.sef.service.GetEventMetaData" />
+			<activity id="com.successfactors.sef.service.GetSubscriberConfigurationData" />
+			<activity id="com.successfactors.sef.service.SetSubscriberConfigurationData" />
+			<activity id="com.successfactors.sef.service.GetEntityEventsMap" />
+			<activity id="com.successfactors.sef.service.SetEntityEventsMap" />
+			<activity id="com.successfactors.sef.service.SetPreFeatureForIntelligentService" />
+		</activity-group>
+		<role id="event_dashboard_smartsuite_admin">
+			<activity-group refid="SmartEventFramework" />
+		</role>
+		<role id="user">
+			<activity-group refid="SmartEventFramework" />
+		</role>
+		<role id="processJob">
+			<activity-group refid="SmartEventFramework" />
+		</role>
+		<role id="admin">
+            <activity-group refid="SmartEventFramework"/>
+        </role>
+        <role id="user_admin">
+			<activity-group refid="SmartEventFramework" />
+		</role>
+        <role id="user_login">
+			<activity-group refid="SmartEventFramework" />
+		</role>
+	</module>
+</activity-permission-map>

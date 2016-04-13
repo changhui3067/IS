@@ -1,0 +1,47 @@
+[
+  {
+    "type": "ManagerChange",
+    "localizedTypeKey": "",
+    "descriptionMessageKey": "",
+    "topic": "com.successfactors.Employment.JobInformation.ManagerChanged",
+    "filterParameters": [],
+    "entity": "JobInformation",
+    "sourceArea": "MODULE_ECT",
+    "ruleCode": "SAP_EVENT_MNGRCHG",
+    "bulkEventType": false,
+    "externallyAllowed": true,
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "User ID",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "effectiveStartDate",
+        "type": "date",
+        "description": "date",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "transactionSequence",
+        "type": "integer",
+        "description": "Transaction Sequence",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "managerId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "EMP_DESCRIBE_THIS_PARAM",
+        "hasValueAlways": "true"
+      }
+    ]
+  }
+]

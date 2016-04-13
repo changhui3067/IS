@@ -1,0 +1,1579 @@
+[
+	{
+		"type": "EndGlobalAssignment",
+		"localizedTypeKey": "SEF_EVENT_END_GLOBAL_ASSIGNMENT",
+		"descriptionMessageKey": "SEF_EVENT_END_GLOBAL_ASSIGNMENT_DESC",
+		"entity": "EmpJob",
+		"sourceArea": "MODULE_ECT",
+		"topic": "com.successfactors.Employment.AssignmentInformation.EndGlobalAssignment",
+		"bulkEventType": true,
+		"externallyAllowed": true,
+		"ruleCode": "SAP_EVENT_ENDGA",
+		"effectiveDated": true,
+		"maxEventsGrouped": 50,
+		"smartSuiteEvent": true,
+		"featureEnum": "",
+		"filterParameters": [],
+		"entityKeys": [{
+			"name": "userId",
+			"type": "string",
+			"description": "",
+			"descriptionMessageKey": ""
+		}, {
+			"name": "seqNumber",
+			"type": "string",
+			"description": "",
+			"descriptionMessageKey": ""
+		}],
+		"params": [{
+			"name": "changedFields",
+			"type": "string",
+			"description": "",
+			"descriptionMessageKey": "",
+			"hasValueAlways": false
+		}, {
+			"name": "homeUserId",
+			"type": "string",
+			"description": "",
+			"descriptionMessageKey": "",
+			"hasValueAlways": false
+		}]
+	},
+  {
+	"type": "JobInfoChangePMFormInitiate",
+	"localizedTypeKey": "SEF_EVENT_JOBINFO_CHANGE_PM_FORM_INITIATE",
+	"descriptionMessageKey": "SEF_EVENT_JOBINFO_CHANGE_PM_FORM_INITIATE_DESC",
+	"entity": "EmpJob",
+	"sourceArea": "MODULE_ECT",
+	"topic": "com.successfactors.Employment.JobInformation.EmpJobInfoChangePMFormInitiate",
+	"bulkEventType": true,
+	"externallyAllowed": false,
+	"ruleCode": "SAP_EVENT_ADDPMF",
+	"effectiveDated": true,
+	"maxEventsGrouped": 50,
+	"smartSuiteEvent": true,
+	"featureEnum": "",
+	"filterParameters": [],
+	"entityKeys": [{
+		"name": "userId",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "seqNumber",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}],
+	"params": [{
+		"name": "changedFields",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": "",
+		"hasValueAlways": false
+	},{
+		"name": "formTemplateName",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": "",
+		"hasValueAlways": false
+	}]
+  },
+  {
+    "type": "IndividualContributorBecomesManager",
+    "localizedTypeKey": "SEF_EVENT_INDIVIDUAL_CONTRIBUTOR_TO_MANAGER",
+    "descriptionMessageKey": "SEF_EVENT_INDIVIDUAL_CONTRIBUTOR_TO_MANAGER_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.IndividualContributorBecomesManager",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SAP_EVENT_IC2MGR",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "ManagerBecomesIndividualContributor",
+    "localizedTypeKey": "SEF_EVENT_MANAGER_TO_INDIVIDUAL_CONTRIBUTOR",
+    "descriptionMessageKey": "SEF_EVENT_MANAGER_TO_INDIVIDUAL_CONTRIBUTOR_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.ManagerBecomesIndividualContributor",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SAP_EVENT_MGR2IC",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "FirstTimeManager",
+    "localizedTypeKey": "SEF_EVENT_FIRST_TIME_MANAGER",
+    "descriptionMessageKey": "SEF_EVENT_FIRST_TIME_MANAGER_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.FirstTimeManager",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SAP_EVENT_MGRFT",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "LocationChange",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_LOCATION",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_LOCATION_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.LocationChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_LOCNCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "DepartmentChange",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_DEPARTMENT",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_DEPARTMENT_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.DepartmentChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DEPTCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "DivisionChange",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_DIVISION",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_DIVISION_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.DivisionChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DIVNCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+ 
+  {
+    "type": "JobTitleChange",
+    "localizedTypeKey": "SEF_EVENT_JOB_TITLE",
+    "descriptionMessageKey": "SEF_EVENT_JOB_TITLE_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.JobTitleChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_TITLCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "BusinessUnitChange",
+    "localizedTypeKey": "SEF_EVENT_BUSINESSUNITCHANGE",
+    "descriptionMessageKey": "SEF_EVENT_BUSINESSUNITCHANGE_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.BusinessUnitChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_BUCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "JobClassificationChange",
+    "localizedTypeKey": "SEF_EVENT_JOBCLASSIFICATIONCHANGE",
+    "descriptionMessageKey": "SEF_EVENT_JOBCLASSIFICATIONCHANGE_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.JobClassificationChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_JBCLSCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "ReHire",
+    "localizedTypeKey": "SEF_EVENT_REHIRE",
+    "descriptionMessageKey": "SEF_EVENT_REHIRE_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.AssignmentInformation.ReHire",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_REH",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "ManagerChange",
+    "localizedTypeKey": "SEF_EVENT_CHANGE_IN_MANAGER",
+    "descriptionMessageKey": "SEF_EVENT_CHANGE_IN_MANAGER_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.ManagerChange",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SAP_EVENT_MNGRCHG",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "Absence",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_LEAVE_ABSENCE",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_LEAVE_ABSENCE_DESC",
+    "entity": "EmployeeTime",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.EmployeeTime.Absence",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_LOASTA",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "ShortTermDisability",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_SHORT_TERM_DISABILITY",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_SHORT_TERM_DISABILITY_DESC",
+    "entity": "EmployeeTime",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.EmployeeTime.ShortTermDisability",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_STDLSTA",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "LongTermDisability",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_LONG_TERM_DISABILITY",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_LONG_TERM_DISABILITY_DESC",
+    "entity": "EmployeeTime",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.EmployeeTime.LongTermDisability",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_LTDLSTA",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "Hire",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_HIRE",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_HIRE_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.AssignmentInformation.Hire",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_HIRE",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "Termination",
+    "localizedTypeKey": "SEF_EVENT_EMPLOYEE_TERMINATION",
+    "descriptionMessageKey": "SEF_EVENT_EMPLOYEE_TERMINATION_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.AssignmentInformation.Termination",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_TERM",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "JobRequisition.Updated",
+    "localizedTypeKey": "SEF_EVENT_UPDATE_JOB_REQ",
+    "descriptionMessageKey": "SEF_EVENT_UPDATE_JOB_REQ_DESC",
+    "entity": "JobRequisition",
+    "sourceArea": "MODULE_RCM",
+    "topic": "com.successfactors.recruiting.JobRequisition.Updated",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "jobReqId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "updatedFieldsList",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "isOnboardingInitiated",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "JobApplication.Updated",
+    "localizedTypeKey": "SEF_EVENT_UPDATE_JOB_APP",
+    "descriptionMessageKey": "SEF_EVENT_UPDATE_JOB_APP_DESC",
+    "entity": "JobApplication",
+    "sourceArea": "MODULE_RCM",
+    "topic": "com.successfactors.recruiting.JobApplication.Updated",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "applicationId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "updatedFieldsList",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "isOnboardingInitiated",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "JobOffer.Updated",
+    "localizedTypeKey": "SEF_EVENT_APPROVAL_OFFER_DEATIL",
+    "descriptionMessageKey": "SEF_EVENT_APPROVAL_OFFER_DEATIL_DESC",
+    "entity": "JobOffer",
+    "sourceArea": "MODULE_RCM",
+    "topic": "com.successfactors.recruiting.JobOffer.Updated",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "offerApprovalId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "isOnboardingInitiated",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "applicationId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "WorkOrderExpiration",
+    "localizedTypeKey": "SEF_EVENT_WORK_ORDER_EXPIRATION",
+    "descriptionMessageKey": "SEF_EVENT_WORK_ORDER_EXPIRATION_DESC",
+    "entity": "WorkOrder",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.Contingent.WorkOrderExpiration",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "workOrderOwnerId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "JobHistoryImport",
+    "localizedTypeKey": "SEF_EVENT_JOB_HISTORY_IMPORT",
+    "descriptionMessageKey": "SEF_EVENT_JOB_HISTORY_IMPORT_DESC",
+    "entity":"JobInformation",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.hris.app.importer.decoupling.event.jobInfoEventTopic",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "importPayLoad",
+        "type": "string",
+        "description": "JSON representation of ImportEventPayload",
+        "descriptionMessageKey": ""
+      }
+     ]
+  },
+  {
+    "type": "AddGlobalAssignment",
+    "localizedTypeKey": "SEF_EVENT_ADD_GLOBAL_ASSIGNMENT",
+    "descriptionMessageKey": "SEF_EVENT_ADD_GLOBAL_ASSIGNMENT_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.AssignmentInformation.AddGlobalAssignment",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SAP_EVENT_ADDGA",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "homeUserId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  {
+    "type": "CreateConcurrentEmployment",
+    "localizedTypeKey": "SEF_EVENT_CONCURRENT_EMPLOYMENT",
+    "descriptionMessageKey": "SEF_EVENT_CONCURRENT_EMPLOYMENT_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.AssignmentInformation.CreateConcurrentEmployment",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "personIdExternal",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  {
+    "type": "Transfer",
+    "localizedTypeKey": "SEF_EVENT_JOBINFORMATION_TRANSFER",
+    "descriptionMessageKey": "SEF_EVENT_JOBINFORMATION_TRANSFER_DESC",
+    "entity": "EmpJob",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.Employment.JobInformation.Transfer",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "SEF_EVENT_JOBINFORMATION_TRANSFER_DESC",
+    "effectiveDated": true,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "userId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      },
+      {
+        "name": "seqNumber",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "changedFields",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },  
+  {
+   "type": "CalibrationActivateSession",
+   "localizedTypeKey": "SEF_EVENT_CALIBRATION_ACTIVATE_SESSION",
+   "descriptionMessageKey": "SEF_EVENT_CALIBRATION_ACTIVATE_SESSION_DESC",
+   "entity": "CalibrationSession",
+   "sourceArea": "MODULE_CALIBRATION",
+   "topic": "com.successfactors.codomain.calibration.ActivateCalibrationSession",
+   "bulkEventType": true,
+   "externallyAllowed": true,  
+   "ruleCode": "SAP_EVENT_ADDGA",
+   "effectiveDated": false,
+   "maxEventsGrouped": 50,
+   "smartSuiteEvent": true,
+   "entityKeys": [
+     {
+       "name": "sessionid",
+       "type": "string",
+       "description": "Calibration Session Id",
+       "descriptionMessageKey": "Calibration Session Id"
+     }
+   ],
+   "params": [
+     {
+       "name": "sessionid",
+       "type": "string",
+       "description": "",
+       "descriptionMessageKey": "",
+       "hasValueAlways": false
+     }     
+   ]
+   },
+    {
+    "type": "NewSuccessor",
+    "localizedTypeKey": "SEF_EVENT_NEW_SUCCESSOR",
+    "descriptionMessageKey": "SEF_EVENT_NEW_SUCCESSOR_DESC",
+    "entity": "Successor",
+    "sourceArea": "MODULE_SM",
+    "topic": "com.successfactors.Succession.Successor.NewSuccessor",
+    "bulkEventType": true,
+    "externallyAllowed": false,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "assignment",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "newSuccessorPayLoad",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]  
+    },
+  {
+    "type": "PMPopulateRatings",
+    "localizedTypeKey": "SEF_EVENT_PM_POPULATE_RATINGS",
+    "descriptionMessageKey": "SEF_EVENT_PM_POPULATE_RATINGS_DESC",
+    "entity": "Form",
+    "sourceArea": "MODULE_PMTFT",
+    "topic": "com.successfactors.pmcommon.PMPopulateRatings",
+    "bulkEventType": true,
+    "externallyAllowed": false,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "formId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "employeeId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "employeeName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "managerId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "managerName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "performanceRating",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "potentialRating",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "PMFormRouting",
+    "localizedTypeKey": "SEF_EVENT_PM_FORM_ROUTING",
+    "descriptionMessageKey": "SEF_EVENT_PM_FORM_ROUTING_DESC",
+    "entity": "PMReviewForm",
+    "sourceArea": "MODULE_PMTFT",
+    "topic": "com.successfactors.pmcommon.PMFormRouting",
+    "bulkEventType": true,
+    "externallyAllowed": false,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "formId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "employeeId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "managerId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "lastRouteStepId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "currentRouteStepId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "routeMapStatus",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "formRouteDate",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  
+  {
+    "type": "AddDevGoal",
+    "localizedTypeKey": "DEVELOPMENT_EVENT_DEV_ADD_GOAL",
+    "descriptionMessageKey": "DEVELOPMENT_EVENT_DEV_ADD_GOAL_DESC",
+    "entity": "DevGoal",
+    "sourceArea": "MODULE_CDP",
+    "topic": "com.successfactors.cdp.development.NewGoal",
+    "bulkEventType": true,
+    "externallyAllowed": false,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "objectiveId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "objectiveId",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]  
+    },
+    
+      {
+    "type": "MassChangeRun.Success",
+    "localizedTypeKey": "GO_MassChangeRun_Event_Success",
+    "descriptionMessageKey": "GO_MassChangeRun_Event_Success",
+    "entity": "MassChangeRun",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.genericobject.masschangerun.app.job.events.runfinished",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+	"params": [
+      {
+        "name": "jobInstanceID",
+        "type": "integer",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "changedObjectType",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "numOfUpdatedData",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "numOfFailedData",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "executionMode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "MassChangeRun.Started",
+    "localizedTypeKey": "GO_MassChangeRun_Event_Started",
+    "descriptionMessageKey": "GO_MassChangeRun_Event_Started",
+    "entity": "MassChangeRun",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.genericobject.masschangerun.app.job.events.runstarted",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "MassChangeRun.Failed",
+    "localizedTypeKey": "GO_MassChangeRun_Event_Failed",
+    "descriptionMessageKey": "GO_MassChangeRun_Event_Failed",
+    "entity": "MassChangeRun",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.genericobject.masschangerun.app.job.events.runfailed",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+	"params": [
+      {
+        "name": "changedObjectType",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "stackTrace",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      },
+      {
+        "name": "exceptionMessage",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "CalendarRun",
+    "localizedTypeKey": "SEF_EVENT_CALENDAR_RUN",
+    "descriptionMessageKey": "SEF_EVENT_CALENDAR_RUN_DESC",
+    "entity": "TimeAccountChangeCalendar",
+    "sourceArea": "MODULE_ECT",
+    "topic": "com.successfactors.absence.app.calendarrun.events.runfinished",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "rowId",
+        "type": "INTEGER",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  },
+  
+  {
+    "type": "SpotAwardGivenEvent",
+    "localizedTypeKey": "SEF_SPOT_AWARD_GIVEN_EVENT",
+    "descriptionMessageKey": "SEF_SPOT_AWARD_GIVEN_EVENT_DESC",
+    "entity": "SpotAward",
+    "sourceArea": "MODULE_COMP",
+    "topic": "com.successfactors.spotawards.intelligentservice.SpotAwardGivenEvent",
+    "bulkEventType": false,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "externalCode",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+	"params": [
+      {
+        "name": "receiverName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "nominatorName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "programName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "categoryName",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      },
+      {
+        "name": "approvalDateISO",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": true
+      }
+    ]
+  },
+  
+  {
+    "type": "CompExecutiveReviewEdit",
+    "localizedTypeKey": "SEF_EVENT_COMP_EXECUTIVE_REVIEW_EDIT",
+    "descriptionMessageKey": "SEF_EVENT_COMP_EXECUTIVE_REVIEW_EDIT_DESC",
+    "entity": "CompExecutiveReviewEdit",
+    "sourceArea": "MODULE_COMP",
+    "topic": "com.successfactors.compensation.executivereview.CompExecutiveReviewEdit",
+    "bulkEventType": false,
+    "externallyAllowed": false,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [],
+	"params": []
+  },
+  
+  {
+    "type": "SyncWFAAndBizXPermissionArtifacts",
+    "localizedTypeKey": "SEF_EVENT_CHANGE_IN_WFA_PERMISSION_ARTIFACTS",
+    "descriptionMessageKey": "SEF_EVENT_CHANGE_IN_WFA_PERMISSION_ARTIFACTS_DESC",
+    "entity": "BizXWFAPermissionIntegration",
+    "sourceArea": "MODULE_ANALYTICS",
+    "topic": "com.successfactors.PermissionChange.SyncWFAAndBizXPermissionArtifacts",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "EVENT_DUMMY",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": true,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "ActionType",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+	  {
+	    "name": "AnalysisDimension",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+	  },
+	  {
+	    "name": "Measures",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+	  },
+	  {
+	    "name": "SyncStructuralDimension",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+	  },
+      {
+        "name": "DeleteStructuralDimension",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  
+  {
+    "type": "DocumentTransfer",
+    "localizedTypeKey": "SEF_EVENT_DOCUMENT_TRANSFER",
+    "descriptionMessageKey": "SEF_EVENT_DOCUMENT_TRANSFER_DESC",
+    "entity": "DocumentTransferInformation",
+    "sourceArea": "MODULE_TFT",
+    "topic": "com.successfactors.tft.workflow.DocumentTransfer",
+    "bulkEventType": true,
+    "externallyAllowed": true,
+    "ruleCode": "",
+    "effectiveDated": false,
+    "maxEventsGrouped": 50,
+    "smartSuiteEvent": false,
+    "featureEnum": "",
+    "filterParameters": [],
+    "entityKeys": [
+      {
+        "name": "documentTransferInfo",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "documentTransferInfo",
+        "type": "string",
+        "description": "",
+        "descriptionMessageKey": ""
+      }
+    ]
+  }, 
+  {
+	"type": "LearningCompletion",
+	"localizedTypeKey": "SEF_EVENT_COMPLETION_OF_LEARNING",
+	"descriptionMessageKey": "SEF_EVENT_COMPLETION_OF_LEARNING_DESC",
+	"entity": "learninghistory",
+	"sourceArea": "MODULE_LMS",
+	"topic": "com.successfactors.Learning.LearningCompletion",
+	"bulkEventType": true,
+	"externallyAllowed": true,
+	"ruleCode": "",
+	"effectiveDated": false,
+	"maxEventsGrouped": 100,
+	"smartSuiteEvent": true,
+	"featureEnum": "",
+	"filterParameters": [],
+	"entityKeys": [{
+		"name": "userID",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "itemID",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "itemTypeID",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "revisionDate",
+		"type": "Long",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "completionStatusID",
+		"type": "string",
+		"description": "",
+		"descriptionMessageKey": ""
+	}, {
+		"name": "completionDate",
+		"type": "Long",
+		"description": "",
+		"descriptionMessageKey": ""
+	}],
+	"params": []
+}
+]

@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="module suite" verbose="1">
+    <test name="module suite tests">
+      <classes>
+            <class name="com.successfactors.sef.EventMetadataProviderTest"/>
+			<class name="com.successfactors.sef.NotificationMetadataProviderTest"/>
+			<class name="com.successfactors.sef.service.GetEventMetaDataImplTest"/>
+			<class name="com.successfactors.sef.service.GetSubscriberConfigurationDataImplTest"/>
+        </classes>
+      <groups>
+            <run>
+              <exclude name="broken"/>
+              <exclude name="dbtest"/>
+              <exclude name="integration.*"/>
+          </run>
+        </groups>
+    </test>
+</suite>

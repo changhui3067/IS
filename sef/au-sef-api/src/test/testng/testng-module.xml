@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="module suite" verbose="1">
+    <test name="module suite tests">
+      <classes>
+            <class name="com.successfactors.sef.service.SEFExternalLinkTest"/>
+        </classes>
+      <groups>
+            <run>
+              <exclude name="broken"/>
+              <exclude name="dbtest"/>
+              <exclude name="integration.*"/>
+          </run>
+        </groups>
+    </test>
+</suite>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:sfh="http://www.successfactors.com/xi/html"
+      xmlns:smrf="http://www.successfactors.com/smrf/html"
+      xmlns:as="http://www.successfactors.com/ajaxservice/core"
+      xmlns:sfp="http://www.successfactors.com/xi/page"
+      xmlns:af="http://www.successfactors.com/xi/ajaxfrags"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+
+<ui:composition template="/ui/sef/pages/blank.xhtml">
+    <ui:define name="content">
+        <as:ajaxinclude include="ruleEditorGetMetaDataController" legacyMode="false"/>
+        <as:ajaxinclude include="OOWController" legacyMode="false"/>
+        <as:ajaxinclude include="ruleEditorController" legacyMode="false"/>
+
+        <smrf:link href="/ui/topnav/css/SFRevolutionTopNav.css"/>
+        <smrf:link href="/ui/uicore/css/revolutioncommon.css"/>
+        <smrf:link href="/ui/ruleengine/css/reRuleEditor.css"/>
+        <smrf:script src="/ui/ruleengine/js/rules/reRuleContainer.js"/>
+        <smrf:script src="/ui/sef/js/sefRuleEmbed.js"/>
+
+        <div id="sefRuleEmbedContent" style="padding: 1rem;"></div>
+    </ui:define>
+</ui:composition>
+</html>

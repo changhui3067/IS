@@ -1,0 +1,94 @@
+[
+  {
+    "type":"ManagerChange",
+    "notifications":[
+      {
+        "module":"MODULE_SM",
+        "impactArea":"IMPAREA_HPT",
+        "notificationDescription": "SEF_SUB_IMP_AREA_SM_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_T0DO_NOTIFICATION"
+      }
+    ]
+  },
+  {
+    "type":"Hire",
+    "notifications":[
+      {
+        "module":"MODULE_GM",
+        "impactArea":"IMPAREA_EGOAL",
+        "notificationDescription": "SEF_SUB_IMP_AREA_GM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      }
+    ]
+  },
+  {
+    "type":"ShortTermDisability",
+    "notifications":[
+      {
+        "module":"MODULE_GM",
+        "impactArea":"IMPAREA_EGOAL",
+        "notificationDescription": "SEF_SUB_IMP_AREA_GM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_PMTFT",
+        "impactArea":"IMPAREA_DT",
+        "notificationDescription": "SEF_SUB_IMP_AREA_PMTFT_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_RCM",
+        "impactArea":"IMPAREA_JR",
+        "notificationDescription": "SEF_SUB_IMP_AREA_RCM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      }
+    ]
+  },
+  {
+    "type":"LongTermDisability",
+    "notifications":[
+      {
+        "module":"MODULE_GM",
+        "impactArea":"IMPAREA_EGOAL",
+        "notificationDescription": "SEF_SUB_IMP_AREA_GM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_PMTFT",
+        "impactArea":"IMPAREA_DT",
+        "notificationDescription": "SEF_SUB_IMP_AREA_PMTFT_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_RCM",
+        "impactArea":"IMPAREA_JR",
+        "notificationDescription": "SEF_SUB_IMP_AREA_RCM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      }
+    ]
+  },
+  {
+    "type":"Absence",
+    "notifications":[
+      {
+        "module":"MODULE_GM",
+        "impactArea":"IMPAREA_EGOAL",
+        "notificationDescription":"SEF_SUB_DESC_ABSENCE_EMP_LONG_DIS_GM",
+        "notificationType": "SEF_SUB_NOTIFICATION_T0DO_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_PMTFT",
+        "impactArea":"IMPAREA_DT",
+        "notificationDescription":"SEF_SUB_IMP_AREA_PMTFT_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      },
+      {
+        "module":"MODULE_RCM",
+        "impactArea":"IMPAREA_JR",
+        "notificationDescription": "SEF_SUB_IMP_AREA_RCM_NOTIFICATION_DESC",
+        "notificationType": "SEF_SUB_NOTIFICATION_EMAIL_NOTIFICATION"
+      }
+    ]
+  }
+
+]

@@ -1,0 +1,139 @@
+[
+
+  {
+    "type":"Absence",
+    "subscribers":[
+     
+      {
+        "module":"MODULE_PMTFT" , 
+        "subscribingImpactArea": [
+        	{
+        		"impactArea": "IMPAREA_FR"
+        	}
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_ABSENCE_EMP_LEAVE_TALENT",
+        "status": true,
+        "reDelivered": true,
+    	"daysInAdvance": 7,
+    	"externalLink":"",
+    	"externalLinkTitle":"",
+    	"pocFeature": ""
+           
+      },
+      {
+        "module":"MODULE_RCM" ,
+        "subscribingImpactArea": [
+          {
+            "impactArea": "IMPAREA_JR"
+          }
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_ABSENCE_EMP_LEAVE_RCM",
+        "status": true,
+        "reDelivered": true,
+        "daysInAdvance": 7,
+        "externalLink":"SEAM:recruitingURL",
+        "externalLinkTitle":"SEF_EXTERNALLINK_ALERT_TITLE",
+        "pocFeature": ""
+
+      }
+    ]
+  },
+  {
+    "type":"LongTermDisability",
+    "subscribers":[
+     
+      {
+        "module":"MODULE_PMTFT" , 
+        "subscribingImpactArea": [
+        	{
+        		"impactArea": "IMPAREA_FR"
+        	}
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_LONGTERM_EMP_LEAVE_TALENT",
+        "status": true,
+        "reDelivered": true,
+    	"daysInAdvance": 7,
+    	"externalLink":"",
+    	"externalLinkTitle":"",
+    	"pocFeature": ""        
+      },
+      {
+        "module":"MODULE_RCM" ,
+        "subscribingImpactArea": [
+          {
+            "impactArea": "IMPAREA_JR"
+          }
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_SHORTERM_EMP_LEAVE_RCM",
+        "status": true,
+        "reDelivered": true,
+        "daysInAdvance": 7,
+        "externalLink":"SEAM:recruitingURL",
+        "externalLinkTitle":"SEF_EXTERNALLINK_ALERT_TITLE",
+        "pocFeature": ""
+
+      }
+    ]
+  },
+  {
+    "type":"ShortTermDisability",
+    "subscribers":[
+     
+      {
+        "module":"MODULE_PMTFT" , 
+        "subscribingImpactArea": [
+        	{
+        		"impactArea": "IMPAREA_FR"
+        	}
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_SHORTTERM_EMP_LEAVE_TALENT",
+        "status": true,
+        "reDelivered": true,
+    	"daysInAdvance": 7,
+    	"externalLink":"",
+    	"externalLinkTitle":"",
+        "pocFeature": ""   
+      },
+      {
+        "module":"MODULE_RCM" ,
+        "subscribingImpactArea": [
+          {
+            "impactArea": "IMPAREA_JR"
+          }
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_SHORTERM_EMP_LEAVE_RCM",
+        "status": true,
+        "reDelivered": true,
+        "daysInAdvance": 7,
+        "externalLink":"SEAM:recruitingURL",
+        "externalLinkTitle":"SEF_EXTERNALLINK_ALERT_TITLE",
+        "pocFeature": ""
+
+      }
+    ]
+  },
+  {
+    "type":"LocationChange",
+    "subscribers":[
+     
+      {
+        "module":"MODULE_LMS" , 
+        "subscribingImpactArea": [
+        	{
+        		"impactArea": "IMPAREA_LA"
+        	}
+        ],
+        "subscriberDescription":"SEF_SUB_DESC_LOCATION_CHANGE_LEARNING",
+        "status": true,
+        "reDelivered": true,
+    	"daysInAdvance": 7,
+    	"externalLink":"",
+    	"externalLinkTitle":"",
+    	"pocFeature": "SEF_POC"
+           
+      }
+    ]
+  }
+ 
+  
+]

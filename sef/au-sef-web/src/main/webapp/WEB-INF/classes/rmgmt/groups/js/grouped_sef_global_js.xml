@@ -1,0 +1,37 @@
+<groupdefinition>
+    <groups>
+        <group id="sefCommonJS" type="global">
+            <resource uri="/ui/sef/js/i18n.js"/>
+            <resource uri="/ui/sef/js/Formatter.js"/>
+            <resource uri="/ui/sef/js/Utils.js"/>
+            <resource uri="/ui/sef/js/SEFHomepage.js"/>
+        </group>
+
+        <group id="sefEventDashboard" type="global">
+            <resource uri="/ui/sef/js/eventDashboard/EventDashboard.js"/>
+            <resource uri="/ui/sef/js/eventDashboard/EventDashboard.component.js"/>
+            <resource uri="/ui/sef/js/eventDashboard/EventDashboard.controller.js"/>
+            <resource uri="/ui/sef/js/eventDashboard/EventDashboard.view.js"/>
+            <resource uri="/ui/sef/js/eventDashboard/EventsTable.controller.js"/>
+            <resource uri="/ui/sef/js/eventDashboard/EventsTable.view.js"/>
+
+            <resource uri="/ui/sef/js/eventMonitor/EventMonitor.controller.js"/>
+            <resource uri="/ui/sef/js/eventMonitor/EventMonitor.view.js"/>
+            <resource uri="/ui/sef/js/eventMonitor/EventsRaised.controller.js"/>
+            <resource uri="/ui/sef/js/eventMonitor/EventsRaised.view.js"/>
+
+            <resource uri="/ui/sef/js/eventConfiguration/EventConfiguration.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/EventConfiguration.view.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/EventDetailMenu.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/EventDetailMenu.view.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Monitoring.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Monitoring.view.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Notifications.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Notifications.view.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Publisher.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Publisher.view.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Subscribers.controller.js"/>
+            <resource uri="/ui/sef/js/eventConfiguration/Subscribers.view.js"/>
+        </group>
+    </groups>
+</groupdefinition>

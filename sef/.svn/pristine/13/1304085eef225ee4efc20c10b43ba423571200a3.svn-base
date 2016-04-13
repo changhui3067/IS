@@ -1,0 +1,30 @@
+<index>
+  <entry>
+    <string>com.successfactors.sca.config.Service</string>
+    <set>
+      <string>com.successfactors.sef.service.impl.GetEntityEventsMapImpl</string>
+      <string>com.successfactors.sef.service.impl.GetEventMetaDataImpl</string>
+      <string>com.successfactors.sef.service.impl.GetSubscriberConfigurationDataImpl</string>
+      <string>com.successfactors.sef.service.impl.SetEntityEventsMapImpl</string>
+      <string>com.successfactors.sef.service.impl.SetSubscriberConfigurationDataImpl</string>
+    </set>
+  </entry>
+  <entry>
+    <string>javax.inject.Named</string>
+    <set>
+      <string>com.successfactors.sef.app.SEFEntityEventsMapGORegisterer</string>
+      <string>com.successfactors.sef.app.SEFSubscriberConfigureGORegisterer</string>
+      <string>com.successfactors.sef.app.prerequisites.IntelligentServiceUpgradeAvailableCheck</string>
+      <string>com.successfactors.sef.metadata.EventMetadataLoader</string>
+    </set>
+  </entry>
+  <entry>
+    <string>org.jboss.seam.annotations.Name</string>
+    <set>
+      <string>com.successfactors.sef.app.SEFEntityEventsMapGORegisterer</string>
+      <string>com.successfactors.sef.app.SEFSubscriberConfigureGORegisterer</string>
+      <string>com.successfactors.sef.app.prerequisites.IntelligentServiceUpgradeAvailableCheck</string>
+      <string>com.successfactors.sef.metadata.EventMetadataLoader</string>
+    </set>
+  </entry>
+</index>

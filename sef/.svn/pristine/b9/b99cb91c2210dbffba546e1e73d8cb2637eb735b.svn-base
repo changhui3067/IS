@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ivy-module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+
+    <info branch="trunk" module="au-sef-web" organisation="com.successfactors"/>
+
+    <configurations>
+        <conf name="compile" description="Compile Dependencies" visibility="public"/>
+        <conf name="test" description="Test compile Dependencies" visibility="public"/>
+        <conf name="runtime" description="Test runtime Dependencies" visibility="public"/>
+        <conf name="webapp-content" description="Web Dependencies to add to war" visibility="public"/>
+        <conf name="default" description="Default artifact" visibility="public"/>
+        <conf name="pom" description="Maven pom file" visibility="public"/>
+    </configurations>
+
+    <publications>
+        <artifact conf="default" name="au-sef-web"/>
+        <artifact conf="pom" name="au-sef-web" ext="pom"/>
+    </publications>
+
+ <dependencies>
+        <dependency conf="compile->default" name="jboss-seam-custom" org="org.jboss" rev="${org.jboss.jboss-seam-custom.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-ajaxservice-service" org="com.successfactors" rev="${com.successfactors.idl-ajaxservice.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-i18n-service" org="com.successfactors" rev="${com.successfactors.idl-i18n.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-sfutil-service" org="com.successfactors" rev="${com.successfactors.idl-sfutil.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-smrf-service" org="com.successfactors" rev="${com.successfactors.idl-smrf.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="au-execmanager-ui" org="com.successfactors" rev="${com.successfactors.au-execmanager.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="au-ruleengine-ui" org="com.successfactors" rev="${com.successfactors.au-ruleengine.version}"/>
+
+        <dependency branch="trunk" conf="webapp-content->default" name="au-V4-web" org="com.successfactors" rev="${com.successfactors.au-V4.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="idl-ajaxservice-web" org="com.successfactors" rev="${com.successfactors.idl-ajaxservice.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="idl-sapui5-web" org="com.successfactors" rev="${com.successfactors.idl-sapui5.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="idl-juic-web" org="com.successfactors" rev="${com.successfactors.idl-juic.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="idl-smrf-web" org="com.successfactors" rev="${com.successfactors.idl-smrf.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="idl-surj-web" org="com.successfactors" rev="${com.successfactors.idl-surj.version}"/>
+        <dependency branch="trunk" conf="webapp-content->default" name="au-ruleengine-web" org="com.successfactors" rev="${com.successfactors.au-ruleengine.version}"/>
+    </dependencies>
+</ivy-module>
