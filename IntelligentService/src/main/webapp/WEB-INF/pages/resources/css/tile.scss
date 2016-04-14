@@ -4,10 +4,10 @@
     background-color: #fff;
     float: left;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0 10px 10px 0;
 
-    .tileContent {
+    .tileContent{
       .tileTitle {
         width: 100%;
         padding-left: 10px;
@@ -22,7 +22,7 @@
         padding-left: 10px;
         background: rgba( 0, 0, 0, .4);
         width: calc(100% - 10px);
-        border-radius: 0 0 10px 10px;
+        border-radius: 0 0 5px 5px;
 
         p {
           font-size: 16px;
@@ -34,14 +34,17 @@
 
 
   .unreadCount {
-      float: left;
-      width: 16px;
-      height: 16px;
+      position:relative;
+      float: right;
+      top: -5px;
+      right: -5px;
+      width: 12px;
+      height: 12px;
       background-color: red;
       color: white;
-      border-radius: 10px;
+      border-radius: 20px;
       font-size: 16px;
-      padding: 5px 0 5px 10px;
+      padding: 2px 2px 7px 7px;
   }
 }
 

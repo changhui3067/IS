@@ -27,12 +27,14 @@ class Tile extends React.Component{
     _renderType0(){
         return (
             <div className="tileBlock smallsize" onPress={this.handleTileClick}>
+                <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
                     <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
+
+
         );
     }
 
@@ -40,11 +42,10 @@ class Tile extends React.Component{
     _renderType1(){
         return (
             <div className="tileBlock smallsize" onPress={this.handleTileClick}>
+                <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
-                    <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
         );
     }
@@ -53,11 +54,11 @@ class Tile extends React.Component{
     _renderType2(){
         return (
             <div className="tileBlock bigsize" onPress={this.handleTileClick}>
+                <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
                     <div className="helloMsg"><p>hello, Freyja</p></div>
                 </div>
-                <div className="unreadCount">{this.props.unreadCount}</div>
             </div>
         );
     }
