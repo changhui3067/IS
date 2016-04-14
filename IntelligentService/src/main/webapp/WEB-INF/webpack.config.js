@@ -9,7 +9,6 @@ var config = {
       // Add each page's entry here
       homepage: './pages/resources/js/homepage', //the mapping jsx file
       logon: './pages/resources/js/logon'
-
     },
     output: {
       path: path.join(__dirname, '..', '/WEB-INF/build'),
@@ -61,7 +60,7 @@ var config = {
            loader: 'url?limit=10000!img?progressive=true'
          },
          {
-            test: /\.(eot|woff|ttf|svg)$/,
+            test: /\.(eot|woff|ttf|svg)(\?.*$|$)/,
             loader: 'url?limit=10000'
           }
       ],

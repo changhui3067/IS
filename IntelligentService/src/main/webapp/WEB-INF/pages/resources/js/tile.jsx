@@ -3,6 +3,7 @@
  */
 import React from "react";
 import "./../css/tile.scss";
+import "./../css/iconfont.css";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
@@ -45,6 +46,9 @@ class Tile extends React.Component{
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
+                    <div className="tileIcon">
+                        <span className="iconfont icon-bianji1"></span>
+                    </div>
                 </div>
             </div>
         );
