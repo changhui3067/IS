@@ -51,16 +51,17 @@ Homepage.defaultProps = {
                 title: "Hello",
                 type: "0",
                 icon: "",
+                background: "userphoto.jpg",
                 url: ""
             },{
                 title: "Finish your profile",
                 type: "1",
-                icon: "",
+                icon: "caigoufapiao",
                 url:""
             },{
                 title: "Your courses",
                 type: "1",
-                icon: "",
+                icon: "suoyouzhaobiaoxiangmu",
                 url: ""
             }]
         },
@@ -70,6 +71,7 @@ Homepage.defaultProps = {
                 title: "Hot Jobs",
                 type: "2",
                 icon: "",
+                background: "hotjobs_tile.png",
                 url: ""
             }]
         },
@@ -78,17 +80,17 @@ Homepage.defaultProps = {
             tileList: [{
                 title: "Employee config",
                 type: "1",
-                icon: "",
+                icon: "shezhi",
                 url: ""
             },{
                 title: "Position config",
                 type: "1",
-                icon: "",
+                icon: "shezhi",
                 url: ""
             },{
                 title: "Courses config",
                 type: "1",
-                icon: "",
+                icon: "shezhi",
                 url: ""
             }]
         }

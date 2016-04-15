@@ -26,16 +26,19 @@ class Tile extends React.Component{
 
     //employee info tile
     _renderType0(){
+        let logoImage = new Image();
+        logoImage.src = require("./../img/" + this.props.background);
+        var background = {
+            backgroundImage: 'url("'+ logoImage.src+'")'
+        }
+
         return (
-            <div className="tileBlock smallsize" onPress={this.handleTileClick}>
+            <div className="tileBlock smallsize" style={background} onPress={this.handleTileClick}>
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
-                    <div className="tileTitle title"><h3>{this.props.title}</h3></div>
-                    <div className="helloMsg"><p>hello, Freyja</p></div>
+                    <div className="helloMsg"><p>Hello, Freyja</p></div>
                 </div>
             </div>
-
-
         );
     }
 
@@ -47,7 +50,7 @@ class Tile extends React.Component{
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
                     <div className="tileIcon">
-                        <span className="iconfont icon-bianji1"></span>
+                        <span className={"iconfont icon-"+ this.props.icon +" tileIconSize"}></span>
                     </div>
                 </div>
             </div>
@@ -56,12 +59,16 @@ class Tile extends React.Component{
 
     //size two tile
     _renderType2(){
+        let logoImage = new Image();
+        logoImage.src = require("./../img/" + this.props.background);
+        var background = {
+            backgroundImage: 'url("'+ logoImage.src+'")'
+        }
         return (
-            <div className="tileBlock bigsize" onPress={this.handleTileClick}>
+            <div className="tileBlock bigsize" style={background} onPress={this.handleTileClick}>
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
-                    <div className="tileTitle title"><h3>{this.props.title}</h3></div>
-                    <div className="helloMsg"><p>hello, Freyja</p></div>
+                    <div className="helloMsg"><p>Hot Jobs In Greate China</p></div>
                 </div>
             </div>
         );

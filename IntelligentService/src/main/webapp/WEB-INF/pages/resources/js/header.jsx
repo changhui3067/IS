@@ -25,17 +25,26 @@ class Header extends React.Component {
             <div className="headerContent">
                 <div className="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
                 <div className="menu">
-                    <select className="menuList">
-                        {this.state.menuList.map((item) => {
-                            return (<option value="{item}">{item}</option>);
-                        })}
-                    </select>
+                    <div className="wrapper">
+                        <div className="content">
+                            <ul>
+                                {this.state.menuList.map((item) => {
+                                    return (<a><li>{item}</li></a>);
+                                })}
+                            </ul>
+                        </div>
+                        <div className="parent">Homepage</div>
+                    </div>
                 </div>
                 <div className="userinfo">
-                    <select className="menuList">
-                        <option value="{this.state.username}">{this.state.username}</option>
-                        <option value="Logout">Logout</option>
-                    </select>
+                    <div className="wrapper">
+                        <div className="content">
+                            <ul>
+                                <a><li>Logout</li></a>
+                            </ul>
+                        </div>
+                        <div className="parent">Freyja</div>
+                    </div>
                 </div>
             </div>
         );
