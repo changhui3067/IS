@@ -13,7 +13,7 @@
     .menuList {
         height: 38px;
         position: relative;
-        top: 8px;
+        top: 12px;
         background-color: transparent;
         border: 0px;
         cursor: pointer;
@@ -29,7 +29,7 @@
             }
 
             option:hover {
-                background-color: #A8DAEE;/*#E5F2F9；*/
+
             }
         }
 
@@ -46,11 +46,10 @@
 
     .menu, .userinfo {
         float: left;
+        position: relative;
+        top: 12px;
         .wrapper {
-            width: 180px;
             height: 38px;
-            position: relative;
-            top: 8px;
             background-color: transparent;
             border: 0px;
             cursor: pointer;
@@ -62,26 +61,28 @@
 
         .parent {
             height: 100%;
-        width: 100%;
-        display: block;
-        cursor: pointer;
-        line-height: 30px;
-        height: 30px;
-        background: #F9F9F9;
-        border: 1px solid #AAA;
-        color: #282D31;
-        font-weight: bold;
-        z-index: 2;
-        position: relative;
-        -webkit-transition: border .1s linear, background .1s linear, z-index 0s linear;
-        -webkit-transition-delay: .8s;
-        text-align: center;
+            width: 100%;
+            display: block;
+            cursor: pointer;
+            line-height: 30px;
+            padding-left:10px;
+            padding-right:6px;
+            height: 30px;
+            background: #F9F9F9;
+            border: 1px solid #AAA;
+            color: #282D31;
+            font-weight: bold;
+            z-index: 2;
+            position: relative;
+            -webkit-transition: border .1s linear, background .1s linear, z-index 0s linear;
+            -webkit-transition-delay: .8s;
+            text-align: center;
         }
 
         .parent:hover,
         .content:hover ~ .parent {
             background: #fff;
-        -webkit-transition-delay: 0s, 0s, 0s;
+            -webkit-transition-delay: 0s, 0s, 0s;
         }
 
         .content:hover ~ .parent {
@@ -89,68 +90,60 @@
 
         .content {
             position: absolute;
-        top: 0;
-        display: block;
-        z-index: 1;
-        height: 0;
-        width: 180px;
-        padding-top: 30px;
-        -webkit-transition: height .5s ease;
-        -webkit-transition-delay: .4s;
-        border: 1px solid #777;
-        box-shadow: 0 1px 2px rgba(0,0,0,.4);
+            top: 0;
+            display: block;
+            z-index: 1;
+            height: 0;
+            padding-top: 30px;
+            -webkit-transition: height .5s ease;
+            -webkit-transition-delay: .4s;
+            border: 1px solid #777;
+            box-shadow: 0 1px 2px rgba(0,0,0,.4);
+
+            ul {
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                height: 100%;
+
+                a {
+                    text-decoration: none;
+                }
+
+                li {
+                    list-style: none;
+                    text-align: left;
+                    color: #000;
+                    font-size: 14px;
+                    line-height: 30px;
+                    height: 30px;
+                    padding-left: 20px;
+                    border-top: 1px solid #ccc;
+
+                    &:hover {
+                        background: #A8DAEE;
+                    }
+                }
+            }
+
+            &:hover {
+                height: 123px;
+                z-index: 3;
+                -webkit-transition-delay: 0s;
+            }
         }
 
         .wrapper:active .content {
             height: 123px;
-        z-index: 3;
-        -webkit-transition-delay: 0s;
-        }
-
-        .content:hover {
-            height: 123px;
-        z-index: 3;
-        -webkit-transition-delay: 0s;
-        }
-
-        .content ul {
-            background: #fff;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 100%;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        }
-
-        .content ul a {
-            text-decoration: none;
-        }
-
-        .content li:hover {
-            background: #eee;
-        color: #333;
-        }
-
-        .content li {
-            list-style: none;
-        text-align: left;
-        color: #888;
-        font-size: 14px;
-        line-height: 30px;
-        height: 30px;
-        padding-left: 10px;
-        border-top: 1px solid #ccc;
-        }
-
-        .content li:last-of-type {
-            border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+            z-index: 3;
+            -webkit-transition-delay: 0s;
         }
     }
 
     .userinfo {
         float: right;
+        right:10px;
 
         .menuList {
             right: 20px;

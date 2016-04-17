@@ -2,20 +2,22 @@
  * Created by freyjachang on 4/11/16.
  */
 import React from "react";
-import "./../css/tile.scss";
-import "./../css/iconfont.css";
+import "./../../css/tile.scss";
+import "./../../css/iconfont.css";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import {Link} from "react-router";
 
-class Tile extends React.Component{
+export default class Tile extends React.Component{
     constructor(props){
+        console.log("aaaaaa");
         super(props);
         this.props = {
-            unreadCount: props.unreadCount,
             title: props.title,
             background: props.background,
             icon: props.icon,
-            type: props.type
+            type: props.type,
+            url: props.url
         };
     }
 
@@ -27,24 +29,27 @@ class Tile extends React.Component{
     //employee info tile
     _renderType0(){
         let logoImage = new Image();
-        logoImage.src = require("./../img/" + this.props.background);
+        logoImage.src = require("./../../img/" + this.props.background);
         var background = {
             backgroundImage: 'url("'+ logoImage.src+'")'
         }
 
         return (
+            <Link to={this.props.url}>
             <div className="tileBlock smallsize" style={background} onPress={this.handleTileClick}>
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hello, Freyja</p></div>
                 </div>
             </div>
+            </Link>
         );
     }
 
     //common tile
     _renderType1(){
         return (
+            <Link to={this.props.url}>
             <div className="tileBlock smallsize" onPress={this.handleTileClick}>
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
@@ -54,23 +59,26 @@ class Tile extends React.Component{
                     </div>
                 </div>
             </div>
+            </Link>
         );
     }
 
     //size two tile
     _renderType2(){
         let logoImage = new Image();
-        logoImage.src = require("./../img/" + this.props.background);
+        logoImage.src = require("./../../img/" + this.props.background);
         var background = {
             backgroundImage: 'url("'+ logoImage.src+'")'
         }
         return (
+            <Link to={this.props.url}>
             <div className="tileBlock bigsize" style={background} onPress={this.handleTileClick}>
                 <div className="unreadCount">{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hot Jobs In Greate China</p></div>
                 </div>
             </div>
+            </Link>
         );
     }
     render() {
@@ -90,8 +98,8 @@ Tile.propTypes = {
     title: React.PropTypes.string,
     background: React.PropTypes.string,
     icon: React.PropTypes.string,
-    size: React.PropTypes.number,
-    type: React.PropTypes.string
+    type: React.PropTypes.string,
+    url: React.PropTypes.string
 }
 
 Tile.defaultProps = {
@@ -99,7 +107,6 @@ Tile.defaultProps = {
     title: 'Meet your team',
     background: '#fff',
     icon: '',
-    type: ''
+    type: '0',
+    url: ''
 }
-
-export default Tile;

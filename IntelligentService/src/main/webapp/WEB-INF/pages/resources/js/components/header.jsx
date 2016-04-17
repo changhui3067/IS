@@ -3,23 +3,22 @@
  */
 
 import React from "react";
-import "./../css/header.scss";
-import ReactDOM from "react-dom";
+import "./../../css/header.scss";
 import $ from "jquery";
+import {Link} from "react-router";
 
-class Header extends React.Component {
+export default class Header extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
+        this.props = {
             menuList: props.menuList,
-            currId: props.currId,
-            username: props.username
+            currId: props.currId
         };
     }
 
     render(){
         let logoImage = new Image();
-        logoImage.src = require("./../img/logo_color.gif");
+        logoImage.src = require("./../../img/logo_color.gif");
 
         return (
             <div className="headerContent">
@@ -28,8 +27,10 @@ class Header extends React.Component {
                     <div className="wrapper">
                         <div className="content">
                             <ul>
-                                {this.state.menuList.map((item) => {
-                                    return (<a><li>{item}</li></a>);
+                                {this.props.menuList.map((item) => {
+                                    return (
+                                        <Link to={item.menulink}><li>{item.name}</li></Link>
+                                    );
                                 })}
                             </ul>
                         </div>
@@ -61,9 +62,27 @@ Header.propTypes = {
 
 //component default property
 Header.defaultProps = {
-    menuList: ["Homepage", "Courses", "Positions","Admin"],
-    currId: 0,
-    username: "freyja"
+    menuList: [{
+            name: "Homepage",
+            menulink: "/homepage"
+        },{
+            name: "Orgchart",
+            menulink: "/orgchart"
+        },{
+            name: "Profile",
+            menulink: "/profile"
+        },{
+            name: "Hotjobs",
+            menulink: "/hotjobs"
+        },{
+            name: "EmpConfig",
+            menulink: "/empconfig"
+        },{
+            name: "JobConfig",
+            menulink: "/jobconfig"
+        },{
+            name: "CourseConfig",
+            menulink: "/courseconfig"
+        }],
+    currId: 0
 }
-
-export default Header;

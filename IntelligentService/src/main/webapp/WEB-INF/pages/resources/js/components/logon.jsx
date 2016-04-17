@@ -1,5 +1,5 @@
 import React from "react";
-import "./../css/logon.scss";
+import "./../../css/logon.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
@@ -57,7 +57,7 @@ var LoginForm = React.createClass({
 
     render: function () {
         let logoImage = new Image();
-        logoImage.src = require("./../img/SF_LoginLogo.png");
+        logoImage.src = require("./../../img/SF_LoginLogo.png");
         return (
             <div className="logonform">
                 <div>

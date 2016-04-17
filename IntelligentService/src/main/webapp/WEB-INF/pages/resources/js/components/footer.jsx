@@ -2,11 +2,11 @@
  * Created by freyjachang on 4/9/16.
  */
 import React from "react";
-import "./../css/footer.scss";
+import "./../../css/footer.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-class Footer extends React.Component{
+export default class Footer extends React.Component{
     render(){
         return (
             <div className="footerContent">
@@ -19,5 +19,3 @@ class Footer extends React.Component{
         );
     }
 }
-
-export default Footer;
