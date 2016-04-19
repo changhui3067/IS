@@ -10,135 +10,26 @@
         top: 8px;
     }
 
-    .menuList {
-        height: 38px;
-        position: relative;
-        top: 12px;
-        background-color: transparent;
-        border: 0px;
-        cursor: pointer;
-        padding: 0px 16px 0px 10px;
-        font-size: 14px;
-        line-height: 36px;
-        vertical-align: middle;
-
-        select {
-            option {
-                height: 35px;
-                background-color: #FFF;
-            }
-
-            option:hover {
-
-            }
-        }
-
-        .menuListItem {
-            padding: 5px;
-            background-color: #FFF;
-        }
-
-        .menuListItem:hover {
-            background-color: #A8DAEE;
-        }
-        
-    }
-
     .menu, .userinfo {
         float: left;
         position: relative;
-        top: 12px;
-        .wrapper {
-            height: 38px;
+        top: 5px;
+
+        .navbar {
+            border: none;
+            max-height: 44px;
             background-color: transparent;
-            border: 0px;
-            cursor: pointer;
-            padding: 0px 16px 0px 10px;
-            font-size: 14px;
-            line-height: 36px;
-            vertical-align: middle;
         }
 
-        .parent {
-            height: 100%;
-            width: 100%;
-            display: block;
-            cursor: pointer;
-            line-height: 30px;
-            padding-left:10px;
-            padding-right:6px;
-            height: 30px;
-            background: #F9F9F9;
-            border: 1px solid #AAA;
-            color: #282D31;
-            font-weight: bold;
-            z-index: 2;
-            position: relative;
-            -webkit-transition: border .1s linear, background .1s linear, z-index 0s linear;
-            -webkit-transition-delay: .8s;
-            text-align: center;
+        .navbar-nav > li > a {
+            padding-bottom: 12px;
         }
 
-        .parent:hover,
-        .content:hover ~ .parent {
-            background: #fff;
-            -webkit-transition-delay: 0s, 0s, 0s;
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus {
+            background-color: #A8DAEE;
         }
 
-        .content:hover ~ .parent {
-        }
-
-        .content {
-            position: absolute;
-            top: 0;
-            display: block;
-            z-index: 1;
-            height: 0;
-            padding-top: 30px;
-            -webkit-transition: height .5s ease;
-            -webkit-transition-delay: .4s;
-            border: 1px solid #777;
-            box-shadow: 0 1px 2px rgba(0,0,0,.4);
-
-            ul {
-                background: #fff;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                height: 100%;
-
-                a {
-                    text-decoration: none;
-                }
-
-                li {
-                    list-style: none;
-                    text-align: left;
-                    color: #000;
-                    font-size: 14px;
-                    line-height: 30px;
-                    height: 30px;
-                    padding-left: 20px;
-                    border-top: 1px solid #ccc;
-
-                    &:hover {
-                        background: #A8DAEE;
-                    }
-                }
-            }
-
-            &:hover {
-                height: 123px;
-                z-index: 3;
-                -webkit-transition-delay: 0s;
-            }
-        }
-
-        .wrapper:active .content {
-            height: 123px;
-            z-index: 3;
-            -webkit-transition-delay: 0s;
-        }
     }
 
     .userinfo {
