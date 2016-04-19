@@ -25,7 +25,7 @@ class TileGroup extends React.Component{
                 </div>
                 <div className="tileGroupList">
                     {this.props.tileList.map((tile) => {
-                        return (<Tile title={tile.title} type={tile.type} icon={tile.icon} url={tile.url} background={tile.background}/>);
+                        return (<Tile key={tile.id} {...tile}/>);
                     })}
                 </div>
             </div>

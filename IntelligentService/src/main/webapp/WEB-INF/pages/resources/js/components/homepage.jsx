@@ -25,7 +25,7 @@ import TileGroup from "./tileGroup";
                     {this.props.tileGroups.map((tileGroup) => {
                         return (
                             <div className="tileGroup">
-                                <TileGroup title={tileGroup.title} tileList={tileGroup.tileList} />
+                                <TileGroup key={tileGroup.id} title={tileGroup.title} tileList={tileGroup.tileList} />
                             </div>
                         );
                     })}

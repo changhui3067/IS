@@ -4,19 +4,29 @@
 
 import React from "react";
 import "./../../css/header.scss";
-import $ from "jquery";
 import {Link} from "react-router";
+import "./../../bootstrap/css/bootstrap.css"
+import Bootstrap from "Bootstrap"
 
 export default class Header extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.props = {
+
             menuList: props.menuList,
             currId: props.currId
         };
+        this.state = {
+            selected: "Homepage",
+        }
     }
 
-    render(){
+    handleMenuClick(e) {
+        console.log("Route to ", e);
+        this.setState({selected: e});
+    }
+
+    render() {
         let logoImage = new Image();
         logoImage.src = require("./../../img/logo_color.gif");
 
@@ -24,28 +34,42 @@ export default class Header extends React.Component {
             <div className="headerContent">
                 <div className="headerLogo"><img src={logoImage.src} className="companyLogo"></img></div>
                 <div className="menu">
-                    <div className="wrapper">
-                        <div className="content">
-                            <ul>
-                                {this.props.menuList.map((item) => {
-                                    return (
-                                        <Link to={item.menulink}><li>{item.name}</li></Link>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                        <div className="parent">Homepage</div>
-                    </div>
+                    <nav className="navbar navbar-default" role="navigation">
+                       <div>
+                          <ul className="nav navbar-nav">
+                            <li className="dropdown">
+                                <a id="menuSelect" href="#" className="dropdown-toggle" data-toggle="dropdown">
+                                   {this.state.selected} 
+                                   <b className="caret"></b>
+                                </a>
+                                <ul className="dropdown-menu">
+                                   {this.props.menuList.map((item) => {
+                                        return (
+                                            <li key={item.id} onClick={this.handleMenuClick.bind(this, item.name)}><Link to={item.menulink}>{item.name}</Link></li>
+                                        );
+                                    })}
+                                </ul>
+                            </li>
+                          </ul>
+                       </div>
+                    </nav>
                 </div>
                 <div className="userinfo">
-                    <div className="wrapper">
-                        <div className="content">
-                            <ul>
-                                <a><li>Logout</li></a>
-                            </ul>
-                        </div>
-                        <div className="parent">Freyja</div>
-                    </div>
+                    <nav className="navbar navbar-default" role="navigation">
+                       <div>
+                          <ul className="nav navbar-nav">
+                            <li className="dropdown">
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                                   Freyja 
+                                   <b className="caret"></b>
+                                </a>
+                                <ul className="dropdown-menu">
+                                   <li><a href="#">Logout</a></li>
+                                </ul>
+                            </li>
+                          </ul>
+                       </div>
+                    </nav>
                 </div>
             </div>
         );

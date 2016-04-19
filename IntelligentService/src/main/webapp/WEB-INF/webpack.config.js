@@ -20,6 +20,10 @@ var config = {
         __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')) // judge if secret environment.
       }),
       new ExtractTextPlugin("[name].css"),
+      new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+      }),
       new HtmlWebpackPlugin({
         template: './pages/templates/index.html', //file name in template directoty
         filename: 'index.html',                   //the generated file name
@@ -60,7 +64,7 @@ var config = {
            loader: 'url?limit=10000!img?progressive=true'
          },
          {
-            test: /\.(eot|woff|ttf|svg)(\?.*$|$)/,
+            test: /\.(eot|woff|woff2|ttf|svg)(\?.*$|$)/,
             loader: 'url?limit=10000'
           }
       ],
