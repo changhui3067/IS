@@ -7,7 +7,9 @@ import "./../../css/index.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Router, Route, Link, IndexRoute,hashHistory} from 'react-router';
-import Header from "./header";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import HeaderMap from "./../containers/headerMap";
 import Footer from "./footer";
 import Homepage from "./homepage";
 import Orgchart from "./orgchart";
@@ -17,6 +19,9 @@ import Hotjobs from "./hotjobs";
 import EmpConfig from "./empconfig";
 import JobConfig from "./jobconfig";
 import CourseConfig from "./courseconfig";
+import reducers from "./../reducers/reducers"
+
+const store = createStore(reducers);
 
 export class Index extends React.Component{
 
@@ -27,7 +32,7 @@ export class Index extends React.Component{
     render() {
         return (
             <div>
-                <Header />
+                <HeaderMap />
                 <div className="indexcontener">
                     <div className="wrap">
                         <div id="content">{this.props.children}</div>
@@ -40,18 +45,20 @@ export class Index extends React.Component{
 }
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route name="app" path="/" component={Index} >
-            <IndexRoute component={Homepage} />
-            <Route path="/homepage" component={Homepage} />
-            <Route path="/orgchart" component={Orgchart} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/courses" component={Courses} />
-            <Route path="/hotjobs" component={Hotjobs} />
-            <Route path="/empconfig" component={EmpConfig} />
-            <Route path="/jobconfig" component={JobConfig} />
-            <Route path="/courseconfig" component={CourseConfig} />
-        </Route>
-    </Router>,
+    <Provider store={store}>
+        <Router history={hashHistory}>
+            <Route name="app" path="/" component={Index} >
+                <IndexRoute component={Homepage} />
+                <Route path="/homepage" component={Homepage} />
+                <Route path="/orgchart" component={Orgchart} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/courses" component={Courses} />
+                <Route path="/hotjobs" component={Hotjobs} />
+                <Route path="/empconfig" component={EmpConfig} />
+                <Route path="/jobconfig" component={JobConfig} />
+                <Route path="/courseconfig" component={CourseConfig} />
+            </Route>
+        </Router>
+    </Provider>,
     document.getElementById("mainpage")
 );
