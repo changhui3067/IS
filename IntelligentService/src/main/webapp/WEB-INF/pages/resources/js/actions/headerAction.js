@@ -1,7 +1,8 @@
 
 export const handleMenuClick = (menuItem) => {
-  return {
-    type: 'SET_MENU_TEXT',
-    menuItem
-  }
+    console.log("action: handleMenuClick");
+    return {
+        type: 'SET_MENU_TEXT',
+        menuItem: menuItem
+    }
 }

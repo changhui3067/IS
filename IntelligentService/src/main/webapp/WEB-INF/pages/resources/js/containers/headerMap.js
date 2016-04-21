@@ -3,14 +3,16 @@ import { handleMenuClick } from '../actions/headerAction';
 import Header from '../components/header';
 
 const mapStateToProps = (state, ownProps) => {
+    console.log("map state to props: ", state);
     return {
-        selected: state.selectedMenu,
+        selectedMenu: (state.selectedMenu || "Homepage")
     };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (menuItem) => {
+            console.log("click dispatch: handleMenuClick");  
             dispatch(handleMenuClick(menuItem))
         }
     };

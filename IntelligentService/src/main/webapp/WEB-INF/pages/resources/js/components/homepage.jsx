@@ -22,10 +22,10 @@ import TileGroup from "./tileGroup";
         return (
             <div id="HomepageContent">
                 <div className="tileContainer">
-                    {this.props.tileGroups.map((tileGroup) => {
+                    {this.props.tileGroups.map((tileGroup, index) => {
                         return (
-                            <div className="tileGroup">
-                                <TileGroup key={tileGroup.id} title={tileGroup.title} tileList={tileGroup.tileList} />
+                            <div className="tileGroup" key={index}>
+                                <TileGroup title={tileGroup.title} tileList={tileGroup.tileList} />
                             </div>
                         );
                     })}

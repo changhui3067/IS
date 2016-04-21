@@ -1,5 +1,5 @@
 /**
- * Created by freyjachang on 4/9/16.
+ * Created by freyjachang on 4/20/16.
  */
 
 import React, { PropTypes } from "react";
@@ -8,10 +8,10 @@ import {Link} from "react-router";
 import "./../../bootstrap/css/bootstrap.css"
 import Bootstrap from "Bootstrap"
 
-const Header = (selectedMenu, onClick) => {
+const Header = ({selectedMenu, onClick}) => {
     let logoImage = new Image();
     logoImage.src = require("./../../img/logo_color.gif");
-
+    console.log(selectedMenu);
     let menuList = [{
             name: "Homepage",
             menulink: "/homepage"
@@ -48,13 +48,10 @@ const Header = (selectedMenu, onClick) => {
                                    <b className="caret"></b>
                                 </a>
                                 <ul className="dropdown-menu">
-                                   {menuList.map((item) => {
+                                   {menuList.map((item,index) => {
                                         return (
-                                            <li key={item.id}
-                                                onClick={e => {
-                                                    e.preventDefault()
-                                                    onClick(item.name)
-                                                }}>
+                                            <li key={index}
+                                                onClick={() => onClick(item.name)}>
                                                 <Link to={item.menulink}>{item.name}</Link>
                                             </li>
                                         );
@@ -94,7 +91,7 @@ Header.propTypes = {
 
 //component default property
 Header.defaultProps = {
-    selectedMenu: "Homepage"
+    //selectedMenu: "Homepage"
 }
 
 export default Header;
