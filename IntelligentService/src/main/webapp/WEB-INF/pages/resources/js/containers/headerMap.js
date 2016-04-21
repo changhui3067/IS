@@ -5,7 +5,8 @@ import Header from '../components/header';
 const mapStateToProps = (state, ownProps) => {
     console.log("map state to props: ", state);
     return {
-        selectedMenu: (state.selectedMenu || "Homepage")
+        selectedMenu: (state.selectedMenu || "Homepage"),
+        usertype: 1
     };
 }
 

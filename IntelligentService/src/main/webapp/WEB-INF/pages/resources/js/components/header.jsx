@@ -8,7 +8,7 @@ import {Link} from "react-router";
 import "./../../bootstrap/css/bootstrap.css"
 import Bootstrap from "Bootstrap"
 
-const Header = ({selectedMenu, onClick}) => {
+const Header = ({selectedMenu, usertype, onClick}) => {
     let logoImage = new Image();
     logoImage.src = require("./../../img/logo_color.gif");
     console.log(selectedMenu);
@@ -21,6 +21,9 @@ const Header = ({selectedMenu, onClick}) => {
         },{
             name: "Profile",
             menulink: "/profile"
+        },{
+            name: "Courses",
+            menulink: "/courses"
         },{
             name: "Hotjobs",
             menulink: "/hotjobs"
@@ -51,7 +54,7 @@ const Header = ({selectedMenu, onClick}) => {
                                    {menuList.map((item,index) => {
                                         return (
                                             <li key={index}
-                                                onClick={() => onClick(item.name)}>
+                                                onClick={() => onClick(item.name)} >
                                                 <Link to={item.menulink}>{item.name}</Link>
                                             </li>
                                         );

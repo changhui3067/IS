@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
-import setMenuText from './setMenuText'
+import headerMenu from './headerMenu'
+import employee from './employee'
+import tilesInfo from './tilesInfo'
 
 const reducers = combineReducers({
-  setMenuText
+    headerMenu,
+    employee,
+    tilesInfo
 })
 
 export default reducers

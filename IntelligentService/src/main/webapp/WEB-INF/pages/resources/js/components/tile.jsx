@@ -10,20 +10,14 @@ import {Link} from "react-router";
 
 export default class Tile extends React.Component{
     constructor(props){
-        console.log("aaaaaa");
         super(props);
-        this.props = {
-            title: props.title,
-            background: props.background,
-            icon: props.icon,
-            type: props.type,
-            url: props.url
-        };
-    }
-
-    handleTileClick(e){
-        //this.setState({companyId: e.target.value});
-        console.log("tile click: ", e);
+        //this.props = {
+        //    title: props.title,
+        //    background: props.background,
+        //    icon: props.icon,
+        //    type: props.type,
+        //    url: props.url
+        //};
     }
 
     //employee info tile
@@ -34,10 +28,14 @@ export default class Tile extends React.Component{
             backgroundImage: 'url("'+ logoImage.src+'")'
         }
 
+        var noDisplay = {
+            display: 'none'
+        }
+
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock smallsize" style={background} onPress={this.handleTileClick}>
-                <div className="unreadCount">{this.props.unreadCount}</div>
+            <div className="tileBlock smallsize" style={background} onPress={() => this.props.onClick(this.props.name)}>
+                <div className="unreadCount" style={ this.props.unreadCount ? '' : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hello, Freyja</p></div>
                 </div>
@@ -50,8 +48,8 @@ export default class Tile extends React.Component{
     _renderType1(){
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock smallsize" onPress={this.handleTileClick}>
-                <div className="unreadCount">{this.props.unreadCount}</div>
+            <div className="tileBlock smallsize" onPress={() => this.props.onClick(this.props.name)}>
+                <div className="unreadCount" style={ this.props.unreadCount ? '' : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
                     <div className="tileIcon">
@@ -72,8 +70,8 @@ export default class Tile extends React.Component{
         }
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock bigsize" style={background} onPress={this.handleTileClick}>
-                <div className="unreadCount">{this.props.unreadCount}</div>
+            <div className="tileBlock bigsize" style={background} onPress={() => this.props.onClick(this.props.name)}>
+                <div className="unreadCount" style={ this.props.unreadCount ? '' : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hot Jobs In Greate China</p></div>
                 </div>
@@ -89,8 +87,6 @@ export default class Tile extends React.Component{
         default: return (this._renderType1());
         }
     }
-
-
 }
 
 Tile.propTypes = {
@@ -100,13 +96,4 @@ Tile.propTypes = {
     icon: React.PropTypes.string,
     type: React.PropTypes.string,
     url: React.PropTypes.string
-}
-
-Tile.defaultProps = {
-    unreadCount: 5,
-    title: 'Meet your team',
-    background: '#fff',
-    icon: '',
-    type: '0',
-    url: ''
 }

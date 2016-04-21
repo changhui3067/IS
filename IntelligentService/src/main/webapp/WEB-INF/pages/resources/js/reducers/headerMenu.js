@@ -1,17 +1,21 @@
+
 const handleMenuClick = (state = [], action) => {
     console.log("reducer: handleMenuClick")
     switch (action.type) {
         case 'SET_MENU_TEXT':
             console.log("SET_MENU_TEXT: ", action.menuItem);
-            console.log(state);
-            var after = Object.assign({}, state, {
+            return Object.assign({}, state, {
                 selectedMenu: action.menuItem
             });
-            console.log(after)
-            return after
         default:
             return state
     }
 }
 
-export default handleMenuClick
+const handleTileClick = (state, action) => {
+    console.log("reducer: handleTileClick")
+    return handleMenuClick(state, action);
+}
+
+
+export default {handleMenuClick, handleTileClick}

@@ -5,7 +5,7 @@ import React from "react";
 import "./../../css/tileGroup.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
-import Tile from "./tile";
+import TileMap from "./../containers/tileMap";
 
 class TileGroup extends React.Component{
 
@@ -25,7 +25,7 @@ class TileGroup extends React.Component{
                 </div>
                 <div className="tileGroupList">
                     {this.props.tileList.map((tile, index) => {
-                        return (<Tile key={index} {...tile}/>);
+                        return (<TileMap key={index} {...tile}/>);
                     })}
                 </div>
             </div>

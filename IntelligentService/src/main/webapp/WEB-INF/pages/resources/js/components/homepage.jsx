@@ -45,18 +45,21 @@ Homepage.defaultProps = {
             title: "Employee",
             tileList: [{
                 title: "Hello",
+                name: 'Orgchart',
                 type: "0",
                 icon: "",
                 background: "userphoto.jpg",
                 url: "/orgchart"
             },{
                 title: "Finish your profile",
+                name: 'Profile',
                 type: "1",
                 icon: "caigoufapiao",
                 background: "",
                 url:"/profile"
             },{
                 title: "Your courses",
+                name: 'Course',
                 type: "1",
                 icon: "suoyouzhaobiaoxiangmu",
                 background: "",
