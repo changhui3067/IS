@@ -1,7 +1,7 @@
 /**
  * Created by freyjachang on 4/21/16.
  */
-export function getUserName(state) {
+export function getUsername(state) {
     return 'Freyja'
     // state.username || 'Freyja'
 

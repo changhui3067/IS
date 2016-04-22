@@ -1,5 +1,5 @@
 
-const handleMenuClick = (state = [], action) => {
+const headerMenu = (state = [], action) => {
     console.log("reducer: handleMenuClick")
     switch (action.type) {
         case 'SET_MENU_TEXT':
@@ -12,10 +12,5 @@ const handleMenuClick = (state = [], action) => {
     }
 }
 
-const handleTileClick = (state, action) => {
-    console.log("reducer: handleTileClick")
-    return handleMenuClick(state, action);
-}
 
-
-export default {handleMenuClick, handleTileClick}
+export default headerMenu

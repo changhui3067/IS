@@ -4,9 +4,7 @@ import employee from './employee'
 import tilesInfo from './tilesInfo'
 
 const reducers = combineReducers({
-    headerMenu,
-    employee,
-    tilesInfo
+    headerMenu
 })
 
 export default reducers

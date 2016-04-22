@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
         background: ownProps.background,
         unreadCount: getTileUnread(state, ownProps.name),
         icon: ownProps.icon,
-        type: ownProps.tileType,
+        type: ownProps.type,
         url: ownProps.url
     };
 }
