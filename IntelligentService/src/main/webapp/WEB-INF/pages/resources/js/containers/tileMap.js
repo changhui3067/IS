@@ -25,7 +25,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (menuItem) => {
-            console.log("click dispatch: handleTileClick");
             dispatch(handleTileClick(menuItem))
         }
     };

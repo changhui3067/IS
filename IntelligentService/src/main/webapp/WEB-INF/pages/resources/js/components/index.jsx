@@ -12,7 +12,7 @@ import { createStore } from 'redux';
 import HeaderMap from "./../containers/headerMap";
 import Footer from "./footer";
 import Homepage from "./homepage";
-import Orgchart from "./orgchart";
+import OrgchartMap from "./../containers/orgchartMap";
 import Profile from "./profile";
 import Courses from "./courses";
 import Hotjobs from "./hotjobs";
@@ -50,7 +50,7 @@ ReactDOM.render(
             <Route name="app" path="/" component={Index} >
                 <IndexRoute component={Homepage} />
                 <Route path="/homepage" component={Homepage} />
-                <Route path="/orgchart" component={Orgchart} />
+                <Route path="/orgchart" component={OrgchartMap} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/courses" component={Courses} />
                 <Route path="/hotjobs" component={Hotjobs} />
