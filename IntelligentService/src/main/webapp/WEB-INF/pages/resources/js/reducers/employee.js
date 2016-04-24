@@ -55,3 +55,14 @@ export function getSubordinatesInfoList(state) {
         userid: 7
     }]
 }
+
+export function getUserInfo(state) {
+    return {
+        name: 'Freyja',
+        position: 'project manager',
+        level: 'admin',
+        email: '111@email.com',
+        phonenumber: '11111111111',
+        photo: 'userphoto.jpg'
+    }
+}

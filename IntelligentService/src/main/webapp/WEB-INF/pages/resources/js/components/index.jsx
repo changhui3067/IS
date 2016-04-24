@@ -13,7 +13,7 @@ import HeaderMap from "./../containers/headerMap";
 import Footer from "./footer";
 import Homepage from "./homepage";
 import OrgchartMap from "./../containers/orgchartMap";
-import Profile from "./profile";
+import ProfileMap from "./../containers/profileMap";
 import Courses from "./courses";
 import Hotjobs from "./hotjobs";
 import EmpConfig from "./empconfig";
@@ -51,7 +51,7 @@ ReactDOM.render(
                 <IndexRoute component={Homepage} />
                 <Route path="/homepage" component={Homepage} />
                 <Route path="/orgchart" component={OrgchartMap} />
-                <Route path="/profile" component={Profile} />
+                <Route path="/profile" component={ProfileMap} />
                 <Route path="/courses" component={Courses} />
                 <Route path="/hotjobs" component={Hotjobs} />
                 <Route path="/empconfig" component={EmpConfig} />

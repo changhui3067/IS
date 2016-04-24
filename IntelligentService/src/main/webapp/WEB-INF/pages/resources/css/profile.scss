@@ -1,0 +1,19 @@
+#profileContent {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+
+    .nodisplay {
+        display: none;
+    }
+
+    #controlPanel {
+        width: 100%;
+        height: 50px;
+
+        .btn-user {
+            margin-right: 20px;
+        }
+    }
+}
