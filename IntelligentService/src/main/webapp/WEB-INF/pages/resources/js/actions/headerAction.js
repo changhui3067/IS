@@ -15,3 +15,12 @@ export function handleTileClick (tileItem) {
     }
 }
 
+export function handleProfileSaveClick (field, text) {
+    console.log('action: handleProfileSaveClick: ', field, text)
+    return{
+        type: 'SET_PROFILE_TEXT',
+        field: field,
+        text: text
+    }
+}
+

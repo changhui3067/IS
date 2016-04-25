@@ -66,3 +66,19 @@ export function getUserInfo(state) {
         photo: 'userphoto.jpg'
     }
 }
+
+const employee = (state = [], action) => {
+    console.log("reducer: set profile text")
+    switch (action.type) {
+        case 'SET_PROFILE_TEXT':
+            var o = new Object()
+            o[action.field] = action.text
+            console.log(Object.assign({}, state, o))
+            return Object.assign({}, state, o);
+        default:
+            return state
+    }
+}
+
+
+export default employee

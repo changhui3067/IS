@@ -2,12 +2,12 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
-import { handleMenuClick } from '../actions/headerAction';
 import {getUserInfo} from '../reducers/employee'
 import Profile from '../components/profile';
+import $ from "jquery";
+import { handleProfileSaveClick } from '../actions/headerAction';
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("map state to props: ", state);
     return {
         empInfo: getUserInfo(state)
     };
@@ -16,22 +16,32 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClickEdit: () => {
-            //make form editable, disable edit btn, enable save&cancel btn
             $('#btnEdit').addClass('nodisplay')
             $('#btnSave').removeClass('nodisplay')
-            $("#btnCancel").removeClass("nodisplay")
+            $('#btnCancel').removeClass('nodisplay')
+            $('#infoPanel').find('tr').each(function() {
+                $(this).find('td').find('input').removeAttr('readOnly')
+            })
         },
         onClickSave: () => {
-            //save data to state, save to backend, disable save&cancel btn, enable edit btn
             $('#btnEdit').removeClass('nodisplay')
-            $("#btnSave").addClass("nodisplay")
-            $("#btnCancel").addClass("nodisplay")
+            $('#btnSave').addClass('nodisplay')
+            $('#btnCancel').addClass('nodisplay')
+            $('#infoPanel').find('tr').each(function() {
+                var ele = $(this).find('td').find('input')
+                dispatch( handleProfileSaveClick( ele.attr('name'), ele.val()))
+                ele.attr('readOnly', 'true')
+            })
         },
         onClickCancel: () => {
-            //disable save&cancel btn, enable edit btn
             $('#btnEdit').removeClass('nodisplay')
-            $("#btnSave").addClass("nodisplay")
-            $("#btnCancel").addClass("nodisplay")
+            $('#btnSave').addClass('nodisplay')
+            $('#btnCancel').addClass('nodisplay')
+            $('#infoPanel').find('tr').each(function() {
+                var ele = $(this).find('td').find('input')
+                ele.val(ele.attr('value'))
+                ele.attr('readOnly', 'true')
+            })
         }
     };
 }
