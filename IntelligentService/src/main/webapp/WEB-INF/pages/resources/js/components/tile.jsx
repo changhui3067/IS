@@ -28,7 +28,7 @@ export default class Tile extends React.Component{
         
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock smallsize" style={background} onPress={() => this.props.onClick(this.props.name)}>
+            <div className="tileBlock smallsize" style={background} onClick={() => this.props.onClick(this.props.name)}>
                 <div className="unreadCount" style={ this.props.unreadCount ? {} : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hello, Freyja</p></div>
@@ -46,7 +46,7 @@ export default class Tile extends React.Component{
         
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock smallsize" onPress={() => this.props.onClick(this.props.name)}>
+            <div className="tileBlock smallsize" onClick={() => this.props.onClick(this.props.name)}>
                 <div className="unreadCount" style={ this.props.unreadCount ? {} : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="tileTitle title"><h3>{this.props.title}</h3></div>
@@ -73,7 +73,7 @@ export default class Tile extends React.Component{
         
         return (
             <Link to={this.props.url}>
-            <div className="tileBlock bigsize" style={background} onPress={() => this.props.onClick(this.props.name)}>
+            <div className="tileBlock bigsize" style={background} onClick={() => this.props.onClick(this.props.name)}>
                 <div className="unreadCount" style={ this.props.unreadCount ? {} : noDisplay}>{this.props.unreadCount}</div>
                 <div className="tileContent">
                     <div className="helloMsg"><p>Hot Jobs In Greate China</p></div>
@@ -84,7 +84,6 @@ export default class Tile extends React.Component{
     }
 
     render() {
-        console.log("tile type:", this.props.type)
         switch ( this.props.type){
         case '0': return (this._renderType0());
         case '1': return (this._renderType1());

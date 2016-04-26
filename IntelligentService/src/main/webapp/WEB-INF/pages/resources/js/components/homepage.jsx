@@ -70,6 +70,7 @@ Homepage.defaultProps = {
             title: "Hot Jobs",
             tileList: [{
                 title: "Hot Jobs",
+                name: "Hotjobs",
                 type: "2",
                 icon: "",
                 background: "hotjobs_tile.png",
@@ -80,18 +81,21 @@ Homepage.defaultProps = {
             title: "Admin Center",
             tileList: [{
                 title: "Employee config",
+                name: "EmpConfig",
                 type: "1",
                 icon: "shezhi",
                 background: "",
                 url: "/empconfig"
             },{
                 title: "Jobs config",
+                name: "JobConfig",
                 type: "1",
                 icon: "shezhi",
                 background: "",
                 url: "/jobconfig"
             },{
                 title: "Courses config",
+                name: "CourseConfig",
                 type: "1",
                 icon: "shezhi",
                 background: "",

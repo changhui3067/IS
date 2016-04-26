@@ -12,9 +12,9 @@ import { createStore } from 'redux';
 import HeaderMap from "./../containers/headerMap";
 import Footer from "./footer";
 import Homepage from "./homepage";
-import Orgchart from "./orgchart";
-import Profile from "./profile";
-import Courses from "./courses";
+import OrgchartMap from "./../containers/orgchartMap";
+import ProfileMap from "./../containers/profileMap";
+import CoursesMap from "./../containers/coursesMap";
 import Hotjobs from "./hotjobs";
 import EmpConfig from "./empconfig";
 import JobConfig from "./jobconfig";
@@ -50,9 +50,9 @@ ReactDOM.render(
             <Route name="app" path="/" component={Index} >
                 <IndexRoute component={Homepage} />
                 <Route path="/homepage" component={Homepage} />
-                <Route path="/orgchart" component={Orgchart} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/courses" component={Courses} />
+                <Route path="/orgchart" component={OrgchartMap} />
+                <Route path="/profile" component={ProfileMap} />
+                <Route path="/courses" component={CoursesMap} />
                 <Route path="/hotjobs" component={Hotjobs} />
                 <Route path="/empconfig" component={EmpConfig} />
                 <Route path="/jobconfig" component={JobConfig} />
