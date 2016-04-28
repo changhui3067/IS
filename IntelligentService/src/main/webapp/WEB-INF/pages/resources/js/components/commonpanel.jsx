@@ -2,9 +2,10 @@ import React from "react";
 import "./../../css/commonpanel.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
-import "./../../bootstrap/css/bootstrap.css"
-import Bootstrap from "Bootstrap"
-import Previewpanel from './previewpanel'
+import "./../../css/iconfont.css";
+import "./../../bootstrap/css/bootstrap.css";
+import Bootstrap from "Bootstrap";
+import Previewpanel from './previewpanel';
 
 class TilePanel extends React.Component{
     render() {
@@ -17,6 +18,9 @@ class TilePanel extends React.Component{
                     })}
                 </div>
                 <div className="contentPart">
+                    <div className="toolPanel">
+                        <span className={"iconfont icon-anonymous-iconfont1 toolIconSize"}></span>
+                    </div>
                     {this.props.list.map(( preview, index) => {
                         return (<Previewpanel key={index} {...preview}/>)
                     })}
