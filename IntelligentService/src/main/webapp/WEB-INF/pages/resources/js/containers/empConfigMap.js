@@ -2,10 +2,10 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
-import Courses from '../components/courses';
+import EmpConfig from '../components/empconfig';
 import $ from "jquery";
-import { handleCoursesTabClick } from '../actions/coursesAction';
-import {getInitialState} from '../reducers/courses'
+import { handleEmpConfigAddClick } from '../actions/empConfigAction';
+import {getInitialState} from '../reducers/empConfig'
 
 const getVisibleList = (list, filter) => {
     switch (filter) {
@@ -16,28 +16,20 @@ const getVisibleList = (list, filter) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.courses)) {
-        getInitialState(state.courses)
+    if($.isEmptyObject(state.empConfig)) {
+        getInitialState(state.empConfig)
     }
     
     return {
-        name: 'Courses',
-        filter: state.courses.filter,
-        tabs: state.courses.tabs,
-        list: getVisibleList(state.courses.list, state.courses.filter)
+        name: 'Employee Config',
+        list: state.empConfig.list
     };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClickTab: (e) => {
-            console.log($(e.target).attr('name'))
-            $(e.target).addClass('selected')
-            $(e.target).siblings().removeClass('selected')
-            dispatch(handleCoursesTabClick($(e.target).attr('name')))
-        },
         onClickAdd: () => {
-
+            dispatch(handleEmpConfigTabClick())
         },
         onClickDelete: () =>{
 
@@ -51,9 +43,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-const CoursesMap = connect(
+const empConfigMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Courses)
+)(EmpConfig)
 
-export default CoursesMap;
+export default empConfigMap;

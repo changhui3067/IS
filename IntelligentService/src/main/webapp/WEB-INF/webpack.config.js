@@ -74,7 +74,7 @@ var config = {
       extensions: ['', '.js', '.json', '.jsx'],
       alias: {}
     },
-    devtool: 'eval-source-map',
+    devtool: '#eval-source-map',
     jshint: {
       "esnext": true
     },

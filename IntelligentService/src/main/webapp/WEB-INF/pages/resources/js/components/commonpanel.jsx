@@ -2,7 +2,60 @@ import React from "react";
 import "./../../css/commonpanel.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import "./../../bootstrap/css/bootstrap.css"
+import Bootstrap from "Bootstrap"
 import Previewpanel from './previewpanel'
+
+class TilePanel extends React.Component{
+    render() {
+        return (
+            <div>
+                <div className="tabsPart">
+                    {this.props.tabs.map((tab, index) => {
+                        let cssclass = 'tab ' + ((this.props.filter === tab.filter) ? 'selected' : '')
+                        return (<div key={index} className={cssclass} onClick={this.props.onClickTab} name={tab.filter}>{tab.name}</div>)
+                    })}
+                </div>
+                <div className="contentPart">
+                    {this.props.list.map(( preview, index) => {
+                        return (<Previewpanel key={index} {...preview}/>)
+                    })}
+                </div>
+            </div>
+        )
+    }
+}
+
+class ListPanel extends React.Component{
+    render() {
+        return (
+            <div className="contentPart">
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.list.map((item, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{item.userid}</td>
+                                <td>{item.username}</td>
+                                <td>{item.userphoto}</td>
+                                <td><a>Edit</a><a>Delete</a></td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            </div>
+        )
+    }
+}
 
 export default class Commonpanel extends React.Component{
 
@@ -10,17 +63,15 @@ export default class Commonpanel extends React.Component{
         return (
             <div>
                 <div className="titlePart">
-                    <span>Courses</span>
+                    <span>{this.props.name}</span>
                 </div>
-                <div className="tabsPart">
-                    <div className="tab selected" onClick={this.props.onClickTab} name='todo'>ToDo</div>
-                    <div className="tab" onClick={this.props.onClickTab} name='finished'>Finished</div>
-                </div>
-                <div className="contentPart">
-                    {this.props.list.map(( preview) => {
-                        return (<Previewpanel {...preview}/>)
-                    })}
-                </div>
+                {(() => {
+                    switch (this.props.type) {
+                        case 'tilelist': return <TilePanel {...this.props}/>;
+                        case 'list': return <ListPanel {...this.props}/>;
+                        default: return <div></div>;
+                    }
+                })()}
             </div>
         );
     }

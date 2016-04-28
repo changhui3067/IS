@@ -15,10 +15,10 @@ import Homepage from "./homepage";
 import OrgchartMap from "./../containers/orgchartMap";
 import ProfileMap from "./../containers/profileMap";
 import CoursesMap from "./../containers/coursesMap";
-import Hotjobs from "./hotjobs";
-import EmpConfig from "./empconfig";
-import JobConfig from "./jobconfig";
-import CourseConfig from "./courseconfig";
+import HotjobsMap from "./../containers/hotjobsMap";
+import EmpConfigMap from "./../containers/empConfigMap";
+import JobConfigMap from "./../containers/jobconfigMap";
+import CourseConfigMap from "./../containers/courseconfigMap";
 import reducers from "./../reducers/reducers"
 
 const store = createStore(reducers);
@@ -53,10 +53,10 @@ ReactDOM.render(
                 <Route path="/orgchart" component={OrgchartMap} />
                 <Route path="/profile" component={ProfileMap} />
                 <Route path="/courses" component={CoursesMap} />
-                <Route path="/hotjobs" component={Hotjobs} />
-                <Route path="/empconfig" component={EmpConfig} />
-                <Route path="/jobconfig" component={JobConfig} />
-                <Route path="/courseconfig" component={CourseConfig} />
+                <Route path="/hotjobs" component={HotjobsMap} />
+                <Route path="/empconfig" component={EmpConfigMap} />
+                <Route path="/jobconfig" component={JobConfigMap} />
+                <Route path="/courseconfig" component={CourseConfigMap} />
             </Route>
         </Router>
     </Provider>,

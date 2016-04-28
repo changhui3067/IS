@@ -1,29 +1,29 @@
 export function getInitialState(state) {
     return Object.assign(state, {}, {
-        filter: 'todo',
-        tabs:[{
-            name: 'Todo',
-            filter: 'todo'
+        filter: 'open',
+        tabs: [{
+            name: 'Open',
+            filter: 'open'
         },{
-            name: 'Finished',
-            filter: 'finished'
+            name: 'Applied',
+            filter: 'applied'
         }],
         list: [{
-            title: '111',
-            finished: false
+            title: 'hotjob1',
+            applied: false
         },{
-            title: '222',
-            finished: true
+            title: 'hotjob2',
+            applied: true
         }]
     })
 }
 
 
-const courses = (state = {}, action) => {
+const hotjobs = (state = {}, action) => {
     switch (action.type) {
         case 'ADD':
             return state
-        case 'SET_COURSES_FILTER':
+        case 'SET_HOTJOBS_FILTER':
             return Object.assign({}, state, {
                 filter: action.filter
             })
@@ -32,4 +32,4 @@ const courses = (state = {}, action) => {
     }
 }
 
-export default courses
+export default hotjobs
