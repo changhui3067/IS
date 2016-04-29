@@ -53,7 +53,10 @@ class ListPanel extends React.Component{
                                 <td>{item.userid}</td>
                                 <td>{item.username}</td>
                                 <td>{item.userphoto}</td>
-                                <td><a>Edit</a><a>Delete</a></td>
+                                <td>
+                                    <a title="Edit"><span className={"iconfont icon-bianji toolIconSize"}></span></a>
+                                    <a title="Delete"><span className={"iconfont icon-shanchu1 toolIconSize"}></span></a>
+                                </td>
                             </tr>
                         )
                     })}

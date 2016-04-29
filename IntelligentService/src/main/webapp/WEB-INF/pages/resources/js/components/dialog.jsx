@@ -5,13 +5,14 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import './../../lib/jquery.form.js';
 import './../../css/createBannerDialog.scss';
+import './../../css/antd.css';
 
 const FormItem = Form.Item;
 
 var DialogForm = React.createClass({
     getInitialState: function() {
         return {
-        formMethod: "post",
+        formMethod: "post"
         };
     },
     onInputChange: function(e) {
@@ -22,11 +23,19 @@ var DialogForm = React.createClass({
     },
 
     render: function() {
-
+        const formItemLayout = {
+            labelCol: { span: 6 },
+            wrapperCol: { span: 14 }
+        };
         return(
             <Form horizontal className="dialogForm" id="dialogForm" method={this.state.formMethod}>
-                <FormItem label="formitem">
-                    <Input id="input1" name="input1" onChange={this.onInputChange}/>
+                <FormItem {...formItemLayout}
+                    label={"form item1"+"："}>
+                    <p className="ant-form-text" id="input1" name="input1">new job</p>
+                </FormItem>
+                <FormItem {...formItemLayout}
+                    label={"form item2"+"："}>
+                    <Input id="input2" name="input2" />
                 </FormItem>
             </Form>
         )
@@ -57,7 +66,7 @@ export default class Dialog extends React.Component{
             
                 <Modal ref="modal"
                   visible={this.props.dialog.visible}
-                  title="dialog" onOk={this.handleOk} onCancel={this.handleCancel}
+                  title="dialog" onOk={this.props.onClickSave} onCancel={this.props.onClickCancel}
                   footer={[
                     <Button key="back" type="ghost" size="large" onClick={this.props.onClickCancel}>Cancel</Button>,
                     <Button key="submit" type="primary" size="large" onClick={this.props.onClickSave}>Save</Button>

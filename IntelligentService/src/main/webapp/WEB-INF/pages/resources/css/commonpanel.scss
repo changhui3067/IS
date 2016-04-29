@@ -42,7 +42,7 @@
                 cursor: pointer;
 
                 &:hover{
-                    background-color: #5BACD3;
+                    color: #5BACD3;
                 }
             }
             .toolIconSize {
@@ -50,4 +50,15 @@
             }
         }
         
+    }
+
+    .table {
+        a {
+            padding: 5px;
+            color: #000;
+
+            &:hover {
+                color: #5BACD3;
+            }
+        }
     }
