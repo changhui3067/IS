@@ -1,6 +1,10 @@
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'open',
+        dialog: {
+            visible: false,
+            field: {}
+        },
         tabs: [{
             name: 'Open',
             filter: 'open'
@@ -27,6 +31,13 @@ const hotjobs = (state = {}, action) => {
             return Object.assign({}, state, {
                 filter: action.filter
             })
+        case 'SET_HOTJOBS_DIALOG_VISIBLE':
+            var dialog = {
+                dialog: Object.assign({}, state.dialog, {
+                    visible: action.visible
+                })
+            }
+            return Object.assign({}, state, dialog)
         default:
             return state
     }

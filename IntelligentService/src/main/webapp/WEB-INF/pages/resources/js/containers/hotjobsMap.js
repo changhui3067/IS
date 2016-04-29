@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import Hotjobs from '../components/hotjobs';
 import $ from "jquery";
-import { handleHotjobsTabClick } from '../actions/hotjobsAction';
+import { handleHotjobsTabClick, handleHotjobsSetDialogShow } from '../actions/hotjobsAction';
 import {getInitialState} from '../reducers/hotjobs'
 
 const getVisibleList = (list, filter) => {
@@ -19,10 +19,11 @@ const mapStateToProps = (state, ownProps) => {
     if($.isEmptyObject(state.hotjobs)) {
         getInitialState(state.hotjobs)
     }
-    console.log(state)
+    
     return {
         name: 'HotJobs',
         filter: state.hotjobs.filter,
+        dialog: state.hotjobs.dialog,
         tabs: state.hotjobs.tabs,
         list: getVisibleList(state.hotjobs.list, state.hotjobs.filter)
     };
@@ -37,16 +38,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(handleHotjobsTabClick($(e.target).attr('name')))
         },
         onClickAdd: () => {
-
+            dispatch(handleHotjobsSetDialogShow(true))
         },
         onClickDelete: () =>{
 
         },
         onClickSave: () => {
-            
+            console.log('save clicked')
+            $('#dialogForm').resetForm();
+            dispatch(handleHotjobsSetDialogShow(false))
         },
         onClickCancel: () => {
-            
+            console.log('cancel clicked')
+            $('#dialogForm').resetForm();
+            dispatch(handleHotjobsSetDialogShow(false))
         }
     };
 }

@@ -68,7 +68,7 @@ export function getUserInfo(state) {
 }
 
 const employee = (state = [], action) => {
-    console.log("reducer: set profile text")
+    
     switch (action.type) {
         case 'SET_PROFILE_TEXT':
             var o = new Object()

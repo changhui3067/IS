@@ -19,7 +19,7 @@ class TilePanel extends React.Component{
                 </div>
                 <div className="contentPart">
                     <div className="toolPanel">
-                        <span className={"iconfont icon-anonymous-iconfont1 toolIconSize"}></span>
+                        <span className={"iconfont icon-anonymous-iconfont1 toolIconSize"} onClick={this.props.onClickAdd}></span>
                     </div>
                     {this.props.list.map(( preview, index) => {
                         return (<Previewpanel key={index} {...preview}/>)
@@ -34,6 +34,9 @@ class ListPanel extends React.Component{
     render() {
         return (
             <div className="contentPart">
+            <div className="toolPanel">
+                <span className={"iconfont icon-anonymous-iconfont1 toolIconSize"} onClick={this.props.onClickAdd}></span>
+            </div>
             <table className="table">
                 <thead>
                     <tr>

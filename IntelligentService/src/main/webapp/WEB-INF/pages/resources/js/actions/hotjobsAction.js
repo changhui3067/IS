@@ -4,3 +4,10 @@ export function handleHotjobsTabClick(filter) {
         filter: filter
     }
 }
+
+export function handleHotjobsSetDialogShow(visible) {
+    return {
+        type: 'SET_HOTJOBS_DIALOG_VISIBLE',
+        visible: visible
+    }
+}
