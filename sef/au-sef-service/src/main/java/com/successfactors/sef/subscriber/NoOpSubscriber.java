@@ -27,7 +27,7 @@ public class NoOpSubscriber implements SFSubscriber {
   private ServiceCommandHandler scaHandler;
 
   /**
-   * This method will be called when an event is posted to SEB.
+   * This method will be called when an event is posted to hermes.
    */
   @Override
   public void onEvent(final SFEvent evt) {

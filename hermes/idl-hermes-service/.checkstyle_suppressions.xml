@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+"-//Puppy Crawl//DTD Suppressions 1.0//EN"
+"http://www.puppycrawl.com/dtds/suppressions_1_0.dtd" [
+<!ENTITY checknames "FileTabCharacter|ConstantName|PackageName|ParameterName|TypeName|LocalVariableName|MethodName|MemberName|LineLength|MethodLength|AvoidStarImport|RedundantImport|UnusedImports|CovariantEquals|DoubleCheckedLocking|EmptyStatement|HiddenField|InnerAssignment|SimplifyBooleanExpression|SimplifyBooleanReturn|StringLiteralEquality|SuperClone|SuperFinalize|PackageDeclaration|IllegalType|ParameterAssignment|InterfaceIsType|HideUtilityClassConstructor|UpperEll|ModifierOrder|RedundantModifier|EmptyBlock|NeedBraces|MagicNumber|IllegalCatch|JavaNCSS">
+]>
+
+<suppressions>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.impl.hornetq.messagehandler.HandlerUtil"/>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.impl.hornetq.util.HQSessionHelper"/>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.impl.hornetq.HQSessionPool"/>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.impl.hornetq.HQPullingSubscriptionManager"/>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.impl.hornetq.HQPullingSubscriber"/>
+  
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.core.subscriber.SubscriberRegistry"/>
+  <suppress checks="IllegalCatch" files="com.successfactors.hermes.core.subscriber.SeamSubscriberProvider"/>
+  <suppress checks="&checknames;|Javadoc.*" files="com.successfactors.hermes.*"/>
+
+</suppressions>
+

@@ -1,0 +1,26 @@
+#DO NOT DELETE this line. version:0.01 by ES team.
+#DO NOT DELETE this line. notes: As default, the following one will be ignored: OS junk files, target, bin, src code generated, build, test-output
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#target files
+/target/*
+/*/target/*
+
+#binary output files
+/bin/*
+/*/bin/*
+
+#src code generated
+/src/generated/*
+/*/src/generated/*
+
+#build files
+/build/*
+/*/build/*
+
+#testing output files
+/test-output/*
+/*/test-output/*

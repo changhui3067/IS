@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="urn:hornetq"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:hornetq /schema/hornetq-jms.xsd">
+
+  <connection-factory name="InVMConnectionFactory">
+    <xa>false</xa>
+    <connectors>
+      <connector-ref connector-name="in-vm" />
+    </connectors>
+    <entries>
+      <entry name="java:/ConnectionFactory" />
+    </entries>
+  </connection-factory>
+
+  <connection-factory name="XAInVMConnectionFactory">
+    <xa>true</xa>
+    <connectors>
+      <connector-ref connector-name="in-vm" />
+    </connectors>
+    <entries>
+      <entry name="java:/JmsXA" />
+    </entries>
+  </connection-factory>
+
+  <connection-factory name="NettyConnectionFactory">
+    <xa>false</xa>
+    <connectors>
+      <connector-ref connector-name="netty" />
+    </connectors>
+    <entries>
+      <entry name="RemoteConnectionFactory" />
+    </entries>
+  </connection-factory>
+
+  <connection-factory name="NettyThroughputConnectionFactory">
+    <xa>false</xa>
+    <connectors>
+      <connector-ref connector-name="netty-throughput" />
+    </connectors>
+    <entries>
+      <entry name="ThroughputConnectionFactory" />
+    </entries>
+  </connection-factory>
+
+  <queue name="DLQ">
+    <entry name="queue/DLQ"></entry>
+    <durable>true</durable>
+  </queue>
+
+  <queue name="ExpiryQueue">
+    <entry name="queue/ExpiryQueue"></entry>
+    <durable>true</durable>
+  </queue>
+  
+  <queue name="remotingJMSQueue">
+    <entry name="queue/remotingJMSQueue"></entry>
+  </queue>
+</configuration>

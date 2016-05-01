@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="urn:hornetq"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:hornetq /schema/hornetq-configuration.xsd">
+
+  <backup>false</backup>
+  <journal-type>NIO</journal-type>
+  <persistence-enabled>false</persistence-enabled>
+  <security-enabled>false</security-enabled>
+  <shared-store>false</shared-store>
+  <wild-card-routing-enabled>true</wild-card-routing-enabled>
+
+  <!-- Connectors -->
+  <connectors>
+    <connector name="in-vm">
+      <factory-class>org.hornetq.core.remoting.impl.invm.InVMConnectorFactory</factory-class>
+      <param key="server-id" value="${hornetq.server-id:0}" />
+    </connector>
+
+    <connector name="netty">
+      <factory-class>org.hornetq.core.remoting.impl.netty.NettyConnectorFactory</factory-class>
+      <param key="host" value="${jboss.bind.address:localhost}" />
+      <param key="port" value="${hornetq.remoting.netty.port:5445}" />
+      <param key="use-nio" value="true"/>
+    </connector>
+
+    <connector name="netty-throughput">
+      <factory-class>org.hornetq.core.remoting.impl.netty.NettyConnectorFactory</factory-class>
+      <param key="host" value="${jboss.bind.address:localhost}" />
+      <param key="port" value="${hornetq.remoting.netty.batch.port:5455}" />
+      <param key="batch-delay" value="50" />
+      <param key="use-nio" value="true"/>
+    </connector>
+  </connectors>
+
+  <acceptors>
+    <acceptor name="in-vm">
+      <factory-class>org.hornetq.core.remoting.impl.invm.InVMAcceptorFactory</factory-class>
+      <param key="server-id" value="${hornetq.server-id:0}" />
+    </acceptor>
+
+    <acceptor name="netty">
+      <factory-class>org.hornetq.core.remoting.impl.netty.NettyAcceptorFactory</factory-class>
+      <param key="host" value="${jboss.bind.address:localhost}" />
+      <param key="port" value="${hornetq.remoting.netty.port:5445}" />
+    </acceptor>
+
+    <acceptor name="netty-throughput">
+      <factory-class>org.hornetq.core.remoting.impl.netty.NettyAcceptorFactory</factory-class>
+      <param key="host" value="${jboss.bind.address:localhost}" />
+      <param key="port" value="${hornetq.remoting.netty.batch.port:5455}" />
+      <param key="batch-delay" value="50" />
+      <param key="direct-deliver" value="false" />
+    </acceptor>
+  </acceptors>
+
+  <!-- Other config -->
+  <!--security for example queue -->
+  <!--
+  <security-settings>
+    <security-setting match="#">
+      <permission type="createDurableQueue" roles="guest" />
+      <permission type="deleteDurableQueue" roles="guest" />
+      <permission type="createNonDurableQueue" roles="guest" />
+      <permission type="deleteNonDurableQueue" roles="guest" />
+      <permission type="consume" roles="guest" />
+      <permission type="send" roles="guest" />
+    </security-setting>
+  </security-settings>
+  -->
+
+  <address-settings>
+    <!--default for catch all -->
+    <address-setting match="#">
+      <dead-letter-address>jms.queue.DLQ</dead-letter-address>
+      <expiry-address>jms.queue.ExpiryQueue</expiry-address>
+      <address-full-policy>BLOCK</address-full-policy>
+    </address-setting>
+    
+    <address-setting match="jms.queue.DLQ">
+      <!-- maximum 100MB in memory size -->
+      <max-size-bytes>104857600</max-size-bytes>
+      <address-full-policy>FAIL</address-full-policy>
+    </address-setting>
+    
+    <address-setting match="jms.queue.ExpiryQueue">
+      <!-- maximum 100MB in memory size -->
+      <max-size-bytes>104857600</max-size-bytes>
+      <address-full-policy>FAIL</address-full-policy>
+    </address-setting>
+  </address-settings>
+
+</configuration>

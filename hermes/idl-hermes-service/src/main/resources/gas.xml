@@ -1,0 +1,8 @@
+<index>
+  <entry>
+    <string>org.jboss.seam.annotations.Name</string>
+    <set>
+      <string>com.successfactors.hermes.core.ServiceEventBusFactory</string>
+    </set>
+  </entry>
+</index>

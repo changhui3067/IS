@@ -1,0 +1,9 @@
+<!--Please add integration tests that are too time-cost and instable to be included in Jenkins here, so that it would be executed in Sonar Jenkins Server -->
+<suite name="service-test-suite" verbose="1" >
+  <test name="service" junit="false">
+	  <packages>
+	  </packages>
+  </test>
+</suite>
+
+      
