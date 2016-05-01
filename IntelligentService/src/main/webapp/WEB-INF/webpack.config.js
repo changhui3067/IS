@@ -7,9 +7,8 @@ var config = {
   context: path.join(__dirname, '..', 'WEB-INF'),
   entry: {
       // Add each page's entry here
-      homepage: './pages/resources/js/homepage', //the mapping jsx file
-      logon: './pages/resources/js/logon'
-
+      index: './pages/resources/js/components/index', //the mapping jsx file
+      logon: './pages/resources/js/components/logon'
     },
     output: {
       path: path.join(__dirname, '..', '/WEB-INF/build'),
@@ -21,10 +20,14 @@ var config = {
         __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')) // judge if secret environment.
       }),
       new ExtractTextPlugin("[name].css"),
+      new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+      }),
       new HtmlWebpackPlugin({
-        template: './pages/templates/homepage.html', //file name in template directoty
-        filename: 'homepage.html',                   //the generated file name
-        chunks: ['homepage'],                        // match the entry name
+        template: './pages/templates/index.html', //file name in template directoty
+        filename: 'index.html',                   //the generated file name
+        chunks: ['index'],                        // match the entry name
         inject: 'body'                               //the js file inject to
       }),
       new HtmlWebpackPlugin({
@@ -61,7 +64,7 @@ var config = {
            loader: 'url?limit=10000!img?progressive=true'
          },
          {
-            test: /\.(eot|woff|ttf|svg)$/,
+            test: /\.(eot|woff|woff2|ttf|svg)(\?.*$|$)/,
             loader: 'url?limit=10000'
           }
       ],
@@ -71,7 +74,7 @@ var config = {
       extensions: ['', '.js', '.json', '.jsx'],
       alias: {}
     },
-    devtool: 'eval-source-map',
+    devtool: '#eval-source-map',
     jshint: {
       "esnext": true
     },
@@ -79,7 +82,7 @@ var config = {
       historyApiFallback: {
         index: 'logon.html',
         rewrites: [
-          { from: /\/homepage/, to: '/homepage.html'}, //page router for browser
+          { from: /\/index/, to: '/index.html'}, //page router for browser
           { from: /\/logon/, to: '/logon.html'}
         ]
       },

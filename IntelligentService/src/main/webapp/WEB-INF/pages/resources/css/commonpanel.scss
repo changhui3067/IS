@@ -1,0 +1,64 @@
+.titlePart {
+        width: 100%;
+        color: #fff;
+        font-size: 26px;
+        margin-left: 10px;
+        margin-bottom: 15px;
+    }
+
+    .tabsPart {
+        margin-left: 10px;
+        color: #fff;
+
+        .tab {
+            display: inline-block;
+            min-width: 70px;
+            margin-right: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        .selected {
+            color: #000;
+            border-bottom: 5px solid #0072A3;
+        }
+    }
+
+    .contentPart {
+        width: 100%;
+        background-color: #fff;
+        min-height: 400px;
+
+        .toolPanel {
+            padding: 0 20px;
+            border: 1px solid #ccc;
+            span {
+                cursor: pointer;
+
+                &:hover{
+                    color: #5BACD3;
+                }
+            }
+            .toolIconSize {
+                font-size: 30px;
+            }
+        }
+        
+    }
+
+    .table {
+        a {
+            padding: 5px;
+            color: #000;
+
+            &:hover {
+                color: #5BACD3;
+            }
+        }
+    }

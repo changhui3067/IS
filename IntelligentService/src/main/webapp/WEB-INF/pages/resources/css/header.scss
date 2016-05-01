@@ -10,43 +10,37 @@
         top: 8px;
     }
 
-    .menuList {
-        height: 38px;
-        position: relative;
-        top: 8px;
-        background-color: transparent;
-        border: 0px;
-        cursor: pointer;
-        padding: 0px 16px 0px 10px;
-        font-size: 14px;
-        line-height: 36px;
-        vertical-align: middle;
-
-        option {
-            height: 35px;
-            background-color: #FFF;
-        }
-
-        option:hover {
-            background-color: #E5F2F9；
-        }
-    }
-
-    .menu {
+    .menu, .userinfo {
         float: left;
+        position: relative;
+        top: 5px;
+        font-size: 14px;
 
-        .menuList {
-            left: 0px;
-            margin-left: 6px;
+        .navbar {
+            border: none;
+            max-height: 44px;
+            background-color: transparent;
         }
+
+        .navbar-nav > li > a {
+            padding-bottom: 12px;
+        }
+
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus {
+            background-color: #A8DAEE;
+        }
+
     }
 
     .userinfo {
         float: right;
+        right:10px;
 
         .menuList {
             right: 20px;
         }
         
     }
+
 }
