@@ -19,6 +19,7 @@ import HotjobsMap from "./../containers/hotjobsMap";
 import EmpConfigMap from "./../containers/empConfigMap";
 import JobConfigMap from "./../containers/jobconfigMap";
 import CourseConfigMap from "./../containers/courseconfigMap";
+import SubConfigMap from "./../containers/subconfigMap";
 import reducers from "./../reducers/reducers"
 
 const store = createStore(reducers);
@@ -57,6 +58,7 @@ ReactDOM.render(
                 <Route path="/empconfig" component={EmpConfigMap} />
                 <Route path="/jobconfig" component={JobConfigMap} />
                 <Route path="/courseconfig" component={CourseConfigMap} />
+                <Route path="/subconfig" component={SubConfigMap} />
             </Route>
         </Router>
     </Provider>,

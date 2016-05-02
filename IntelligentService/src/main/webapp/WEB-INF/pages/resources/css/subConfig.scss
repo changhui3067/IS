@@ -1,0 +1,49 @@
+#subconfigContent {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: 1px solid #81a1b7;
+    background-color: rgba(117,161,180,0.5);
+
+    .left {
+        width:25%;
+        background-color: #fff;
+        float: left;
+
+        .selected {
+            background-color: #A8DAEE;
+            border-right: 0px;
+        }
+
+        ul {
+            li {
+                cursor: pointer;
+                width: 100%;
+                height: 50px;
+                border: 1px solid #ccc;
+                padding: 12px 10px;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: #A8DAEE;
+                }
+            }
+        }
+    }
+
+    .right {
+        width: 75%;
+        background-color: #fff;
+        float: left;
+
+        .subName {
+            font-size: 14px;
+        }
+
+        .subDesc {
+            font-size: 12px;
+            color: #888;
+        }
+    }
+}

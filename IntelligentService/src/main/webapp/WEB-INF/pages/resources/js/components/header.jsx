@@ -36,7 +36,10 @@ const Header = ({selectedMenu, usertype, onClick}) => {
         },{
             name: "CourseConfig",
             menulink: "/courseconfig"
-        }];
+        },{
+            name: "SubscriberConfig",
+            menulink: "/subconfig"
+    }];
 
     return (
             <div className="headerContent">
