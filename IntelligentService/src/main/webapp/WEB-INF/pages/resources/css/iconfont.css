@@ -24,6 +24,8 @@
 .icon-yonghu2:before { content: "\e605"; }
 .icon-bianji:before { content: "\e606"; }
 .icon-gouhao:before { content: "\e607"; }
+.icon-tongzhifill:before { content: "\e624"; }
+.icon-tongzhi:before { content: "\e625"; }
 .icon-x:before { content: "\e608"; }
 .icon-shang1:before { content: "\e609"; }
 .icon-xia1:before { content: "\e60a"; }
@@ -52,3 +54,4 @@
 .icon-shanchu1:before { content: "\e621"; }
 .icon-tianjiachengyuan:before { content: "\e622"; }
 .icon-shanchuchengyuan:before { content: "\e623"; }
+

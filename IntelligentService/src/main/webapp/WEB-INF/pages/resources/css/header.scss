@@ -33,9 +33,41 @@
 
     }
 
+    .notification {
+        float: right;
+        margin: 10px 20px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #ccc;
+        }
+
+        .nodisplay {
+            display: none;
+        }
+        .unreadCount {
+            position: relative;
+            float: right;
+            top: 4px;
+            right: 12px;
+            width: 14px;
+            height: 14px;
+            background-color: red;
+            color: white;
+            border-radius: 15px;
+            font-size: 10px;
+            padding: 0px 1px 4px 4px;
+        }
+
+        .noti_font_size {
+            font-size: 24px;
+        }
+    }
     .userinfo {
         float: right;
         right:10px;
+
+
 
         .menuList {
             right: 20px;

@@ -8,7 +8,7 @@ import {Link} from "react-router";
 import "./../../bootstrap/css/bootstrap.css"
 import Bootstrap from "Bootstrap"
 
-const Header = ({selectedMenu, usertype, onClick}) => {
+const Header = ({unreadCount, selectedMenu, usertype, onClick}) => {
     let logoImage = new Image();
     logoImage.src = require("./../../img/logo_color.gif");
     console.log(selectedMenu);
@@ -68,6 +68,7 @@ const Header = ({selectedMenu, usertype, onClick}) => {
                        </div>
                     </nav>
                 </div>
+
                 <div className="userinfo">
                     <nav className="navbar navbar-default" role="navigation">
                        <div>
@@ -84,6 +85,11 @@ const Header = ({selectedMenu, usertype, onClick}) => {
                           </ul>
                        </div>
                     </nav>
+                </div>
+
+                <div className="notification">
+                    <div className="unreadCount" style={ unreadCount ? {} : noDisplay}>{unreadCount}</div>
+                    <span className={"iconfont icon-tongzhifill noti_font_size"}></span>
                 </div>
             </div>
     );

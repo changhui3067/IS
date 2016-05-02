@@ -4,6 +4,7 @@ import Header from '../components/header';
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        unreadCount: 1,
         selectedMenu: (state.headerMenu.selectedMenu || "Homepage"),
         usertype: 1
     };
