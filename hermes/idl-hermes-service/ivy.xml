@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ivy-module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+
+    <info branch="trunk" module="idl-hermes-service" organisation="com.successfactors"/>
+
+    <configurations>
+        <conf name="compile" description="Compile Dependencies" visibility="public"/>
+        <conf name="test" description="Test compile Dependencies" visibility="public"/>
+        <conf name="runtime" description="Test runtime Dependencies" visibility="public"/>
+        <conf name="webapp-content" description="Web Dependencies to add to war" visibility="public"/>
+        <conf name="default" description="Default artifact" visibility="public"/>
+        <conf name="pom" description="Maven pom file" visibility="public"/>
+        <conf name="src" description="Source artifact" visibility="public"/>
+    </configurations>
+
+    <publications>
+        <artifact conf="default" name="idl-hermes-service"/>
+        <artifact conf="src" name="idl-hermes-service-source" ext="jar" type="source"/>
+        <artifact conf="pom" name="idl-hermes-service" ext="pom"/>
+    </publications>
+
+    <dependencies>
+        <dependency conf="compile->default" name="aopalliance" org="aopalliance" rev="${aopalliance.aopalliance.version}"/>
+        <dependency conf="compile->default" name="hornetq-commons" org="org.hornetq" rev="${org.hornetq.hornetq-commons.version}"/>
+        <dependency conf="compile->default" name="hornetq-core-client" org="org.hornetq" rev="${org.hornetq.hornetq-core-client.version}"/>
+        <dependency conf="compile->default" name="hornetq-jms-client" org="org.hornetq" rev="${org.hornetq.hornetq-jms-client.version}"/>
+        <dependency conf="compile->default" name="hornetq-jms-server" org="org.hornetq" rev="${org.hornetq.hornetq-jms-server.version}"/>
+        <dependency conf="compile->default" name="hornetq-server" org="org.hornetq" rev="${org.hornetq.hornetq-server.version}"/>
+        <dependency conf="compile->default" name="hornetq-spring-integration" org="org.hornetq" rev="${org.hornetq.hornetq-spring-integration.version}"/>
+        <dependency conf="compile->default" name="httpclient" org="org.apache.httpcomponents" rev="${org.apache.httpcomponents.httpclient.version}"/>
+        <dependency conf="compile->default" name="httpcore" org="org.apache.httpcomponents" rev="${org.apache.httpcomponents.httpcore.version}"/>
+        <dependency conf="compile->default" name="j2ee" org="javax.j2ee" rev="${javax.j2ee.j2ee.version}"/>
+        <dependency conf="compile->default" name="jackson-core-asl" org="org.codehaus.jackson" rev="${org.codehaus.jackson.jackson-core-asl.version}"/>
+        <dependency conf="compile->default" name="jboss-logging" org="org.jboss.logging" rev="${org.jboss.logging.jboss-logging.version}"/>
+        <dependency conf="compile->default" name="jboss-seam-custom" org="org.jboss" rev="${org.jboss.jboss-seam-custom.version}"/>
+        <dependency conf="compile->default" name="jbossall-client" org="jboss" rev="${jboss.jbossall-client.version}"/>
+        <dependency conf="compile->default" name="spring-aop" org="org.springframework" rev="${org.springframework.spring-aop.version}"/>
+        <dependency conf="compile->default" name="spring-beans" org="org.springframework" rev="${org.springframework.spring-beans.version}"/>
+        <dependency conf="compile->default" name="spring-context" org="org.springframework" rev="${org.springframework.spring-context.version}"/>
+        <dependency conf="compile->default" name="spring-core" org="org.springframework" rev="${org.springframework.spring-core.version}"/>
+        <dependency conf="compile->default" name="spring-jms" org="org.springframework" rev="${org.springframework.spring-jms.version}"/>
+        <dependency conf="compile->default" name="zookeeper" org="zookeeper" rev="${zookeeper.zookeeper.version}"/>
+        <dependency conf="compile->default" name="curator-client" org="org.apache.curator" rev="${org.apache.curator.curator-client.version}"/>
+        <dependency conf="compile->default" name="curator-framework" org="org.apache.curator" rev="${org.apache.curator.curator-framework.version}"/>
+        <dependency conf="compile->default" name="curator-recipes" org="org.apache.curator" rev="${org.apache.curator.curator-recipes.version}"/>
+        <dependency conf="compile->default" name="jackson-core" org="com.fasterxml.jackson.core" rev="${com.fasterxml.jackson.core.jackson-core.version}"/>
+        <dependency conf="compile->default" name="jackson-databind" org="com.fasterxml.jackson.core" rev="${com.fasterxml.jackson.core.jackson-databind.version}"/>
+        <dependency conf="compile->default" name="jackson-annotations" org="com.fasterxml.jackson.core" rev="${com.fasterxml.jackson.core.jackson-annotations.version}"/>
+
+        <dependency conf="test->default" name="commons-io" org="commons-io" rev="${commons-io.commons-io.version}"/>
+        <dependency conf="test->default" name="jackson-jaxrs" org="org.codehaus.jackson" rev="${org.codehaus.jackson.jackson-jaxrs.version}"/>
+        <dependency conf="test->default" name="jackson-mapper-asl" org="org.codehaus.jackson" rev="${org.codehaus.jackson.jackson-mapper-asl.version}"/>
+        <dependency conf="test->default" name="junit" org="junit" rev="${junit.junit.version}"/>
+        <dependency conf="test->default" name="mockito-all" org="org.mockito" rev="${org.mockito.mockito-all.version}"/>
+        <dependency conf="test->default" name="testng" org="org.testng" rev="${org.testng.testng.version}"/>
+
+        <dependency branch="trunk" conf="compile->default" name="idl-appconfig-service" org="com.successfactors" rev="${com.successfactors.idl-appconfig.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-category-service" org="com.successfactors" rev="${com.successfactors.idl-category.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-category-api" org="com.successfactors" rev="${com.successfactors.idl-category.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-db-service" org="com.successfactors" rev="${com.successfactors.idl-db.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-logging-api" org="com.successfactors" rev="${com.successfactors.idl-logging.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-logging-service" org="com.successfactors" rev="${com.successfactors.idl-logging.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-platform-service" org="com.successfactors" rev="${com.successfactors.idl-platform.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-serialization-service" org="com.successfactors" rev="${com.successfactors.idl-serialization.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-sfutil-service" org="com.successfactors" rev="${com.successfactors.idl-sfutil.version}"/>
+
+        <dependency branch="trunk" conf="test->default" name="idl-unittest-service" org="com.successfactors" rev="${com.successfactors.idl-unittest.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="javax.inject" org="javax.inject" rev="${javax.inject.javax.inject.version}"/>
+        <dependency branch="trunk" conf="compile->default" name="idl-hermesstore-service" org="com.successfactors" rev="${com.successfactors.idl-hermesstore.version}"/>
+        
+    </dependencies>
+
+</ivy-module>

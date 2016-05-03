@@ -6,7 +6,7 @@
        <!-- MyBatis Configuration-->
        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
               <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-              <property name="url" value="jdbc:mysql://localhost:3306/IntelligentService?useUnicode=true&amp;characterEncoding=UTF-8&amp;"/>
+              <property name="url" value="jdbc:mysql://localhost:3306/IS?useUnicode=true&amp;characterEncoding=UTF-8&amp;"/>
               <property name="username" value="root"/>
 
               <!-- Connection Pooling DBCP -->

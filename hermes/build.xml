@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module-super" default="default">
+
+  <available file="../dev-foundation/build-system" type="dir" property="build.system.path" value="../dev-foundation/build-system"/>
+  <property name="build.system.path" value="../build-system"/>
+  <property name="build.system.dir" location="${build.system.path}"/>
+  <import optional="false" file="${build.system.dir}/component.xml"/>
+
+</project>

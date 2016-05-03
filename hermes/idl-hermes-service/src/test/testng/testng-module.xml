@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="module suite" verbose="1">
+    <test name="module suite tests">
+      <classes>
+            <class name="com.successfactors.hermes.config.HermesProviderRegistryTest"/>
+			<class name="com.successfactors.hermes.config.NotASubscriber"/>
+			<class name="com.successfactors.hermes.config.SubscriberConfigTest"/>
+			<class name="com.successfactors.hermes.config.SubscriberConfigVisitorTest"/>
+			<class name="com.successfactors.hermes.config.test.IsSubscriber"/>
+			<class name="com.successfactors.hermes.core.SFEventTest"/>
+			<class name="com.successfactors.hermes.core.ServiceEventBusFactoryTest"/>
+			<class name="com.successfactors.hermes.core.TopicTest"/>
+			<class name="com.successfactors.hermes.engine.SubscriptionManagerBaseTest"/>
+			<class name="com.successfactors.hermes.impl.hornetq.HQPublishQueueImplTest"/>
+        </classes>
+      <groups>
+            <run>
+              <exclude name="broken"/>
+              <exclude name="integration.*"/>
+          </run>
+        </groups>
+    </test>
+</suite>

@@ -1,0 +1,63 @@
+<table tableName="employee" primarykey="user_id">
+    <column name="user_id" type="string"/>
+    <column name="user_name" type="string"/>
+    <column name="password"/>
+    <column name="user_photo" type="url"/>
+    <column name="user_type" /> <!--1: admin; 2: manager 3:employee-->
+    <column name="manager_id" /> <!-- 0: no manager-->
+    <column name="email" />
+    <column name="phone_number" />
+    <column name="self_intro" />
+    <column name="location" />
+    <column name="blog_url" />
+    <column name="teamid" />   //jobid
+</table>
+
+team
+    teamid
+    teamname
+
+<table tableName="course" primarykey="">
+    <column name="course_id" />
+    <column name="course_name" />
+    <column name="course_type" /> <!--1:default 2:custom-->
+    <column name="assign_to" /> <!-- 2: manager 3: employee-->
+    cover
+    content
+    expire_time //the valid date from assgin date
+</table>
+
+<table tableName="course_emp_mapper">
+    id
+    courseid
+    empid
+    assign_date
+    isfinished
+</table>
+
+<table tableName="job">
+    id
+    job team
+    job type
+    job description
+    isopen
+</table>
+
+job_emp_mapper
+    id
+    jobid
+    empid
+    state  // 1 applied 2 refused 3 approved
+
+notification
+    id
+    empid
+    content
+    marked_as_read
+    create_time
+    expire_time
+
+subscriber
+    subscriberid //primary key
+    enabled
+

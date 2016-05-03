@@ -21,13 +21,13 @@
                         </list>
                     </property>
                 </bean>
-                <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-                    <property name="supportedMediaTypes">
-                        <list>
-                            <value>application/json</value>
-                        </list>
-                    </property>
-                </bean>
+                <!--<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">-->
+                    <!--<property name="supportedMediaTypes">-->
+                        <!--<list>-->
+                            <!--<value>application/json</value>-->
+                        <!--</list>-->
+                    <!--</property>-->
+                <!--</bean>-->
                 <bean class="org.springframework.http.converter.ResourceHttpMessageConverter" />
                 <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
                 <bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
