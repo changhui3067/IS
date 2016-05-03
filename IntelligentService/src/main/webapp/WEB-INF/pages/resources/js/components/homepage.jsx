@@ -100,6 +100,13 @@ Homepage.defaultProps = {
                 icon: "shezhi",
                 background: "",
                 url: "/courseconfig"
+            },{
+                title: "Subscriber config",
+                name: "SubscriberConfig",
+                type: "1",
+                icon: "shezhi",
+                background: "",
+                url: "/subconfig"
             }]
         }
     ]
