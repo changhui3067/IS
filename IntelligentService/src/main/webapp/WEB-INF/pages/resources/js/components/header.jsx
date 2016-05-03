@@ -36,10 +36,17 @@ const Header = ({unreadCount, selectedMenu, usertype, onClick}) => {
         },{
             name: "CourseConfig",
             menulink: "/courseconfig"
-        },{
+        }, {
             name: "SubscriberConfig",
             menulink: "/subconfig"
+        },{
+            name: "Notification",
+            menulink: "/notification"
     }];
+
+    var noDisplay = {
+        display: 'none'
+    }
 
     return (
             <div className="headerContent">
@@ -88,8 +95,10 @@ const Header = ({unreadCount, selectedMenu, usertype, onClick}) => {
                 </div>
 
                 <div className="notification">
+                    <Link to="/notification" onClick={() => onClick("Notification")}>
                     <div className="unreadCount" style={ unreadCount ? {} : noDisplay}>{unreadCount}</div>
                     <span className={"iconfont icon-tongzhifill noti_font_size"}></span>
+                    </Link>
                 </div>
             </div>
     );

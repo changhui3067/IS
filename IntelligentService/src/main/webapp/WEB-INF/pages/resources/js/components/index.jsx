@@ -20,6 +20,7 @@ import EmpConfigMap from "./../containers/empConfigMap";
 import JobConfigMap from "./../containers/jobconfigMap";
 import CourseConfigMap from "./../containers/courseconfigMap";
 import SubConfigMap from "./../containers/subconfigMap";
+import NotificationMap from "./../containers/notificationMap"
 import reducers from "./../reducers/reducers"
 
 const store = createStore(reducers);
@@ -51,6 +52,7 @@ ReactDOM.render(
             <Route name="app" path="/" component={Index} >
                 <IndexRoute component={Homepage} />
                 <Route path="/homepage" component={Homepage} />
+                <Route path="/notification" component={NotificationMap} />
                 <Route path="/orgchart" component={OrgchartMap} />
                 <Route path="/profile" component={ProfileMap} />
                 <Route path="/courses" component={CoursesMap} />

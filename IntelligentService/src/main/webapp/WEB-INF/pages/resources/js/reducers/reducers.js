@@ -8,6 +8,7 @@ import empConfig from './empConfig'
 import jobConfig from './jobConfig'
 import courseConfig from './courseConfig'
 import subConfig from './subConfig'
+import notification from './notification'
 
 const reducers = combineReducers({
     headerMenu,
@@ -17,7 +18,8 @@ const reducers = combineReducers({
     empConfig,
     jobConfig,
     courseConfig,
-    subConfig
+    subConfig,
+    notification
 })
 
 export default reducers

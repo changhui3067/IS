@@ -1,0 +1,58 @@
+#notiContent {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: 1px solid #81a1b7;
+    background-color: rgba(117,161,180,0.5);
+
+    .titlePart {
+        width: 100%;
+        color: #fff;
+        font-size: 26px;
+        margin-left: 10px;
+        margin-bottom: 15px;
+    }
+
+    .contentPart {
+        .table {
+            .read {
+                .notiName {
+                    font-size: 14px;
+                    color: #777;
+                }
+
+                .iconread {
+                    color: #fff;
+                    font-size: 20px;
+                }
+
+                .icondelete {
+                    cursor: pointer;
+                    font-size: 20px;
+                    color: #ccc;
+                    &:hover {
+                        color: #5BACD3;
+                    }
+                }
+            }
+
+            .unread {
+                .notiName {
+                    font-size: 14px;
+                    color: #000;
+                }
+
+                .iconread, .icondelete {
+                  cursor: pointer;
+                    font-size: 20px;
+                    color: #000;
+                    &:hover {
+                        color: #5BACD3;
+                    }
+                }
+            }
+        }
+    }
+}

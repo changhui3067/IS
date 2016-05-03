@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import { handleMenuClick } from '../actions/headerAction';
 import Header from '../components/header';
+import {getInitialState} from '../reducers/notification'
 
 const mapStateToProps = (state, ownProps) => {
+
+    if($.isEmptyObject(state.notification)) {
+        getInitialState(state.notification)
+    }
+
     return {
-        unreadCount: 1,
+        unreadCount: state.notification.unreadcount,
         selectedMenu: (state.headerMenu.selectedMenu || "Homepage"),
         usertype: 1
     };
