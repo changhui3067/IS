@@ -1,0 +1,85 @@
+[
+  {
+    "topic": "ADD_EMP",
+    "type": "ADD_EMP",
+    "descriptionMessage": "invokes when adding employee",
+    "title": "add a employee",
+    "params": [
+      {
+        "name": "empId",
+        "type": "String",
+        "description": "the id of emp",
+        "descriptionMessageKey": "id_of_emp",
+        "hasValueAlways": true
+      },
+      {
+        "name": "time",
+        "type": "long",
+        "description": "when the emp come",
+        "descriptionMessageKey": "come_time",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  {
+    "topic": "DELETE_EMP",
+    "type": "DELETE_EMP",
+    "descriptionMessage": "invokes when deleting employee",
+    "title": "delete a employee",
+    "params": [
+      {
+        "name": "empId",
+        "type": "String",
+        "description": "the id of emp",
+        "descriptionMessageKey": "id_of_emp",
+        "hasValueAlways": true
+      },
+      {
+        "name": "time",
+        "type": "long",
+        "description": "when the emp leave",
+        "descriptionMessageKey": "leave_time",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  {
+    "topic": "EMP_JOB_CHANGE",
+    "type": "EMP_JOB_CHANGE",
+    "description": "EMP_JOB_CHANGE",
+    "title": "EMP_JOB_CHANGE",
+    "params": [
+      {
+        "name": "time",
+        "type": "long",
+        "description": "when the emp leave",
+        "descriptionMessageKey": "",
+        "hasValueAlways": false
+      }
+    ]
+  },
+  {
+    "topic": "COURSE_ASSIGNED",
+    "description": "when an emp is assigned a course"
+  },
+  {
+    "topic":"COURSE_EXPIRED"
+  },
+  {
+    "topic": "DEFAULT_COURSE_ADD",
+    "description": "when a default course is added, it will be assigned to all emps"
+  },
+  {
+    "topic": "JOB_PUBLISH",
+    "description": "when a job is published"
+  },
+  {
+    "topic": "JOB_APPLIED"
+  },
+  {
+    "topic":"JOB_APPLY_APPROVED"
+  },
+  {
+    "topic":"JOB_APPLY_REFUSED"
+  }
+]

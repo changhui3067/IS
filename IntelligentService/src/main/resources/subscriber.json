@@ -1,0 +1,121 @@
+[
+  {
+    "targetEventType": "ADD_EMP",
+    "subscribers": [
+      {
+        "id": "ASSIGN_COURSE",
+        "description": "assign course to a new employee",
+        "listenerName": "com.successfactors.mock.printAddMock"
+      },
+      {
+        "id": "WELCOME_EMPLOYEE",
+        "description": "",
+        "listenerName": "com.successfactors.mock.HelloNewMock"
+      },
+      {
+        "id": "INTRODUCE_TO_TEAMMATE",
+        "description": ""
+      },
+      {
+        "id": "WELCOME_EMAIL",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "targetEventType": "DELETE_EMP",
+    "subscribers": [
+      {
+        "id": "COURSE_UNREGISTER",
+        "listenerName": "com.successfactors.mock.MockListener",
+        "canDisable": false
+      },
+      {
+        "id": "GOODBYE_EMAIL",
+        "listenerName": "com.successfactors.mock.MockListener"
+      },
+      {
+        "id": "FAREWELL_TEAMMATE"
+      }
+    ]
+  },
+  {
+    "targetEventType": "EMP_JOB_CHANGE",
+    "subscribers": [
+      {
+        "id": "ASSIGN_COURSE"
+      },
+      {
+        "id": "WELCOME_EMPLOYEE"
+      },
+      {
+        "id": "INTRODUCE_TO_TEAMMATE"
+      },
+      {
+        "id": "FAREWELL_TEAMMATE"
+      }
+    ]
+  },
+  {
+    "targetEventType": "COURSE_EXPIRED",
+    "subscribers": [
+      {
+        "id": "NOTIFICATION_VIA_WEB"
+      },
+      {
+        "id": "NOTIFICATION_VIA_EMAIL"
+      }
+    ]
+  },
+  {
+    "targetEventType": "COURSE_ASSIGNED",
+    "subscribers": [
+      {
+        "id": "NOTIFICATION_VIA_WEB"
+      },
+      {
+        "id": "NOTIFICATION_VIA_EMAIL"
+      }
+    ]
+  },
+  {
+    "targetEventType": "DEFAULT_COURSE_ADD",
+    "subscribers": [
+      {
+        "id": "ASSIGN_COURSE_TO_EMP"
+      }
+    ]
+  },
+  {
+    "targetEventType": "JOB_PUBLISH",
+    "subscribers": [
+      {
+        "id": "NOTIFICATION_TO_EMP"
+      }
+    ]
+  },
+  {
+    "targetEventType": "JOB_APPLIED",
+    "subscribers": [
+      {
+        "id": "NOTIFICATION_TO_MANAGER"
+      }
+    ]
+  },
+  {
+    "targetEventType": "JOB_APPLY_APPROVED",
+    "subscribers": [
+      {
+        "id": "NOTIFICATION_TO_EMP"
+      }
+    ]
+  },
+  {
+    "targetEventType": "JOB_APPLY_REFUSED",
+    "subscriber": [
+      {
+        "id": "NOTIFICATION_TO_EMP"
+      }
+    ]
+  }
+]
