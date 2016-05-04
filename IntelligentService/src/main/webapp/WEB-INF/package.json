@@ -43,6 +43,7 @@
     "Service"
   ],
   "dependencies": {
+    "node-sass": "^3.4.2",
     "antd": "^0.12.15",
     "bootstrap": "3.3.6",
     "browser": "0.2.6",
