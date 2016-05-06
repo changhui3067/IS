@@ -11,7 +11,7 @@ export default class Hotjobs extends React.Component{
         return (
             <div id="hotjobsContent">
                 <Dialog {...this.props} />
-                <Commonpanel type='tilelist' {...this.props} />
+                <Commonpanel type='tilelist' canadd="false" {...this.props} />
             </div>
         );
     }

@@ -5,3 +5,10 @@ export function handleCoursesTabClick(filter) {
     }
 }
 
+export function handleCoursesFinishedClick(id) {
+    return {
+        type: 'SET_COURSE_DELETE',
+        id: id
+    }
+}
+

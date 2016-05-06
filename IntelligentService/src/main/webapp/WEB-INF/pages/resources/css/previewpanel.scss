@@ -41,6 +41,13 @@
         .btns {
             position: absolute;
             bottom: 6px;
+
+            .btnicon {
+                font-size: 20px;
+                &:hover {
+                    color: #005887;
+                }
+            }
         }
     }
 }

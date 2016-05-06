@@ -18,7 +18,14 @@ export default class Previewpanel extends React.Component{
                         {this.props.finished}
                     </div>
                     <div className='btns'>
-                        this is btns
+                    {this.props.parent.actions.map( (t, index) => {
+                        var onClickFunction = 'onClick'+t.type
+                        return (
+                            <span key={index}
+                                className={"iconfont icon-"+t.icon+" btnicon"}
+                                onClick={() => this.props.parent[onClickFunction](this.props.id)}></span>
+                        )
+                    })}
                     </div>
                 </div>
             </div>

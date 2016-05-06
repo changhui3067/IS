@@ -9,6 +9,9 @@ import Previewpanel from './previewpanel';
 
 class TilePanel extends React.Component{
     render() {
+        let noDisplay = {
+            display: "none"
+        }
         return (
             <div>
                 <div className="tabsPart">
@@ -18,11 +21,11 @@ class TilePanel extends React.Component{
                     })}
                 </div>
                 <div className="contentPart">
-                    <div className="toolPanel">
+                    <div className="toolPanel" style={ (this.props.canadd === 'false' ? noDisplay : {})}>
                         <span className={"iconfont icon-anonymous-iconfont1 toolIconSize"} onClick={this.props.onClickAdd}></span>
                     </div>
                     {this.props.list.map(( preview, index) => {
-                        return (<Previewpanel key={index} {...preview}/>)
+                        return (<Previewpanel key={index} parent={this.props} {...preview}/>)
                     })}
                 </div>
             </div>

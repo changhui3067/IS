@@ -9,7 +9,7 @@ export default class Courses extends React.Component{
     render() {
         return (
             <div id="coursesContent">
-                <Commonpanel type='tilelist' {...this.props} />
+                <Commonpanel type='tilelist' canadd='false' {...this.props} />
             </div>
 
         );
