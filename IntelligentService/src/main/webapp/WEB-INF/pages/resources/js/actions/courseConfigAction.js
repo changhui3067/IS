@@ -4,3 +4,10 @@ export function handleCourseConfigTabClick(filter) {
         filter: filter
     }
 }
+
+export function handleCourseConfigDelete(id) {
+    return {
+        type: 'SET_COURSECONFIG_DELETE',
+        id
+    }
+}

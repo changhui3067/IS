@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import JobConfig from '../components/jobconfig';
 import $ from "jquery";
-import { handleJobConfigTabClick } from '../actions/jobConfigAction';
+import { handleJobConfigTabClick, handleJobConfigDelete, handleJobConfigClose } from '../actions/jobConfigAction';
 import {getInitialState} from '../reducers/jobConfig'
 
 const getVisibleList = (list, filter) => {
@@ -13,6 +13,29 @@ const getVisibleList = (list, filter) => {
         case 'closed': return list.filter(t => !t.open);
         default: return list;
     }
+}
+
+const getActions = (filter) => {
+    if(filter === 'open'){
+        return [{
+            type: 'Close',
+            icon: 'gouhao'
+        },{
+            type: 'Delete',
+            icon: 'shanchu1'
+        }]
+    }
+    return [{
+        type: 'Delete',
+        icon: 'shanchu1'
+    }]
+}
+
+const getAddVisible = (filter) => {
+    if(filter === 'open'){
+        return 'true'
+    }
+    return 'false'
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -24,7 +47,9 @@ const mapStateToProps = (state, ownProps) => {
         name: 'Job Config',
         filter: state.jobConfig.filter,
         tabs: state.jobConfig.tabs,
-        list: getVisibleList(state.jobConfig.list, state.jobConfig.filter)
+        list: getVisibleList(state.jobConfig.list, state.jobConfig.filter),
+        canadd: getAddVisible(state.jobConfig.filter),
+        actions: getActions(state.jobConfig.filter)
     };
 }
 
@@ -36,10 +61,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             $(e.target).siblings().removeClass('selected')
             dispatch(handleJobConfigTabClick($(e.target).attr('name')))
         },
-        onClickAdd: () => {
-
+        onClickDelete: (id) => {
+            dispatch(handleJobConfigDelete(id))
         },
-        onClickDelete: () =>{
+        onClickClose: (id) => {
+            dispatch(handleJobConfigClose(id))
+        },
+        onClickAdd: () => {
 
         },
         onClickSave: () => {

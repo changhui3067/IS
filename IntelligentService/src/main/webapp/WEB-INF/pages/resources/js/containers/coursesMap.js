@@ -48,7 +48,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(handleCoursesTabClick($(e.target).attr('name')))
         },
         onClickFinished: (id) => {
-            console.log("finsihed click")
             dispatch(handleCoursesFinishedClick(id))
         },
         onClickDelete: () =>{

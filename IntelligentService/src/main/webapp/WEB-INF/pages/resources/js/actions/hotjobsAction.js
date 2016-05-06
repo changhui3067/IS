@@ -5,6 +5,13 @@ export function handleHotjobsTabClick(filter) {
     }
 }
 
+export function handleHotjobsApplyClick(id) {
+    return {
+        type: 'SET_HOTJOB_APPLY',
+        id
+    }
+}
+
 export function handleHotjobsSetDialogShow(visible) {
     return {
         type: 'SET_HOTJOBS_DIALOG_VISIBLE',

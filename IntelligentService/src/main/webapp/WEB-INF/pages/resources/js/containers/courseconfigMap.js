@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import CourseConfig from '../components/courseconfig';
 import $ from "jquery";
-import { handleCourseConfigTabClick } from '../actions/courseConfigAction';
+import { handleCourseConfigTabClick, handleCourseConfigDelete} from '../actions/courseConfigAction';
 import {getInitialState} from '../reducers/courseConfig'
 
 const getVisibleList = (list, filter) => {
@@ -13,6 +13,13 @@ const getVisibleList = (list, filter) => {
         case 'custom': return list.filter(t => !t.default);
         default: return list;
     }
+}
+
+const getActions = (fitler) => {
+    return [{
+        type: 'Delete',
+        icon: 'shanchu1'
+    }]
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -24,7 +31,8 @@ const mapStateToProps = (state, ownProps) => {
         name: 'Course Config',
         filter: state.courseConfig.filter,
         tabs: state.courseConfig.tabs,
-        list: getVisibleList(state.courseConfig.list, state.courseConfig.filter)
+        list: getVisibleList(state.courseConfig.list, state.courseConfig.filter),
+        actions: getActions(state.courseConfig.filter)
     };
 }
 
@@ -39,8 +47,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onClickAdd: () => {
 
         },
-        onClickDelete: () =>{
-
+        onClickDelete: (id) =>{
+            dispatch(handleCourseConfigDelete(id))
         },
         onClickSave: () => {
             

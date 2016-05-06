@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import Hotjobs from '../components/hotjobs';
 import $ from "jquery";
-import { handleHotjobsTabClick, handleHotjobsSetDialogShow } from '../actions/hotjobsAction';
+import { handleHotjobsTabClick, handleHotjobsApplyClick, handleHotjobsSetDialogShow } from '../actions/hotjobsAction';
 import {getInitialState} from '../reducers/hotjobs'
 
 const getVisibleList = (list, filter) => {
@@ -13,6 +13,16 @@ const getVisibleList = (list, filter) => {
         case 'applied': return list.filter(t => t.applied);
         default: return list.filter( t => !t.applied);
     }
+}
+
+const getActions = (filter) => {
+    if(filter === 'open') {
+        return [{
+            type: 'Apply',
+            icon: 'gouhao'
+        }]
+    }
+    return []
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
         filter: state.hotjobs.filter,
         dialog: state.hotjobs.dialog,
         tabs: state.hotjobs.tabs,
-        list: getVisibleList(state.hotjobs.list, state.hotjobs.filter)
+        list: getVisibleList(state.hotjobs.list, state.hotjobs.filter),
+        actions: getActions(state.hotjobs.filter)
     };
 }
 
@@ -40,8 +51,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onClickAdd: () => {
             dispatch(handleHotjobsSetDialogShow(true))
         },
-        onClickDelete: () =>{
-
+        onClickApply: (id) =>{
+            dispatch(handleHotjobsApplyClick(id))
         },
         onClickSave: () => {
             console.log('save clicked')
