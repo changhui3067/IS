@@ -68,8 +68,8 @@ export default class Dialog extends React.Component{
                   visible={this.props.dialog.visible}
                   title="dialog" onOk={this.props.onClickSave} onCancel={this.props.onClickCancel}
                   footer={[
-                    <Button key="back" type="ghost" size="large" onClick={this.props.onClickCancel}>Cancel</Button>,
-                    <Button key="submit" type="primary" size="large" onClick={this.props.onClickSave}>Save</Button>
+                    <Button key="back" type="ghost" size="large" onClick={() => this.props.onClickCancel(this.props.dialog.id)}>Cancel</Button>,
+                    <Button key="submit" type="primary" size="large" onClick={() => this.props.onClickSave(this.props.dialog.id)}>Save</Button>
                   ]}>
                   <DialogForm ref="dialogForm" {...this.props.dialog}/>
                 </Modal>

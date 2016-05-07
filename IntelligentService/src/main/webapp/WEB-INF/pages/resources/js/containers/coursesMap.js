@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import Courses from '../components/courses';
 import $ from "jquery";
-import { handleCoursesTabClick, handleCoursesFinishedClick } from '../actions/coursesAction';
+import { handleCoursesTabClick, handleCoursesFinishedClick, handleCoursesSetDialogShow } from '../actions/coursesAction';
 import {getInitialState} from '../reducers/courses'
 
 const getVisibleList = (list, filter) => {
@@ -34,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
         name: 'Courses',
         filter: state.courses.filter,
         tabs: state.courses.tabs,
+        dialog: state.courses.dialog,
         list: getVisibleList(state.courses.list, state.courses.filter),
         actions: getActions(state.courses.filter)
     };
@@ -47,8 +48,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             $(e.target).siblings().removeClass('selected')
             dispatch(handleCoursesTabClick($(e.target).attr('name')))
         },
-        onClickFinished: (id) => {
+        onClickFinished: (e, id) => {
+            e.stopPropagation()
             dispatch(handleCoursesFinishedClick(id))
+        },
+        onClickPreview: (e, id) => {
+            dispatch(handleCoursesSetDialogShow(true, id))
+        },
+        onClickSave: (id) => {
+            $('#dialogForm').resetForm();
+            dispatch(handleCoursesSetDialogShow(false, id))
+        },
+        onClickCancel: (id) => {
+            $('#dialogForm').resetForm();
+            dispatch(handleCoursesSetDialogShow(false, id))
         },
         onClickDelete: () =>{
 

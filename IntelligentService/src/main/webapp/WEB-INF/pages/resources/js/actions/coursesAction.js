@@ -12,3 +12,11 @@ export function handleCoursesFinishedClick(id) {
     }
 }
 
+export function handleCoursesSetDialogShow(visible, id) {
+    return {
+        type: 'SET_COURSES_DIALOG_VISIBLE',
+        visible: visible,
+        id: id
+    }
+}
+

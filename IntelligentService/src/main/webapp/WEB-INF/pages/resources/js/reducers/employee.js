@@ -67,7 +67,7 @@ export function getUserInfo(state) {
     }
 }
 
-const employee = (state = [], action) => {
+const employee = (state = [], action = {}) => {
     
     switch (action.type) {
         case 'SET_PROFILE_TEXT':

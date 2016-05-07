@@ -7,7 +7,7 @@ export default class Previewpanel extends React.Component{
 
     render() {
         return (
-            <div className='previewPanel'>
+            <div className='previewPanel' onClick={() => this.props.parent.onClickPreview(this.props.id)}>
                 <div className='preivewPic'>
                 </div>
                 <div className='previewInfo'>
@@ -22,8 +22,9 @@ export default class Previewpanel extends React.Component{
                         var onClickFunction = 'onClick'+t.type
                         return (
                             <span key={index}
+                                title={t.type}
                                 className={"iconfont icon-"+t.icon+" btnicon"}
-                                onClick={() => this.props.parent[onClickFunction](this.props.id)}></span>
+                                onClick={(e) => this.props.parent[onClickFunction](e, this.props.id)}></span>
                         )
                     })}
                     </div>

@@ -4,15 +4,11 @@
 import { connect } from 'react-redux';
 import EmpConfig from '../components/empconfig';
 import $ from "jquery";
-import { handleEmpConfigAddClick } from '../actions/empConfigAction';
+import { handleEmpConfigAddClick, handleEmpConfigSetDialogShow, handleEmpConfigDelete } from '../actions/empConfigAction';
 import {getInitialState} from '../reducers/empConfig'
 
-const getVisibleList = (list, filter) => {
-    switch (filter) {
-        case 'todo': return list.filter(t => !t.finished);
-        case 'finished': return list.filter(t => t.finished);
-        default: return list.filter( t => !t.finished);
-    }
+const getVisibleList = (list) => {
+     return list;
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,23 +18,29 @@ const mapStateToProps = (state, ownProps) => {
     
     return {
         name: 'Employee Config',
-        list: state.empConfig.list
+        dialog: state.empConfig.dialog,
+        list: getVisibleList(state.empConfig.list)
     };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        onClickDelete: (id) =>{
+            dispatch(handleEmpConfigDelete(id))
+        },
+        onClickEdit: (id) => {
+            dispatch(handleEmpConfigSetDialogShow(true, id))
+        },
         onClickAdd: () => {
-            dispatch(handleEmpConfigTabClick())
+            dispatch(handleEmpConfigSetDialogShow(true, -1))
         },
-        onClickDelete: () =>{
-
+        onClickSave: (id) => {
+            $('#dialogForm').resetForm();
+            dispatch(handleEmpConfigSetDialogShow(false, id))
         },
-        onClickSave: () => {
-            
-        },
-        onClickCancel: () => {
-            
+        onClickCancel: (id) => {
+            $('#dialogForm').resetForm();
+            dispatch(handleEmpConfigSetDialogShow(false, id))
         }
     };
 }

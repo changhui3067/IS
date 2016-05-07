@@ -18,3 +18,11 @@ export function handleJobConfigClose(id) {
         id
     }
 }
+
+export function handleJobConfigDialogShow(visible, id) {
+    return {
+        type: 'SET_JOBCONFIG_DIALOG_VISIBLE',
+        id: id,
+        visible: visible
+    }
+}

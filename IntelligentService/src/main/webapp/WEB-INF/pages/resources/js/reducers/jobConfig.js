@@ -1,6 +1,10 @@
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'open',
+        dialog: {
+            visible: false,
+            field: {}
+        },
         tabs:[{
             name: 'Open',
             filter: 'open'
@@ -37,7 +41,7 @@ const findhotjob = (item, id) => {
     return item.id === id
 }
 
-const jobConfig = (state = {}, action) => {
+const jobConfig = (state = {}, action = {}) => {
     switch (action.type) {
         case 'ADD':
             return state
@@ -54,6 +58,13 @@ const jobConfig = (state = {}, action) => {
             var indexx = state.list.findIndex((t) => findhotjob(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
             return temp
+        case 'SET_JOBCONFIG_DIALOG_VISIBLE':
+            var dialog = {
+                dialog: Object.assign({}, state.dialog, {
+                    visible: action.visible
+                })
+            }
+            return Object.assign({}, state, dialog)
         default:
             return state
     }

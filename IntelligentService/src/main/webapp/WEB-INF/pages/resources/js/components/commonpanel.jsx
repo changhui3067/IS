@@ -57,8 +57,14 @@ class ListPanel extends React.Component{
                                 <td>{item.username}</td>
                                 <td>{item.userphoto}</td>
                                 <td>
-                                    <a title="Edit"><span className={"iconfont icon-bianji toolIconSize"}></span></a>
-                                    <a title="Delete"><span className={"iconfont icon-shanchu1 toolIconSize"}></span></a>
+                                    <a title="Edit">
+                                        <span className={"iconfont icon-bianji toolIconSize"}
+                                            onClick={() => this.props.onClickEdit(item.userid)}></span>
+                                    </a>
+                                    <a title="Delete">
+                                        <span className={"iconfont icon-shanchu1 toolIconSize"}
+                                            onClick={() => this.props.onClickDelete(item.userid)}></span>
+                                    </a>
                                 </td>
                             </tr>
                         )

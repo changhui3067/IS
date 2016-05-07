@@ -48,21 +48,22 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             $(e.target).siblings().removeClass('selected')
             dispatch(handleHotjobsTabClick($(e.target).attr('name')))
         },
-        onClickAdd: () => {
-            dispatch(handleHotjobsSetDialogShow(true))
+        onClickPreview: (id) => {
+            dispatch(handleHotjobsSetDialogShow(true, id))
         },
-        onClickApply: (id) =>{
+        onClickApply: (e, id) =>{
+            e.stopPropagation()
             dispatch(handleHotjobsApplyClick(id))
         },
-        onClickSave: () => {
+        onClickSave: (id) => {
             console.log('save clicked')
             $('#dialogForm').resetForm();
-            dispatch(handleHotjobsSetDialogShow(false))
+            dispatch(handleHotjobsSetDialogShow(false, id))
         },
-        onClickCancel: () => {
+        onClickCancel: (id) => {
             console.log('cancel clicked')
             $('#dialogForm').resetForm();
-            dispatch(handleHotjobsSetDialogShow(false))
+            dispatch(handleHotjobsSetDialogShow(false, id))
         }
     };
 }

@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import CourseConfig from '../components/courseconfig';
 import $ from "jquery";
-import { handleCourseConfigTabClick, handleCourseConfigDelete} from '../actions/courseConfigAction';
+import { handleCourseConfigTabClick, handleCourseConfigDelete, handleCourseConfigSetDialogShow} from '../actions/courseConfigAction';
 import {getInitialState} from '../reducers/courseConfig'
 
 const getVisibleList = (list, filter) => {
@@ -31,6 +31,7 @@ const mapStateToProps = (state, ownProps) => {
         name: 'Course Config',
         filter: state.courseConfig.filter,
         tabs: state.courseConfig.tabs,
+        dialog: state.courseConfig.dialog,
         list: getVisibleList(state.courseConfig.list, state.courseConfig.filter),
         actions: getActions(state.courseConfig.filter)
     };
@@ -44,17 +45,25 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             $(e.target).siblings().removeClass('selected')
             dispatch(handleCourseConfigTabClick($(e.target).attr('name')))
         },
-        onClickAdd: () => {
-
-        },
-        onClickDelete: (id) =>{
+        onClickDelete: (e, id) => {
+            e.stopPropagation()
             dispatch(handleCourseConfigDelete(id))
         },
-        onClickSave: () => {
-            
+        onClickAdd: () => {
+            dispatch(handleCourseConfigSetDialogShow(true, -1))
         },
-        onClickCancel: () => {
-            
+        onClickPreview: (id) => {
+            console.log(id)
+            dispatch(handleCourseConfigSetDialogShow(true, id))
+        },
+        onClickSave: (id) => {
+            $('#dialogForm').resetForm();
+            dispatch(handleCourseConfigSetDialogShow(false, id))
+        },
+        onClickCancel: (id) => {
+            console.log(id)
+            $('#dialogForm').resetForm();
+            dispatch(handleCourseConfigSetDialogShow(false, id))
         }
     };
 }

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { handleTileClick } from '../actions/headerAction'
 import Tile from './../components/tile'
 import { getUsername, getUserphoto, getUsertype} from '../reducers/employee'
-import { getTileUnread} from '../reducers/tilesInfo'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -15,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
         title: ownProps.title,
         name: ownProps.name,
         background: ownProps.background,
-        unreadCount: getTileUnread(state, ownProps.name),
         icon: ownProps.icon,
         type: ownProps.type,
         url: ownProps.url

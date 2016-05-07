@@ -3,6 +3,7 @@ import "./../../css/empConfig.scss";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import Commonpanel from "./commonpanel";
+import Dialog from "./dialog"
 
 export default class EmpConfig extends React.Component{
 
@@ -10,6 +11,7 @@ export default class EmpConfig extends React.Component{
         console.log(this.props)
         return (
             <div id="empconfigContent">
+                <Dialog {...this.props} />
                 <Commonpanel type='list' {...this.props} />
             </div>
         );

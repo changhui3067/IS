@@ -1,6 +1,11 @@
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'default',
+        dialog: {
+            visible: false,
+            id: -1,
+            field: {}
+        },
         tabs:[{
             name: 'Default',
             filter: 'default'
@@ -28,7 +33,7 @@ const findcourse = (item, id) => {
     return item.id === id
 }
 
-const courseConfig = (state = {}, action) => {
+const courseConfig = (state = {}, action = {}) => {
     switch (action.type) {
         case 'ADD':
             return state
@@ -41,6 +46,14 @@ const courseConfig = (state = {}, action) => {
             var indexx = state.list.findIndex((t) => findcourse(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
             return temp
+        case 'SET_COURSECONFIG_DIALOG_VISIBLE':
+            var dialog = {
+                dialog: Object.assign({}, state.dialog, {
+                    visible: action.visible,
+                    id: action.id
+                })
+            }
+            return Object.assign({}, state, dialog)
         default:
             return state
     }

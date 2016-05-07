@@ -11,3 +11,11 @@ export function handleCourseConfigDelete(id) {
         id
     }
 }
+
+export function handleCourseConfigSetDialogShow(visible, id) {
+    return {
+        type: 'SET_COURSECONFIG_DIALOG_VISIBLE',
+        visible: visible,
+        id: id
+    }
+}

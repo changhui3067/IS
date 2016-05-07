@@ -8,6 +8,11 @@ export function getInitialState(state) {
             name: 'Finished',
             filter: 'finished'
         }],
+        dialog: {
+            visible: false,
+            id: -1,
+            field: {}
+        },
         list: [{
             id: 0,
             title: '111',
@@ -33,7 +38,7 @@ const setCourse = (state, action) => {
     })
 }
 
-const courses = (state = {}, action) => {
+const courses = (state = {}, action = {}) => {
     switch (action.type) {
         case 'ADD':
             return state
@@ -45,6 +50,14 @@ const courses = (state = {}, action) => {
             return Object.assign({}, state, {
                 list: state.list.map(t => setCourse(t, action))
             })
+        case 'SET_COURSES_DIALOG_VISIBLE':
+            var dialog = {
+                dialog: Object.assign({}, state.dialog, {
+                    visible: action.visible,
+                    id: action.id
+                })
+            }
+            return Object.assign({}, state, dialog)
         default:
             return state
     }

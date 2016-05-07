@@ -36,7 +36,7 @@ const setHotjob = (state, action) => {
     })
 }
 
-const hotjobs = (state = {}, action) => {
+const hotjobs = (state = {}, action = {}) => {
     switch (action.type) {
         case 'ADD':
             return state
@@ -51,7 +51,8 @@ const hotjobs = (state = {}, action) => {
         case 'SET_HOTJOBS_DIALOG_VISIBLE':
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
-                    visible: action.visible
+                    visible: action.visible,
+                    id: action.id
                 })
             }
             return Object.assign({}, state, dialog)

@@ -12,9 +12,10 @@ export function handleHotjobsApplyClick(id) {
     }
 }
 
-export function handleHotjobsSetDialogShow(visible) {
+export function handleHotjobsSetDialogShow(visible, id) {
     return {
         type: 'SET_HOTJOBS_DIALOG_VISIBLE',
-        visible: visible
+        visible: visible,
+        id: id
     }
 }

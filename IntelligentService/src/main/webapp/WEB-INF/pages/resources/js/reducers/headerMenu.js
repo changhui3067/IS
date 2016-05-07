@@ -1,5 +1,5 @@
 
-const headerMenu = (state = [], action) => {
+const headerMenu = (state = [], action = {}) => {
     
     switch (action.type) {
         case 'SET_MENU_TEXT':

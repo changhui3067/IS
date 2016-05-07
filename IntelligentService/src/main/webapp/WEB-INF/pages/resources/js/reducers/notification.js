@@ -29,7 +29,7 @@ const setRead = (state, index, action) => {
     return state
 }
 
-const notification = (state = {}, action) => {
+const notification = (state = {}, action = {}) => {
     switch (action.type) {
         case 'NOTI_DELETE':
             var temp = Object.assign({}, state, {
