@@ -6,10 +6,17 @@
     border: 1px solid #81a1b7;
     background-color: rgba(117,161,180,0.5);
 
+    .contentPart {
+        position: relative;
+    }
+
     .left {
         width:25%;
         background-color: #fff;
-        float: left;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        border: 1px solid #ccc;
 
         .selected {
             background-color: #A8DAEE;
@@ -21,7 +28,7 @@
                 cursor: pointer;
                 width: 100%;
                 height: 50px;
-                border: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
                 padding: 12px 10px;
                 font-size: 14px;
 
@@ -35,7 +42,7 @@
     .right {
         width: 75%;
         background-color: #fff;
-        float: left;
+        float: right;
 
         .subName {
             font-size: 14px;
