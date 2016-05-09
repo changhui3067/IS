@@ -1,3 +1,7 @@
+import {SET_COURSECONFIG_FILTER,
+        SET_COURSECONFIG_DELETE,
+        SET_COURSECONFIG_DIALOG_VISIBLE} from './../actions/courseConfigAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'default',
@@ -35,18 +39,16 @@ const findcourse = (item, id) => {
 
 const courseConfig = (state = {}, action = {}) => {
     switch (action.type) {
-        case 'ADD':
-            return state
-        case 'SET_COURSECONFIG_FILTER':
+        case SET_COURSECONFIG_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
-        case 'SET_COURSECONFIG_DELETE':
+        case SET_COURSECONFIG_DELETE:
             var temp = Object.assign({}, state, {})
             var indexx = state.list.findIndex((t) => findcourse(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
             return temp
-        case 'SET_COURSECONFIG_DIALOG_VISIBLE':
+        case SET_COURSECONFIG_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
                     visible: action.visible,

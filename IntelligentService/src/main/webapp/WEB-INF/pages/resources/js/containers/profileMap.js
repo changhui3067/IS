@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {getUserInfo} from '../reducers/employee'
 import Profile from '../components/profile';
 import $ from "jquery";
-import { handleProfileSaveClick } from '../actions/headerAction';
+import { handleProfileSaveClick } from '../actions/profileAction';
 
 const mapStateToProps = (state, ownProps) => {
     return {

@@ -7,19 +7,15 @@ import $ from "jquery";
 import { handleEmpConfigAddClick, handleEmpConfigSetDialogShow, handleEmpConfigDelete } from '../actions/empConfigAction';
 import {getInitialState} from '../reducers/empConfig'
 
-const getVisibleList = (list) => {
-     return list;
-}
-
 const mapStateToProps = (state, ownProps) => {
     if($.isEmptyObject(state.empConfig)) {
         getInitialState(state.empConfig)
     }
-    
+    console.log(state.empConfig.list)
     return {
         name: 'Employee Config',
         dialog: state.empConfig.dialog,
-        list: getVisibleList(state.empConfig.list)
+        list: state.empConfig.list
     };
 }
 

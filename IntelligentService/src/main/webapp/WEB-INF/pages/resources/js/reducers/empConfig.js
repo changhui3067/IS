@@ -1,3 +1,7 @@
+import {EMPCONFIG_ADD,
+        SET_EMPCONFIG_DELETE,
+        SET_EMPCONFIG_DIALOG_VISIBLE} from './../actions/empConfigAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         dialog: {
@@ -31,15 +35,14 @@ const findemp = (item, id) => {
 
 const empConfig = (state = {}, action = {}) => {
     switch (action.type) {
-        case 'EMPCONFIG_ADD':
-            console.log('emp config add click')
+        case EMPCONFIG_ADD:
             return state
-        case 'SET_EMPCONFIG_DELETE':
+        case SET_EMPCONFIG_DELETE:
             var temp = Object.assign({}, state, {})
             var indexx = state.list.findIndex((t) => findemp(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
             return temp
-        case 'SET_EMPCONFIG_DIALOG_VISIBLE':
+        case SET_EMPCONFIG_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
                     visible: action.visible,

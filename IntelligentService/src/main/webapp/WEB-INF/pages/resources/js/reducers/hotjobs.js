@@ -1,3 +1,7 @@
+import {SET_HOTJOBS_FILTER,
+        SET_HOTJOB_APPLY,
+        SET_HOTJOBS_DIALOG_VISIBLE} from './../actions/hotjobsAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'open',
@@ -38,17 +42,15 @@ const setHotjob = (state, action) => {
 
 const hotjobs = (state = {}, action = {}) => {
     switch (action.type) {
-        case 'ADD':
-            return state
-        case 'SET_HOTJOBS_FILTER':
+        case SET_HOTJOBS_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
-        case 'SET_HOTJOB_APPLY':
+        case SET_HOTJOB_APPLY:
             return Object.assign({}, state, {
                 list: state.list.map(t => setHotjob(t, action))
             })
-        case 'SET_HOTJOBS_DIALOG_VISIBLE':
+        case SET_HOTJOBS_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
                     visible: action.visible,

@@ -8,7 +8,6 @@ import Dialog from "./dialog"
 export default class EmpConfig extends React.Component{
 
     render() {
-        console.log(this.props)
         return (
             <div id="empconfigContent">
                 <Dialog {...this.props} />

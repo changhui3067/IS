@@ -1,3 +1,7 @@
+import {SET_COURSES_FILTER,
+        SET_COURSE_DELETE,
+        SET_COURSES_DIALOG_VISIBLE } from './../actions/coursesAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'todo',
@@ -40,17 +44,15 @@ const setCourse = (state, action) => {
 
 const courses = (state = {}, action = {}) => {
     switch (action.type) {
-        case 'ADD':
-            return state
-        case 'SET_COURSES_FILTER':
+        case SET_COURSES_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
-        case 'SET_COURSE_DELETE':
+        case SET_COURSE_DELETE:
             return Object.assign({}, state, {
                 list: state.list.map(t => setCourse(t, action))
             })
-        case 'SET_COURSES_DIALOG_VISIBLE':
+        case SET_COURSES_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
                     visible: action.visible,

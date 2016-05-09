@@ -1,3 +1,8 @@
+import {SET_JOBCONFIG_FILTER,
+        SET_JOBCONFIG_DELETE,
+        SET_JOBCONFIG_CLOSE,
+        SET_JOBCONFIG_DIALOG_VISIBLE} from './../actions/jobConfigAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'open',
@@ -45,20 +50,21 @@ const jobConfig = (state = {}, action = {}) => {
     switch (action.type) {
         case 'ADD':
             return state
-        case 'SET_JOBCONFIG_FILTER':
+        case SET_JOBCONFIG_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
-        case 'SET_JOBCONFIG_CLOSE':
+        case SET_JOBCONFIG_CLOSE:
             return Object.assign({}, state, {
                 list: state.list.map(t => setClose(t, action))
             })
-        case 'SET_JOBCONFIG_DELETE':
+        case SET_JOBCONFIG_DELETE:
             var temp = Object.assign({}, state, {})
             var indexx = state.list.findIndex((t) => findhotjob(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
+            console.log('reducer: ', state, temp)
             return temp
-        case 'SET_JOBCONFIG_DIALOG_VISIBLE':
+        case SET_JOBCONFIG_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
                     visible: action.visible

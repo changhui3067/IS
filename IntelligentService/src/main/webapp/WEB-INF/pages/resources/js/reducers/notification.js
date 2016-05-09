@@ -1,6 +1,8 @@
 /**
  * Created by freyjachang on 5/3/16.
  */
+import {NOTI_READ, NOTI_DELETE} from './../actions/notificationAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         unreadcount: 3,
@@ -31,7 +33,7 @@ const setRead = (state, index, action) => {
 
 const notification = (state = {}, action = {}) => {
     switch (action.type) {
-        case 'NOTI_DELETE':
+        case NOTI_DELETE:
             var temp = Object.assign({}, state, {
                 unreadcount: state.unreadcount -1
             })
@@ -39,7 +41,7 @@ const notification = (state = {}, action = {}) => {
 
             console.log('delete', deleteItem)
             return temp
-        case 'NOTI_READ':
+        case NOTI_READ:
             var temp = Object.assign({}, state, {
                 unreadcount: state.unreadcount - 1
             })

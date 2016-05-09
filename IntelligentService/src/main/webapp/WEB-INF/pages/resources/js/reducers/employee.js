@@ -1,6 +1,8 @@
 /**
  * Created by freyjachang on 4/21/16.
  */
+import {SET_PROFILE_TEXT} from './../actions/profileAction'
+
 export function getUsername(state) {
     return 'Freyja'
     // state.employee.username || 'Freyja'
@@ -70,7 +72,7 @@ export function getUserInfo(state) {
 const employee = (state = [], action = {}) => {
     
     switch (action.type) {
-        case 'SET_PROFILE_TEXT':
+        case SET_PROFILE_TEXT:
             var o = new Object()
             o[action.field] = action.text
             console.log(Object.assign({}, state, o))

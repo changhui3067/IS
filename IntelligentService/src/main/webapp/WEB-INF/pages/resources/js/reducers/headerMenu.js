@@ -1,9 +1,9 @@
+import {SET_MENU_TEXT} from './../actions/headerAction'
 
 const headerMenu = (state = [], action = {}) => {
     
     switch (action.type) {
-        case 'SET_MENU_TEXT':
-            console.log("SET_MENU_TEXT: ", action.menuItem);
+        case SET_MENU_TEXT:
             return Object.assign({}, state, {
                 selectedMenu: action.menuItem
             });

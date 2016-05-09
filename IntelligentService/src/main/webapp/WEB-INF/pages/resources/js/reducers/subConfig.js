@@ -1,6 +1,10 @@
 /**
  * Created by freyjachang on 5/2/16.
  */
+
+import {SET_SUBCONFIG_SWITCHER,
+        SET_SUBTAB_FILTER} from './../actions/subConfigAction'
+
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'event0',
@@ -43,7 +47,7 @@ export function getInitialState(state) {
 
 const switcher = (state, action) => {
     switch(action.type) {
-        case 'SET_SUBCONFIG_SWITCHER':
+        case SET_SUBCONFIG_SWITCHER:
             console.log(state, action)
             if( state.name === action.switcher) {
                 return Object.assign({}, state, {
@@ -65,14 +69,13 @@ const subscriber = (state, action, filter) => {
     return state
 }
 
-const subConfig = (state = {}, action) => {
+const subConfig = (state = {}, action ={}) => {
     switch (action.type) {
-        case 'SET_SUBTAB_FILTER':
+        case SET_SUBTAB_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
-        case 'SET_SUBCONFIG_SWITCHER':
-            console.log('SET_SUBCONFIG_SWITCHER',state)
+        case SET_SUBCONFIG_SWITCHER:
             return Object.assign({}, state, {
                 list: state.list.map( t => subscriber(t, action, state.filter) )
             })
