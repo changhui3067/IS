@@ -2,10 +2,26 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import Hotjobs from '../components/hotjobs';
 import $ from "jquery";
-import { handleHotjobsTabClick, handleHotjobsApplyClick, handleHotjobsSetDialogShow } from '../actions/hotjobsAction';
-import {getInitialState} from '../reducers/hotjobs'
+import { handleHotjobsTabClick, handleHotjobsApplyClick, handleHotjobsSetDialogShow, getHotjobs} from '../actions/hotjobsAction';
+
+class HotjobsMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getHotjobs()
+    }
+
+    render() {
+        return (
+            <Hotjobs {...this.props}/>
+        )
+    }
+}
 
 const getVisibleList = (list, filter) => {
     switch (filter) {
@@ -26,10 +42,6 @@ const getActions = (filter) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.hotjobs)) {
-        getInitialState(state.hotjobs)
-    }
-    
     return {
         name: 'HotJobs',
         filter: state.hotjobs.filter,
@@ -71,6 +83,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const HotjobsMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Hotjobs)
+)(HotjobsMapper)
 
 export default HotjobsMap;

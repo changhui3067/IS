@@ -9,7 +9,7 @@ import courseConfig from './courseConfig'
 import subConfig from './subConfig'
 import notification from './notification'
 
-const reducers = combineReducers({
+const reducer = combineReducers({
     headerMenu,
     employee,
     courses,
@@ -21,4 +21,4 @@ const reducers = combineReducers({
     notification
 })
 
-export default reducers
+export default reducer

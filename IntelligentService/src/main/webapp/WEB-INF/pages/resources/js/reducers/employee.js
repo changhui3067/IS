@@ -2,6 +2,7 @@
  * Created by freyjachang on 4/21/16.
  */
 import {SET_PROFILE_TEXT} from './../actions/profileAction'
+import {SET_EMPINFO} from './../actions/empAction'
 
 export function getUsername(state) {
     return 'Freyja'
@@ -69,14 +70,29 @@ export function getUserInfo(state) {
     }
 }
 
-const employee = (state = [], action = {}) => {
-    
+export function getInitialState(state) {
+    return Object.assign(state, {}, {
+        userinfo: getUserInfo(),
+        manager: getManagerInfo(),
+        coworkers: getCoworkersInfoList(),
+        subordinates: getSubordinatesInfoList()
+    })
+}
+
+const employee = (state = {}, action = {}) => {
+    if($.isEmptyObject(state)) {
+        getInitialState(state)
+    }
     switch (action.type) {
+        case SET_EMPINFO:
+            return state
+
         case SET_PROFILE_TEXT:
             var o = new Object()
             o[action.field] = action.text
             console.log(Object.assign({}, state, o))
             return Object.assign({}, state, o);
+
         default:
             return state
     }

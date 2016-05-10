@@ -2,10 +2,26 @@
  * Created by freyjachang on 4/28/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import SubConfig from '../components/subconfig';
 import $ from "jquery";
-import { handleSubConfigSwitchChanged, handleSubConfigTabClick } from '../actions/subConfigAction';
-import {getInitialState} from '../reducers/subConfig'
+import { handleSubConfigSwitchChanged, handleSubConfigTabClick, getSubConfig } from '../actions/subConfigAction';
+
+class SubConfigMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getSubConfig()
+    }
+
+    render() {
+        return (
+            <SubConfig {...this.props}/>
+        )
+    }
+}
 
 const getEvents = (state) => {
     var eventList = []
@@ -26,10 +42,6 @@ const getList = (state, filter) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.subConfig)) {
-        getInitialState(state.subConfig)
-    }
-
     return {
         name: 'Subscriber Config',
         filter: state.subConfig.filter,
@@ -56,6 +68,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const SubConfigMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(SubConfig)
+)(SubConfigMapper)
 
 export default SubConfigMap;

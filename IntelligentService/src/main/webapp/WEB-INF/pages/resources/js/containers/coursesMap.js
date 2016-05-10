@@ -2,10 +2,26 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import Courses from '../components/courses';
 import $ from "jquery";
-import { handleCoursesTabClick, handleCoursesFinishedClick, handleCoursesSetDialogShow } from '../actions/coursesAction';
-import {getInitialState} from '../reducers/courses'
+import { handleCoursesTabClick, handleCoursesFinishedClick, handleCoursesSetDialogShow, getCourses} from '../actions/coursesAction';
+
+class CoursesMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getCourses()
+    }
+
+    render() {
+        return (
+            <Courses {...this.props}/>
+        )
+    }
+}
 
 const getVisibleList = (list, filter) => {
     switch (filter) {
@@ -26,10 +42,6 @@ const getActions = (filter) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.courses)) {
-        getInitialState(state.courses)
-    }
-    
     return {
         name: 'Courses',
         filter: state.courses.filter,
@@ -72,6 +84,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const CoursesMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Courses)
+)(CoursesMapper)
 
 export default CoursesMap;

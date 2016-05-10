@@ -1,6 +1,7 @@
 export const SET_HOTJOBS_FILTER = 'SET_HOTJOBS_FILTER'
 export const SET_HOTJOB_APPLY = 'SET_HOTJOB_APPLY'
 export const SET_HOTJOBS_DIALOG_VISIBLE = 'SET_HOTJOBS_DIALOG_VISIBLE'
+export const SET_HOTJOBS = 'SET_HOTJOBS'
 
 export function handleHotjobsTabClick(filter) {
     return {
@@ -22,4 +23,28 @@ export function handleHotjobsSetDialogShow(visible, id) {
         visible: visible,
         id: id
     }
+}
+
+export function receiveHotjobs() {
+    return {
+        type: SET_HOTJOBS
+    }
+}
+
+export function getHotjobs() {
+    $.ajax({
+        url: 'api/',
+        type: "POST",
+        //dataType: "json",
+        contentType: "application/json",
+        success: function(response){
+            console.log('success')
+            var json1 = response.json()
+
+            dispatch(receiveHotjobs('frontend', json1))
+        },//.bind(this),
+        error: function(xhr, status, err){
+            console.log(status, err.toString());
+        }//.bind(this)
+    })
 }

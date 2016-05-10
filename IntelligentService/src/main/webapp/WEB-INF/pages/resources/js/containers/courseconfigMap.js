@@ -2,10 +2,27 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import CourseConfig from '../components/courseconfig';
 import $ from "jquery";
 import { handleCourseConfigTabClick, handleCourseConfigDelete, handleCourseConfigSetDialogShow} from '../actions/courseConfigAction';
 import {getInitialState} from '../reducers/courseConfig'
+
+class CourseConfigMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getCourseConfig()
+    }
+
+    render() {
+        return (
+            <CourseConfig {...this.props}/>
+        )
+    }
+}
 
 const getVisibleList = (list, filter) => {
     switch (filter) {
@@ -23,10 +40,6 @@ const getActions = (fitler) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.courseConfig)) {
-        getInitialState(state.courseConfig)
-    }
-    
     return {
         name: 'Course Config',
         filter: state.courseConfig.filter,
@@ -71,6 +84,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const CourseConfigMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(CourseConfig)
+)(CourseConfigMapper)
 
 export default CourseConfigMap;

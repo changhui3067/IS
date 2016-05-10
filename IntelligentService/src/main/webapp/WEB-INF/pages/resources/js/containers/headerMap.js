@@ -1,12 +1,28 @@
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import { handleMenuClick } from '../actions/headerAction';
 import Header from '../components/header';
-import {getInitialState} from '../reducers/notification'
+import {getNotification} from '../actions/notificationAction'
+
+class HeaderMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getNotification()
+    }
+
+    render() {
+        return (
+            <Header {...this.props}/>
+        )
+    }
+}
 
 const mapStateToProps = (state, ownProps) => {
-
-    if($.isEmptyObject(state.notification)) {
-        getInitialState(state.notification)
+    if($.isEmptyObject(state.notification.list)) {
+        getNotification()
     }
 
     return {
@@ -27,8 +43,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const HeaderMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Header)
-
-
+)(HeaderMapper)
 
 export default HeaderMap;

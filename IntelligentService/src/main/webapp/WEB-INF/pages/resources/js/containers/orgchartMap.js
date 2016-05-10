@@ -2,16 +2,32 @@
  * Created by freyjachang on 4/23/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import { handleMenuClick } from '../actions/headerAction';
-import {getManagerInfo, getCoworkersInfoList, getSubordinatesInfoList} from '../reducers/employee'
+import {getEmployeeInfo} from './../actions/empAction';
 import Orgchart from '../components/orgchart';
 
+class OrgchartMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getEmployeeInfo()
+    }
+
+    render() {
+        return (
+            <Orgchart {...this.props}/>
+        )
+    }
+}
+
 const mapStateToProps = (state, ownProps) => {
-    console.log("map state to props: ", state);
     return {
-        manager: getManagerInfo(state),
-        coworkers: getCoworkersInfoList(state),
-        subordinates:getSubordinatesInfoList(state)
+        manager: state.employee.manager,
+        coworkers: state.employee.coworkers,
+        subordinates:state.employee.subordinates
     };
 }
 
@@ -26,6 +42,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const OrgchartMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Orgchart)
+)(OrgchartMapper)
 
 export default OrgchartMap;

@@ -31,7 +31,32 @@ const setRead = (state, index, action) => {
     return state
 }
 
-const notification = (state = {}, action = {}) => {
+function posts(state = {}, action ={}) {
+    switch (action.type) {
+        case INVALIDATE_REDDIT:
+            return Object.assign({}, state, {
+                didInvalidate: true
+            })
+        case REQUEST_POSTS:
+            return Object.assign({}, state, {
+                isFetching: true,
+                didInvalidate: false
+            })
+        case RECEIVE_POSTS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                list: action.posts,
+                lastUpdated: action.receivedAt
+            })
+        default:
+            return state
+    }
+}
+
+const notification = (state = {isFetching: false,
+    didInvalidate: false,
+    list: []}, action = {}) => {
     switch (action.type) {
         case NOTI_DELETE:
             var temp = Object.assign({}, state, {
@@ -50,6 +75,11 @@ const notification = (state = {}, action = {}) => {
             })
             console.log('read', temp1)
             return temp1
+        case 'RECEIVE_POSTS':
+            console.log('reducer ', 'RECEIVE_POSTS')
+            return Object.assign({}, state, {
+                [action.reddit]: posts(state[action.reddit], action)
+            })
         default:
             return state
     }

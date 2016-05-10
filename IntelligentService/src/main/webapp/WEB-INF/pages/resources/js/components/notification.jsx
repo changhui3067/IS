@@ -7,12 +7,7 @@ import Bootstrap from "Bootstrap"
 
 export default class Notification extends React.Component{
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log(this.props, nextProps)
-        return true;
-    }
     render() {
-        console.log(this.props.list)
         return (
             <div id="notiContent">
                 <div className="titlePart">

@@ -20,10 +20,10 @@ import EmpConfigMap from "./../containers/empConfigMap";
 import JobConfigMap from "./../containers/jobconfigMap";
 import CourseConfigMap from "./../containers/courseconfigMap";
 import SubConfigMap from "./../containers/subconfigMap";
-import NotificationMap from "./../containers/notificationMap"
-import reducers from "./../reducers/reducers"
+import NotificationMap from "./../containers/notificationMap";
+import {configureStore} from './../store/configureStore';
 
-const store = createStore(reducers);
+const store = configureStore()
 
 export class Index extends React.Component{
 

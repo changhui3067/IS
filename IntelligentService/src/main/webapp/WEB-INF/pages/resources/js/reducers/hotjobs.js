@@ -1,6 +1,7 @@
 import {SET_HOTJOBS_FILTER,
         SET_HOTJOB_APPLY,
-        SET_HOTJOBS_DIALOG_VISIBLE} from './../actions/hotjobsAction'
+        SET_HOTJOBS_DIALOG_VISIBLE,
+        SET_HOTJOBS } from './../actions/hotjobsAction'
 
 export function getInitialState(state) {
     return Object.assign(state, {}, {
@@ -41,7 +42,12 @@ const setHotjob = (state, action) => {
 }
 
 const hotjobs = (state = {}, action = {}) => {
+    if($.isEmptyObject(state)) {
+        getInitialState(state)
+    }
     switch (action.type) {
+        case SET_HOTJOBS:
+            return state
         case SET_HOTJOBS_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter

@@ -1,13 +1,13 @@
 import {SET_COURSECONFIG_FILTER,
         SET_COURSECONFIG_DELETE,
-        SET_COURSECONFIG_DIALOG_VISIBLE} from './../actions/courseConfigAction'
+        SET_COURSECONFIG_DIALOG_VISIBLE,
+        SET_COURSECONFIG } from './../actions/courseConfigAction'
 
 export function getInitialState(state) {
     return Object.assign(state, {}, {
         filter: 'default',
         dialog: {
             visible: false,
-            id: -1,
             field: {}
         },
         tabs:[{
@@ -17,19 +17,7 @@ export function getInitialState(state) {
             name: 'Custom',
             filter: 'custom'
         }],
-        list: [{
-            id: 0,
-            title: 'custom course',
-            default: false
-        },{
-            id: 1,
-            title: 'default course1',
-            default: true
-        },{
-            id: 2,
-            title: 'default courses2',
-            default: true
-        }]
+        list: []
     })
 }
 
@@ -38,16 +26,24 @@ const findcourse = (item, id) => {
 }
 
 const courseConfig = (state = {}, action = {}) => {
+    if($.isEmptyObject(state)){
+        getInitialState(state)
+    }
     switch (action.type) {
+        case SET_COURSECONFIG:
+            return state
+
         case SET_COURSECONFIG_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
+
         case SET_COURSECONFIG_DELETE:
             var temp = Object.assign({}, state, {})
             var indexx = state.list.findIndex((t) => findcourse(t, action.id))
             var deleteItem = temp.list.splice(indexx, 1);
             return temp
+
         case SET_COURSECONFIG_DIALOG_VISIBLE:
             var dialog = {
                 dialog: Object.assign({}, state.dialog, {
@@ -56,6 +52,7 @@ const courseConfig = (state = {}, action = {}) => {
                 })
             }
             return Object.assign({}, state, dialog)
+
         default:
             return state
     }

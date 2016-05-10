@@ -3,7 +3,8 @@
  */
 
 import {SET_SUBCONFIG_SWITCHER,
-        SET_SUBTAB_FILTER} from './../actions/subConfigAction'
+        SET_SUBTAB_FILTER,
+        SET_SUBCONFIG } from './../actions/subConfigAction'
 
 export function getInitialState(state) {
     return Object.assign(state, {}, {
@@ -70,11 +71,18 @@ const subscriber = (state, action, filter) => {
 }
 
 const subConfig = (state = {}, action ={}) => {
+    if($.isEmptyObject(state)) {
+        getInitialState(state)
+    }
     switch (action.type) {
+        case SET_SUBCONFIG:
+            return state
+
         case SET_SUBTAB_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter
             })
+
         case SET_SUBCONFIG_SWITCHER:
             return Object.assign({}, state, {
                 list: state.list.map( t => subscriber(t, action, state.filter) )

@@ -1,6 +1,7 @@
 import {SET_COURSES_FILTER,
         SET_COURSE_DELETE,
-        SET_COURSES_DIALOG_VISIBLE } from './../actions/coursesAction'
+        SET_COURSES_DIALOG_VISIBLE,
+        SET_COURSES} from './../actions/coursesAction'
 
 export function getInitialState(state) {
     return Object.assign(state, {}, {
@@ -17,19 +18,7 @@ export function getInitialState(state) {
             id: -1,
             field: {}
         },
-        list: [{
-            id: 0,
-            title: '111',
-            finished: false
-        },{
-            id: 1,
-            title: '333',
-            finished: false
-        },{
-            id:2,
-            title: '222',
-            finished: true
-        }]
+        list: []
     })
 }
 
@@ -43,7 +32,13 @@ const setCourse = (state, action) => {
 }
 
 const courses = (state = {}, action = {}) => {
+    if($.isEmptyObject(state)) {
+        getInitialState(state)
+    }
+
     switch (action.type) {
+        case SET_COURSES:
+            return state
         case SET_COURSES_FILTER:
             return Object.assign({}, state, {
                 filter: action.filter

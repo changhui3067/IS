@@ -1,20 +1,31 @@
 /**
- * Created by freyjachang on 5/3/16.
- */
-/**
  * Created by freyjachang on 4/28/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import Notification from '../components/notification';
 import $ from "jquery";
-import { handleNotiDeleteClick, handleNotiReadClick } from '../actions/notificationAction';
+import { handleNotiDeleteClick, handleNotiReadClick, getNotification } from '../actions/notificationAction';
 import {getInitialState} from '../reducers/notification'
 
-const mapStateToProps = (state, ownProps) => {
-    if($.isEmptyObject(state.notification)) {
-        getInitialState(state.notification)
+class NotificationMapper extends Component {
+    constructor(props){
+        super(props)
     }
-    console.log('mapstatetoprops', state.notification.list)
+
+    componentDidMount() {
+        getNotification()
+    }
+
+    render() {
+        return (
+            <Notification {...this.props}/>
+        )
+    }
+}
+
+
+const mapStateToProps = (state, ownProps) => {
     return {
         name: 'Notification Center',
         unreadcount: state.notification.unreadcount,
@@ -40,6 +51,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const NotificationMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Notification)
+)(NotificationMapper)
 
 export default NotificationMap;

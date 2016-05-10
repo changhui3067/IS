@@ -2,10 +2,26 @@
  * Created by freyjachang on 4/24/16.
  */
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import EmpConfig from '../components/empconfig';
 import $ from "jquery";
-import { handleEmpConfigAddClick, handleEmpConfigSetDialogShow, handleEmpConfigDelete } from '../actions/empConfigAction';
-import {getInitialState} from '../reducers/empConfig'
+import { handleEmpConfigAddClick, handleEmpConfigSetDialogShow, handleEmpConfigDelete, getEmpConfig} from '../actions/empConfigAction';
+
+class EmpConfigMapper extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        getEmpConfig()
+    }
+
+    render() {
+        return (
+            <EmpConfig {...this.props}/>
+        )
+    }
+}
 
 const mapStateToProps = (state, ownProps) => {
     if($.isEmptyObject(state.empConfig)) {
@@ -44,6 +60,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const empConfigMap = connect(
     mapStateToProps,
     mapDispatchToProps
-)(EmpConfig)
+)(EmpConfigMapper)
 
 export default empConfigMap;

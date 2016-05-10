@@ -9,7 +9,7 @@ import { handleProfileSaveClick } from '../actions/profileAction';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        empInfo: getUserInfo(state)
+        empInfo: state.employee.userinfo
     };
 }
 
